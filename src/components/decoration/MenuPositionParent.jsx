@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-pascal-case */
 import React from 'react';
-import Svg_Circle from '../../icon/Svg_Circle';
 import PositionChalid from './PositionChaild';
 
 export default class MenuPositionParent extends React.Component {

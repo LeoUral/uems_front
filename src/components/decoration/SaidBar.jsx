@@ -1,6 +1,7 @@
 import React from 'react';
 import MenuPositionParent from './MenuPositionParent';
 import Svg_Circle from '../../icon/Svg_Circle';
+import SideBarLogo from './SideBarLogo';
 
 export default class SaidBar extends React.Component {
     constructor(props) {
@@ -25,7 +26,13 @@ export default class SaidBar extends React.Component {
         return (
             <>
                 <div className="said-bar" style={{ width: show ? '55px' : '300px' }} onMouseOver={this.handleFocus} >
-                    <div style={{ width: '5vw', height: '10vh' }}></div>
+
+                    <SideBarLogo
+                        show={show}
+                    />
+
+                    {/* <div style={{ width: '5vw', height: '10vh' }}></div> */}
+
                     <MenuPositionParent
                         show={this.props.show}
                         icon={<Svg_Circle colorSvg="rgba(255, 255, 255, 1)" />}

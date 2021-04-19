@@ -25,9 +25,11 @@ export default class RightMenuBlock extends React.Component {
                 <div className="right-menu-block">
                     <NaviBar
                         onChangeShow={this.doChangeShow}
-                        show={this.state.show}
+                        show={this.props.show}
                     />
+
                     <Main />
+                    
                     <Footer />
                 </div>
             </>

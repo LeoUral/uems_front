@@ -28,20 +28,18 @@ export default class Navigation extends React.Component {
     render() {
         return (
             <>
-                <Container className="navigation" fluid style={{ paddingLeft: '0', paddingRight: '0' }}>
+                <Container className="navigation" fluid style={{ paddingLeft: '0', paddingRight: '0', width: '99vw' }}>
+
                     <SaidBar
                         show={this.state.show}
                         onFocusSaidBar={this.doFocusSaidBar}
                     />
-                    {/* <NaviBar
-                        onChangeShow={this.doChangeShow}
-                        show={this.state.show}
-                    /> */}
 
                     <RightMenuBlock
                         show={this.state.show}
                         onChangeShow={this.doChangeShow}
                     />
+
                 </Container>
             </>
         )
