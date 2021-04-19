@@ -1,18 +1,26 @@
+/* eslint-disable react/jsx-pascal-case */
 import React from 'react';
+import Svg_Circle from '../../icon/Svg_Circle';
+import PositionChalid from './PositionChaild';
 
 export default class MenuPositionParent extends React.Component {
 
     render() {
+
+        const show = this.props.show;
+        const name = this.props.name;
+        const icon = this.props.icon;
+
         return (
             <>
-                <div style={{ margin: '10px 5px 10px 20px' }}>
-                    <p>
-                        <i class="fas fa-user"></i>
-                        Position 1
-                        <i class="fas fa-clone"></i>
-                    </p>
-                    <i class="fas fa-clone"></i>
-                    <i class="fas fa-user"></i>
+                <div className="menu-position-parent">
+                    {icon}
+                    <PositionChalid
+                        name={name}
+                        show={show}
+                        nameMenu={this.props.nameMenu}
+                        urlMenu={this.props.urlMenu}
+                    />
                 </div>
             </>
         )
