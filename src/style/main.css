@@ -290,10 +290,15 @@
 }
 
 .form_main {
+  position: absolute;
+  top: 10%;
+  left: 16%;
+  position: fixed;
   width: 70vw;
-  margin: 5vw auto;
-  background-color: #28a7460e;
+  background-color: #a8b6c2;
   border-radius: 5px;
-  padding: 20px;
+  -webkit-transition: 1s;
+  transition: 1s;
+  z-index: 20;
 }
 /*# sourceMappingURL=main.css.map */
