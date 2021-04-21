@@ -12,6 +12,11 @@ export default class SaidBar extends React.Component {
         }
 
         this.handleFocus = this.handleFocus.bind(this);
+        this.doTransferUrl = this.doTransferUrl.bind(this);
+    }
+
+    doTransferUrl(url) {
+        this.props.onTransferUrl(url);
     }
 
     handleFocus() {
@@ -36,42 +41,48 @@ export default class SaidBar extends React.Component {
                         icon={<Svg_Circle colorSvg="rgba(255, 255, 255, 1)" />}
                         name="Данные компании"
                         nameMenu={["Возможности", "Референц", "Лицензии", "Новости", "Загрузка", "Анкета"]}
-                        urlMenu={["/", "/", "/", "/", "/", "/"]}
+                        urlMenu={["/opportunities", "/references", "/licenses", "/news", "/loading", "/questionnaire"]}
+                        onTransferUrl={this.doTransferUrl}
                     />
                     <MenuPositionParent
                         show={this.props.show}
                         icon={<Svg_Circle colorSvg="rgba(255, 255, 255, 1)" />}
                         name="Инструменты"
                         nameMenu={["Прочностные", "Быстрый эскиз", "Расчеты т/о LOTUS", "Тех.проекты"]}
-                        urlMenu={["/", "/", "/", "/"]}
+                        urlMenu={["/endurance", "/sketch", "/calculations", "/projects"]}
+                        onTransferUrl={this.doTransferUrl}
                     />
                     <MenuPositionParent
                         show={this.props.show}
                         icon={<Svg_Circle colorSvg="rgba(255, 255, 255, 1)" />}
                         name="Конкурсы"
                         nameMenu={["Как участник", "Как заказчик", "Опрос рынка"]}
-                        urlMenu={["/", "/", "/"]}
+                        urlMenu={["/participant", "/customer", "/survey"]}
+                        onTransferUrl={this.doTransferUrl}
                     />
                     <MenuPositionParent
                         show={this.props.show}
                         icon={<Svg_Circle colorSvg="rgba(255, 255, 255, 1)" />}
                         name="Кооперация"
                         nameMenu={["Тех.возможности других", "Финансирование проектов", "Производственные услуги", "Человеческие ресурсы"]}
-                        urlMenu={["/", "/", "/", "/"]}
+                        urlMenu={["/tech_others", "/funding", "/production", "/people"]}
+                        onTransferUrl={this.doTransferUrl}
                     />
                     <MenuPositionParent
                         show={this.props.show}
                         icon={<Svg_Circle colorSvg="rgba(255, 255, 255, 1)" />}
                         name="Снабжение"
                         nameMenu={["Складская программа", "Остатки производства", "Потребности", "Оборудование", "Оснастки"]}
-                        urlMenu={["/", "/", "/", "/", "/"]}
+                        urlMenu={["/warehouse", "/remains", "/needs", "/equipment", "/snap-ins"]}
+                        onTransferUrl={this.doTransferUrl}
                     />
                     <MenuPositionParent
                         show={this.props.show}
                         icon={<Svg_Circle colorSvg="rgba(255, 255, 255, 1)" />}
                         name="Консультация"
                         nameMenu={["Коуч", "Лаборатории"]}
-                        urlMenu={["/", "/"]}
+                        urlMenu={["/coach", "/laboratory"]}
+                        onTransferUrl={this.doTransferUrl}
                     />
 
                 </div>

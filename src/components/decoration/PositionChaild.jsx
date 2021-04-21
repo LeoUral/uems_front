@@ -15,7 +15,8 @@ export default class PositionChaild extends React.Component {
 
     handleClick(e) {
         e.preventDefault(e);
-        console.log(e.target);
+        console.log(e.target.dataset.url);
+        this.props.onTransferUrl(e.target.dataset.url);
     }
 
     renderMenu(data, url) {
@@ -23,11 +24,13 @@ export default class PositionChaild extends React.Component {
         for (let i = 0; i < data.length; i++) {
             viewMenu = [...viewMenu,
             <div
-                key={data[i]}
+                key={url[i]}
                 className="chaild-block"
             >
                 <a
-                    href={url[i]}
+                    // href={url[i]}
+                    href="/"
+                    data-url={url[i]}
                     className="chaild-link"
                     onClick={this.handleClick}
                 >

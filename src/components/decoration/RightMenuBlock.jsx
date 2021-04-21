@@ -28,8 +28,10 @@ export default class RightMenuBlock extends React.Component {
                         show={this.props.show}
                     />
 
-                    <Main />
-                    
+                    <Main
+                        urlPosition={this.props.urlPosition}
+                    />
+
                     <Footer />
                 </div>
             </>

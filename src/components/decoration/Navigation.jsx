@@ -9,11 +9,17 @@ export default class Navigation extends React.Component {
         super(props);
         this.state = {
             language: 'rus',
-            show: false
+            show: false,
+            urlPosition: ''
         }
 
         this.doChangeShow = this.doChangeShow.bind(this);
         this.doFocusSaidBar = this.doFocusSaidBar.bind(this);
+        this.doTransferUrl = this.doTransferUrl.bind(this);
+    }
+
+    doTransferUrl(url) {
+        this.setState({ urlPosition: url })
     }
 
     doFocusSaidBar() {
@@ -33,10 +39,12 @@ export default class Navigation extends React.Component {
                     <SaidBar
                         show={this.state.show}
                         onFocusSaidBar={this.doFocusSaidBar}
+                        onTransferUrl={this.doTransferUrl}
                     />
 
                     <RightMenuBlock
                         show={this.state.show}
+                        urlPosition={this.state.urlPosition}
                         onChangeShow={this.doChangeShow}
                     />
 
