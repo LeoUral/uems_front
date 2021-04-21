@@ -34,7 +34,7 @@ export default class Navigation extends React.Component {
     render() {
         return (
             <>
-                <Container className="navigation" fluid style={{ paddingLeft: '0', paddingRight: '0', width: '99vw' }}>
+                <Container className="navigation" fluid style={{ paddingLeft: '0', paddingRight: '0' }}>
 
                     <SaidBar
                         show={this.state.show}

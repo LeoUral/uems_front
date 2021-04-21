@@ -11,6 +11,9 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 100%;
 }
 
 .said-bar {
@@ -27,7 +30,9 @@
     height: 50px;
 }
 
-.right-menu-block {}
+.right-menu-block {
+    width: 100%;
+}
 
 .jumbotron {
     border-radius: 0;
@@ -148,7 +153,7 @@
 }
 
 .modal_window {
-    position: relative;    
+    position: relative;
 }
 
 .shadow {
@@ -189,4 +194,12 @@
     animation: opacity_0 1.5s;
     //* время завязано с формами
     //* LoginPage, Registration
+}
+
+.form_main {
+    width: 70vw;
+    margin: 5vw auto;
+    background-color: #28a7460e;
+    border-radius: 5px;
+    padding: 20px;
 }
