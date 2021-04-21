@@ -31,49 +31,47 @@ export default class SaidBar extends React.Component {
                         show={show}
                     />
 
-                    {/* <div style={{ width: '5vw', height: '10vh' }}></div> */}
-
                     <MenuPositionParent
                         show={this.props.show}
                         icon={<Svg_Circle colorSvg="rgba(255, 255, 255, 1)" />}
                         name="Данные компании"
-                        nameMenu={["position 1", "Position 2", "Position 3"]}
-                        urlMenu={["/", "/", "/"]}
+                        nameMenu={["Возможности", "Референц", "Лицензии", "Новости", "Загрузка", "Анкета"]}
+                        urlMenu={["/", "/", "/", "/", "/", "/"]}
                     />
                     <MenuPositionParent
                         show={this.props.show}
                         icon={<Svg_Circle colorSvg="rgba(255, 255, 255, 1)" />}
                         name="Инструменты"
-                        nameMenu={["position 1", "Position 2", "Position 3"]}
-                        urlMenu={["/", "/", "/"]}
+                        nameMenu={["Прочностные", "Быстрый эскиз", "Расчеты т/о LOTUS", "Тех.проекты"]}
+                        urlMenu={["/", "/", "/", "/"]}
                     />
                     <MenuPositionParent
                         show={this.props.show}
                         icon={<Svg_Circle colorSvg="rgba(255, 255, 255, 1)" />}
                         name="Конкурсы"
-                        nameMenu={["position 1", "Position 2", "Position 3"]}
+                        nameMenu={["Как участник", "Как заказчик", "Опрос рынка"]}
                         urlMenu={["/", "/", "/"]}
                     />
                     <MenuPositionParent
                         show={this.props.show}
                         icon={<Svg_Circle colorSvg="rgba(255, 255, 255, 1)" />}
                         name="Кооперация"
-                        nameMenu={["position 1", "Position 2", "Position 3"]}
-                        urlMenu={["/", "/", "/"]}
+                        nameMenu={["Тех.возможности других", "Финансирование проектов", "Производственные услуги", "Человеческие ресурсы"]}
+                        urlMenu={["/", "/", "/", "/"]}
                     />
                     <MenuPositionParent
                         show={this.props.show}
                         icon={<Svg_Circle colorSvg="rgba(255, 255, 255, 1)" />}
                         name="Снабжение"
-                        nameMenu={["position 1", "Position 2", "Position 3"]}
-                        urlMenu={["/", "/", "/"]}
+                        nameMenu={["Складская программа", "Остатки производства", "Потребности", "Оборудование", "Оснастки"]}
+                        urlMenu={["/", "/", "/", "/", "/"]}
                     />
                     <MenuPositionParent
                         show={this.props.show}
                         icon={<Svg_Circle colorSvg="rgba(255, 255, 255, 1)" />}
                         name="Консультация"
-                        nameMenu={["position 1", "Position 2", "Position 3"]}
-                        urlMenu={["/", "/", "/"]}
+                        nameMenu={["Коуч", "Лаборатории"]}
+                        urlMenu={["/", "/"]}
                     />
 
                 </div>

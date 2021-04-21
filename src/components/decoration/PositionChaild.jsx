@@ -10,6 +10,12 @@ export default class PositionChaild extends React.Component {
         }
 
         this.renderMenu = this.renderMenu.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(e) {
+        e.preventDefault(e);
+        console.log(e.target);
     }
 
     renderMenu(data, url) {
@@ -18,10 +24,12 @@ export default class PositionChaild extends React.Component {
             viewMenu = [...viewMenu,
             <div
                 key={data[i]}
-                className="chaild-block">
+                className="chaild-block"
+            >
                 <a
                     href={url[i]}
                     className="chaild-link"
+                    onClick={this.handleClick}
                 >
                     {data[i]}
                 </a>
@@ -43,7 +51,10 @@ export default class PositionChaild extends React.Component {
         return (
             <>
                 {/* <div className={this.classChild} > {this.props.name} </div> */}
-                <Accordion defaultActiveKey="1" style={{ transition: '1s', width: show ? '0px' : '200px' }} >
+                <Accordion
+                    defaultActiveKey="1"
+                    style={{ transition: '0.5s', width: show ? '0px' : '200px' }}
+                >
                     <Card>
                         <Card.Header style={{ padding: '0px' }} >
                             <Accordion.Toggle variant="link" eventKey="0" className="card-my" >

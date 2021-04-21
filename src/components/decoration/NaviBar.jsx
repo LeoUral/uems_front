@@ -13,6 +13,14 @@ export default class NaviBar extends React.Component {
         }
 
         this.handleClickNavbar = this.handleClickNavbar.bind(this);
+        this.handleClickExit = this.handleClickExit.bind(this);
+    }
+
+    //* Выход из системы 
+    handleClickExit(e) {
+        e.preventDefault();
+        localStorage.removeItem('idUser');
+        window.location.href = "/";
     }
 
     handleClickNavbar() {
@@ -38,7 +46,7 @@ export default class NaviBar extends React.Component {
                     <Nav className="mr-auto">
                         <Nav.Link href="#home">Home</Nav.Link>
                         <Nav.Link href="#features">Features</Nav.Link>
-                        <Nav.Link href="#pricing">Pricing</Nav.Link>
+                        <Nav.Link href="#pricing" onClick={this.handleClickExit} >Выход</Nav.Link>
                     </Nav>
                 </Navbar>
             </>
