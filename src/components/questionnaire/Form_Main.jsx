@@ -2,7 +2,6 @@ import React from 'react';
 import { Alert, Container, Form, Row, Button } from 'react-bootstrap';
 import InputForm from './InputForm';
 import SelectForm from './SelectForm';
-import Server from '../server/server';
 
 export default class Form_Main extends React.Component {
     constructor(props) {
@@ -17,15 +16,14 @@ export default class Form_Main extends React.Component {
             lengthDataFromServer: 0
         }
 
-        this.getNullArray();
-
         this.doChangeValue = this.doChangeValue.bind(this);
         this.handleClickSave = this.handleClickSave.bind(this);
-        this.getNullArray = this.getNullArray.bind(this);
-        this.writeParseData = this.writeParseData.bind(this);
-
+        this.handleClickShadow = this.handleClickShadow.bind(this);
     }
 
+    handleClickShadow() {
+        this.props.onChangeView('Main');
+    }
 
     //*формируем данные в массив объектов для отправки на сервер
     handleClickSave() {
@@ -59,76 +57,42 @@ export default class Form_Main extends React.Component {
             this.props.onUpdateDataOnServer(data, 'Main', Number(localStorage.getItem('idUser')));
         }
         setTimeout(() => { console.log(this.state.dataOnServer) })//test
+        this.handleClickShadow();
     }
 
     //* данные с полей формы, формируются в массив объектов
     doChangeValue(data) {
-        console.log(data);
+        console.log(data);//test
         this.setState({ dataValue: [...this.state.dataValue, data] })
-        setTimeout(() => { console.log(this.state.dataValue) })
-    }
-
-    //*создаем пустой массив объектов для первого запуска или отсутсвия связи с сервером
-    //*загрузить пустой массив до получения данных с сервера
-    getNullArray() {
-        if (this.state.dataFromServer.length < 1) {
-            let data = this.state.dataFromServer;
-            console.log('NULL ARRAY');
-
-            for (let i = 0; i <= (this.state.maxId); i++) {
-
-                //todo создаем позицию с пустым объектом
-                data[i] = { id: '', description: '', information: '', value: '' }
-            }
-            this.setState({ dataFromServer: data })
-            console.log(data);
-        }
-    }
-
-    //*парсинг данных с сервера
-    writeParseData(dataJson) {
-        let dataNew = [];
-        dataJson.forEach((data) => {
-            dataNew = [...dataNew, { id: data.id, description: data.description, information: data.information, value: data.value }]
-        })
-        this.setState({ dataFromServer: dataNew })
-
-        // this.props.onData(dataNew); //todo петля данных
-        setTimeout(() => { console.log(this.state.dataFromServer); })//test
-    }
-
-    //* получаем данные с сервера
-    async getDataFromServer(name, id) {
-
-        new Promise((resolve) => {
-            resolve(Server.getDataFromServer(name, id))
-        }).then((result) => {
-            this.writeParseData(result);
-            this.setState({ lengthDataFromServer: result.length });
-        }).catch((result) => {
-            this.setState({ lengthDataFromServer: 0 });
-            console.log(result);
-        })
+        setTimeout(() => { console.log(this.state.dataValue) })//test
     }
 
 
     componentDidMount() {
-        this.getDataFromServer('Main', Number(localStorage.getItem('idUser')))
+        setTimeout(() => {
+            this.setState({ dataFromServer: this.props.data });
+            console.log('DATA on dataFromServer');
+            // this.forceUpdate();
+        }, 1000);
     }
 
     render() {
+        console.log('RENDER');
 
-        this.value = this.state.dataFromServer;
+        const view = this.props.view;
+        this.value = this.props.data;
+
+        console.log(this.value);//test
 
         return (
             <>
-                <div className="modal_window" >
-                    <div className="shadow_form"></div>
+                <div className="modal_window" style={{ display: view ? 'block' : 'none' }} >
+                    <div className="shadow_form" onClick={this.handleClickShadow} ></div>
                     <Form className="form_main" >
-                        <Alert variant="dark">
+                        <Alert variant="dark" onClose={() => this.handleClickShadow()} dismissible>
                             <Alert.Heading > Общаяя информация </Alert.Heading>
                         </Alert>
-                        <Container className="container_form_min">
+                        <Container>
                             <Form.Group>
                                 <Row>
                                     <InputForm
@@ -139,8 +103,8 @@ export default class Form_Main extends React.Component {
                                         label="Полное наименование предприятия"
                                         placeholder="Полное наименование предприятия"
                                         description="Предприятие"
-                                        // value={this.value[1] && this.value[1].value}
-                                        value={this.value[1].value}
+                                        value={this.value[1] ? this.value[1].value : ''}
+                                        // value={this.value[1].value}
                                         onChangeValue={this.doChangeValue}
                                     />
                                 </Row>
@@ -153,8 +117,8 @@ export default class Form_Main extends React.Component {
                                         label=""
                                         placeholder="ФИО руководителя"
                                         description="Предприятие"
-                                        // value={this.value[2] && this.value[2].value}
-                                        value={this.value[2].value}
+                                        value={this.value[2] ? this.value[2].value : ''}
+                                        // value={this.value[2].value}
                                         onChangeValue={this.doChangeValue}
                                     />
                                     <SelectForm
@@ -165,8 +129,8 @@ export default class Form_Main extends React.Component {
                                         placeholder="Должность"
                                         description="Предприятие"
                                         option="Директор, Генеральный директор, Президент" //*список для выбора
-                                        // value={this.value[3] && this.value[3].value}
-                                        value={this.value[3].value}
+                                        value={this.value[3] ? this.value[3].value : ''}
+                                        // value={this.value[3].value}
                                         onChangeValue={this.doChangeValue}
                                     />
                                 </Row>
@@ -179,8 +143,8 @@ export default class Form_Main extends React.Component {
                                         label=""
                                         placeholder="Телефон"
                                         description="Предприятие"
-                                        // value={this.value[4] && this.value[4].value}
-                                        value={this.value[4].value}
+                                        value={this.value[4] ? this.value[4].value : ''}
+                                        // value={this.value[4].value}
                                         onChangeValue={this.doChangeValue}
                                     />
                                     <InputForm
@@ -191,8 +155,8 @@ export default class Form_Main extends React.Component {
                                         label=""
                                         placeholder="E-Mail"
                                         description="Предприятие"
-                                        // value={this.value[5] && this.value[5].value}
-                                        value={this.value[5].value}
+                                        value={this.value[5] ? this.value[5].value : ''}
+                                        // value={this.value[5].value}
                                         onChangeValue={this.doChangeValue}
                                     />
                                 </Row>
@@ -207,8 +171,8 @@ export default class Form_Main extends React.Component {
                                         label=""
                                         placeholder="ИНН"
                                         description="Предприятие"
-                                        // value={this.value[6] && this.value[6].value}
-                                        value={this.value[6].value}
+                                        value={this.value[6] ? this.value[6].value : ''}
+                                        // value={this.value[6].value}
                                         onChangeValue={this.doChangeValue}
                                     />
                                     <InputForm
@@ -219,8 +183,8 @@ export default class Form_Main extends React.Component {
                                         label=""
                                         placeholder="КПП"
                                         description="Предприятие"
-                                        // value={this.value[7] && this.value[7].value}
-                                        value={this.value[7].value}
+                                        value={this.value[7] ? this.value[7].value : ''}
+                                        // value={this.value[7].value}
                                         onChangeValue={this.doChangeValue}
                                     />
                                     <InputForm
@@ -231,8 +195,8 @@ export default class Form_Main extends React.Component {
                                         label=""
                                         placeholder="ОГРН"
                                         description="Предприятие"
-                                        // value={this.value[8] && this.value[8].value}
-                                        value={this.value[8].value}
+                                        value={this.value[8] ? this.value[8].value : ''}
+                                        // value={this.value[8].value}
                                         onChangeValue={this.doChangeValue}
                                     />
                                 </Row>
@@ -247,8 +211,8 @@ export default class Form_Main extends React.Component {
                                         label="Контактное лицо"
                                         placeholder="ФИО"
                                         description="Контактное лицо"
-                                        // value={this.value[9] && this.value[9].value}
-                                        value={this.value[9].value}
+                                        value={this.value[9] ? this.value[9].value : ''}
+                                        // value={this.value[9].value}
                                         onChangeValue={this.doChangeValue}
                                     />
                                 </Row>
@@ -261,8 +225,8 @@ export default class Form_Main extends React.Component {
                                         label=""
                                         placeholder="Должность"
                                         description="Контактное лицо"
-                                        // value={this.value[10] && this.value[10].value}
-                                        value={this.value[10].value}
+                                        value={this.value[10] ? this.value[10].value : ''}
+                                        // value={this.value[10].value}
                                         onChangeValue={this.doChangeValue}
                                     />
                                     <InputForm
@@ -273,8 +237,8 @@ export default class Form_Main extends React.Component {
                                         label=""
                                         placeholder="Телефон"
                                         description="Контактное лицо"
-                                        // value={this.value[11] && this.value[11].value}
-                                        value={this.value[11].value}
+                                        value={this.value[11] ? this.value[11].value : ''}
+                                        // value={this.value[11].value}
                                         onChangeValue={this.doChangeValue}
                                     />
                                     <InputForm
@@ -285,8 +249,8 @@ export default class Form_Main extends React.Component {
                                         label=""
                                         placeholder="E mail"
                                         description="Контактное лицо"
-                                        // value={this.value[12] && this.value[12].value}
-                                        value={this.value[12].value}
+                                        value={this.value[12] ? this.value[12].value : ''}
+                                        // value={this.value[12].value}
                                         onChangeValue={this.doChangeValue}
                                     />
                                 </Row>
@@ -302,8 +266,8 @@ export default class Form_Main extends React.Component {
                                         label=""
                                         placeholder="Индекс"
                                         description="Предприятие"
-                                        // value={this.value[13] && this.value[13].value}
-                                        value={this.value[13].value}
+                                        value={this.value[13] ? this.value[13].value : ''}
+                                        // value={this.value[13].value}
                                         onChangeValue={this.doChangeValue}
                                     />
                                     <SelectForm
@@ -314,8 +278,8 @@ export default class Form_Main extends React.Component {
                                         placeholder="Срана"
                                         description="Предприятие"
                                         option="Россия, не Россия"
-                                        // value={this.value[14] && this.value[14].value}
-                                        value={this.value[14].value}
+                                        value={this.value[14] ? this.value[14].value : ''}
+                                        // value={this.value[14].value}
                                         onChangeValue={this.doChangeValue}
                                     />
                                     <SelectForm
@@ -326,8 +290,8 @@ export default class Form_Main extends React.Component {
                                         placeholder="Город"
                                         description="Предприятие"
                                         option="Города России"
-                                        // value={this.value[15] && this.value[15].value}
-                                        value={this.value[15].value}
+                                        value={this.value[15] ? this.value[15].value : ''}
+                                        // value={this.value[15].value}
                                         onChangeValue={this.doChangeValue}
                                     />
                                 </Row>
@@ -340,8 +304,8 @@ export default class Form_Main extends React.Component {
                                         label=""
                                         placeholder="Улица"
                                         description="Предприятие"
-                                        // value={this.value[16] && this.value[16].value}
-                                        value={this.value[16].value}
+                                        value={this.value[16] ? this.value[16].value : ''}
+                                        // value={this.value[16].value}
                                         onChangeValue={this.doChangeValue}
                                     />
                                     <InputForm
@@ -352,8 +316,8 @@ export default class Form_Main extends React.Component {
                                         label=""
                                         placeholder="Дом"
                                         description="Предприятие"
-                                        // value={this.value[17] && this.value[17].value}
-                                        value={this.value[17].value}
+                                        value={this.value[17] ? this.value[17].value : ''}
+                                        // value={this.value[17].value}
                                         onChangeValue={this.doChangeValue}
                                     />
                                     <InputForm
@@ -364,8 +328,8 @@ export default class Form_Main extends React.Component {
                                         label=""
                                         placeholder="Корпус"
                                         description="Предприятие"
-                                        // value={this.value[18] && this.value[18].value}
-                                        value={this.value[18].value}
+                                        value={this.value[18] ? this.value[18].value : ''}
+                                        // value={this.value[18].value}
                                         onChangeValue={this.doChangeValue}
                                     />
                                 </Row>
