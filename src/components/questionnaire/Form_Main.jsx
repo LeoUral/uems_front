@@ -67,10 +67,9 @@ export default class Form_Main extends React.Component {
         setTimeout(() => { console.log(this.state.dataValue) })//test
     }
 
-
     componentDidMount() {
         setTimeout(() => {
-            this.setState({ dataFromServer: this.props.data });
+            this.setState({ dataFromServer: this.props.data, lengthDataFromServer: this.props.lengthDataFromServer });
             console.log('DATA on dataFromServer');
             // this.forceUpdate();
         }, 1000);

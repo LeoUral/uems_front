@@ -12,12 +12,31 @@ export default class Questionnaire extends React.Component {
         this.state = {
             language: 'rus',
             show: false,
-            arrayName: ['Main', 'One'],
+            lengthDataFromServer_Main: 0,
+            lengthDataFromServer_One: 0,
+            lengthDataFromServer_Two: 0,
+            lengthDataFromServer_Three: 0,
+            lengthDataFromServer_Four: 0,
+            lengthDataFromServer_Five: 0,
+            lengthDataFromServer_Six: 0,
             data_Main: [],
-            view_Main: false
+            data_One: [],
+            data_Two: [],
+            data_Three: [],
+            data_Four: [],
+            data_Five: [],
+            data_Six: [],
+            view_Main: false,
+            view_One: false,
+            view_Two: false,
+            view_Three: false,
+            view_Four: false,
+            view_Five: false,
+            view_Six: false,
         }
 
         this.createDataServer = this.createDataServer.bind(this);
+        // this.sendDataOnServer = this.sendDataOnServer.bind(this);
         this.sendDataServer = this.sendDataServer.bind(this);
         this.doCreateDataServer = this.doCreateDataServer.bind(this);
         this.doUpdateDataOnServer = this.doUpdateDataOnServer.bind(this);
@@ -29,10 +48,10 @@ export default class Questionnaire extends React.Component {
 
     //*закрывает форму по нажатию на фон
     doChangeView(name) {
-        this.setState({ view_Main: !this.state.view_Main })
+        if (name === 'Main') this.setState({ view_Main: !this.state.view_Main })
     }
 
-    //* открывает загружает для выбранной формы данные с сервера и открывает форму
+    //* загружает для выбранной формы данные с сервера и открывает форму
     handleClickView(e) {
         this.doGetDataFromServer(e.target.dataset.name, Number(localStorage.getItem('idUser')));
         setTimeout(() => {
@@ -49,7 +68,7 @@ export default class Questionnaire extends React.Component {
     }
 
     doUpdateDataOnServer(data, name, id) {
-        this.sendDataOnServer(data, name, id);
+        this.sendDataServer(data, name, id);
     }
 
     //*Создаем новые данные на сервере
@@ -86,7 +105,7 @@ export default class Questionnaire extends React.Component {
         dataJson.forEach((data) => {
             dataNew = [...dataNew, { id: data.id, description: data.description, information: data.information, value: data.value }]
         })
-        this.setState({ data_Main: dataNew })
+        if (name === 'Main') this.setState({ data_Main: dataNew, lengthDataFromServer_Main: dataNew.length })
     }
 
     //* получаем данные с сервера
@@ -127,6 +146,7 @@ export default class Questionnaire extends React.Component {
                                 onCreateDataServer={this.doCreateDataServer}
                                 onUpdateDataOnServer={this.doUpdateDataOnServer}
                                 onChangeView={this.doChangeView}
+                                lengthDataFromServer={this.state.lengthDataFromServer_Main}
                                 data={this.state.data_Main}
                                 view={view_Main}
                             />
