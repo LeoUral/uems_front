@@ -2,6 +2,8 @@
 import React from 'react'
 import { Button, Container } from 'react-bootstrap';
 import Form_Main from './Form_Main';
+import Form_One from './Form_One';
+import Form_Two from './Form_Two';
 import Server from '../server/server';
 import _Sample from './_Sample';
 
@@ -49,6 +51,8 @@ export default class Questionnaire extends React.Component {
     //*закрывает форму по нажатию на фон
     doChangeView(name) {
         if (name === 'Main') this.setState({ view_Main: !this.state.view_Main })
+        if (name === 'One') this.setState({ view_One: !this.state.view_One })
+        if (name === 'Two') this.setState({ view_Two: !this.state.view_Two })
     }
 
     //* загружает для выбранной формы данные с сервера и открывает форму
@@ -56,6 +60,8 @@ export default class Questionnaire extends React.Component {
         this.doGetDataFromServer(e.target.dataset.name, Number(localStorage.getItem('idUser')));
         setTimeout(() => {
             if (e.target.dataset.name === 'Main') this.setState({ view_Main: !this.state.view_Main })
+            if (e.target.dataset.name === 'One') this.setState({ view_One: !this.state.view_One })
+            if (e.target.dataset.name === 'Two') this.setState({ view_Two: !this.state.view_Two })
         }, 500)
     }
 
@@ -106,6 +112,8 @@ export default class Questionnaire extends React.Component {
             dataNew = [...dataNew, { id: data.id, description: data.description, information: data.information, value: data.value }]
         })
         if (name === 'Main') this.setState({ data_Main: dataNew, lengthDataFromServer_Main: dataNew.length })
+        if (name === 'One') this.setState({ data_One: dataNew, lengthDataFromServer_One: dataNew.length })
+        if (name === 'Two') this.setState({ data_Two: dataNew, lengthDataFromServer_Two: dataNew.length })
     }
 
     //* получаем данные с сервера
@@ -132,7 +140,10 @@ export default class Questionnaire extends React.Component {
     render() {
 
         const show = this.state.show;
+
         const view_Main = this.state.view_Main;
+        const view_One = this.state.view_One;
+        const view_Two = this.state.view_Two;
 
         return (
             <>
@@ -151,14 +162,38 @@ export default class Questionnaire extends React.Component {
                                 view={view_Main}
                             />
                             : ''}
+
+                        {view_One ?
+                            <Form_One
+                                onCreateDataServer={this.doCreateDataServer}
+                                onUpdateDataOnServer={this.doUpdateDataOnServer}
+                                onChangeView={this.doChangeView}
+                                lengthDataFromServer={this.state.lengthDataFromServer_One}
+                                data={this.state.data_One}
+                                view={view_One}
+                            />
+                            : ''}
+
+                        {view_Two ?
+                            <Form_Two
+                                onCreateDataServer={this.doCreateDataServer}
+                                onUpdateDataOnServer={this.doUpdateDataOnServer}
+                                onChangeView={this.doChangeView}
+                                lengthDataFromServer={this.state.lengthDataFromServer_Two}
+                                data={this.state.data_Two}
+                                view={view_Two}
+                            />
+                            : ''}
+
+
                         <Button className="btn_form" variant="outline-success" data-name="Main" onClick={this.handleClickView}>
                             Данные предприятия, форма №1
                             </Button>
                         <Button className="btn_form" variant="outline-success" data-name="One" onClick={this.handleClickView}>
-                            Технический аудит, форма №2
+                            Форма технического аудита: "Заготовительное производство"
                             </Button>
                         <Button className="btn_form" variant="outline-success" data-name="Two" onClick={this.handleClickView}>
-                            Технический аудит, форма №3
+                            Форма технического аудита: "Механическая обработка деталей и узлов"
                             </Button>
                         <Button className="btn_form" variant="outline-success" data-name="Three" onClick={this.handleClickView}>
                             Технический аудит, форма №4

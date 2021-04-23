@@ -225,12 +225,16 @@
 }
 
 .btn_form {
-    margin: 10px 5px;
-    width: 150px;
-    height: 100px;
+    margin: 10px 10px;
+    width: 210px;
+    height: 140px;
     transition: 0.5s;
     &:hover {
         box-shadow: 3px 3px 5px #6c757d;
         transition: 0.5s;
     }
+}
+
+.span_title {
+    margin: 20px 0 -15px 15px;
 }
