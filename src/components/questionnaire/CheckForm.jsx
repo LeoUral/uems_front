@@ -51,8 +51,6 @@ export default class CheckForm extends React.Component {
                 <Col sm={width} style={{ visibility: show ? 'visible' : 'collapse' }} >
                     <Form.Check
                         type="checkbox"
-                        id="customControlAutosizing"
-                        custom
                         label={placeholder}
                         data-id={id}
                         data-information={placeholder}

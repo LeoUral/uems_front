@@ -122,7 +122,7 @@ export default class Form_Three extends React.Component {
         for (let i = 5; i < lengthData; i++) {
             if ([5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33].includes(i) && Number(data[i].id > 0)) {
                 this.addForm()
-                console.log(Number(data[i].id));
+
             }
         }
 

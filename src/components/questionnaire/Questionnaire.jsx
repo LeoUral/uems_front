@@ -5,6 +5,8 @@ import Form_Main from './Form_Main';
 import Form_One from './Form_One';
 import Form_Two from './Form_Two';
 import Form_Three from './Form_Three';
+import Form_Four from './Form_Four';
+import Form_Five from './Form_Five';
 import Server from '../server/server';
 import _Sample from './_Sample';
 
@@ -55,6 +57,8 @@ export default class Questionnaire extends React.Component {
         if (name === 'One') this.setState({ view_One: !this.state.view_One })
         if (name === 'Two') this.setState({ view_Two: !this.state.view_Two })
         if (name === 'Three') this.setState({ view_Three: !this.state.view_Three })
+        if (name === 'Four') this.setState({ view_Four: !this.state.view_Four })
+        if (name === 'Five') this.setState({ view_Five: !this.state.view_Five })
     }
 
     //* загружает для выбранной формы данные с сервера и открывает форму
@@ -65,6 +69,8 @@ export default class Questionnaire extends React.Component {
             if (e.target.dataset.name === 'One') this.setState({ view_One: !this.state.view_One })
             if (e.target.dataset.name === 'Two') this.setState({ view_Two: !this.state.view_Two })
             if (e.target.dataset.name === 'Three') this.setState({ view_Three: !this.state.view_Three })
+            if (e.target.dataset.name === 'Four') this.setState({ view_Four: !this.state.view_Four })
+            if (e.target.dataset.name === 'Five') this.setState({ view_Five: !this.state.view_Five })
         }, 500)
     }
 
@@ -118,6 +124,8 @@ export default class Questionnaire extends React.Component {
         if (name === 'One') this.setState({ data_One: dataNew, lengthDataFromServer_One: dataNew.length })
         if (name === 'Two') this.setState({ data_Two: dataNew, lengthDataFromServer_Two: dataNew.length })
         if (name === 'Three') this.setState({ data_Three: dataNew, lengthDataFromServer_Three: dataNew.length })
+        if (name === 'Four') this.setState({ data_Four: dataNew, lengthDataFromServer_Four: dataNew.length })
+        if (name === 'Five') this.setState({ data_Five: dataNew, lengthDataFromServer_Five: dataNew.length })
     }
 
     //* получаем данные с сервера
@@ -149,6 +157,8 @@ export default class Questionnaire extends React.Component {
         const view_One = this.state.view_One;
         const view_Two = this.state.view_Two;
         const view_Three = this.state.view_Three;
+        const view_Four = this.state.view_Four;
+        const view_Five = this.state.view_Five;
 
         return (
             <>
@@ -201,9 +211,31 @@ export default class Questionnaire extends React.Component {
                             />
                             : ''}
 
+                        {view_Four ?
+                            <Form_Four
+                                onCreateDataServer={this.doCreateDataServer}
+                                onUpdateDataOnServer={this.doUpdateDataOnServer}
+                                onChangeView={this.doChangeView}
+                                lengthDataFromServer={this.state.lengthDataFromServer_Four}
+                                data={this.state.data_Four}
+                                view={view_Four}
+                            />
+                            : ''}
+
+                        {view_Five ?
+                            <Form_Five
+                                onCreateDataServer={this.doCreateDataServer}
+                                onUpdateDataOnServer={this.doUpdateDataOnServer}
+                                onChangeView={this.doChangeView}
+                                lengthDataFromServer={this.state.lengthDataFromServer_Five}
+                                data={this.state.data_Five}
+                                view={view_Five}
+                            />
+                            : ''}
+
 
                         <Button className="btn_form" variant="outline-success" data-name="Main" onClick={this.handleClickView}>
-                            Данные предприятия, форма №1
+                            Данные предприятия
                             </Button>
                         <Button className="btn_form" variant="outline-success" data-name="One" onClick={this.handleClickView}>
                             Форма технического аудита: "Заготовительное производство"
@@ -215,10 +247,10 @@ export default class Questionnaire extends React.Component {
                             Форма технического аудита: " Сварочное производство"
                             </Button>
                         <Button className="btn_form" variant="outline-success" data-name="Four" onClick={this.handleClickView}>
-                            Технический аудит, форма №5
+                            Форма технического аудита - "Материалы", "Развальцовка", "Испытания"
                             </Button>
                         <Button className="btn_form" variant="outline-success" data-name="Five" onClick={this.handleClickView}>
-                            Технический аудит, форма №6
+                            Форма технического аудита - Термическая обработка
                             </Button>
                         <Button className="btn_form" variant="outline-success" data-name="Six" onClick={this.handleClickView}>
                             Технический аудит, форма №7
