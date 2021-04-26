@@ -32,6 +32,7 @@ export default class SelectForm extends React.Component {
         e.preventDefault();
         console.log(e.target.value);//test
         this.setState({ value: e.target.value })
+        this.props.onChangeVisionBlock(e.target.value);
     }
 
     viewListOptions(arr) {

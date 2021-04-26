@@ -29,6 +29,7 @@ export default class CheckForm extends React.Component {
     handleChange(e) {
         this.setState({ value: e.target.checked })
         console.log(e.target.checked);//test
+        this.props.onChangeVisionBlock(e.target.checked);
     }
 
     componentDidMount() {

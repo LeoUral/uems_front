@@ -19,6 +19,11 @@ export default class Form_Main extends React.Component {
         this.doChangeValue = this.doChangeValue.bind(this);
         this.handleClickSave = this.handleClickSave.bind(this);
         this.handleClickShadow = this.handleClickShadow.bind(this);
+        this.doEmpty = this.doEmpty.bind(this);
+    }
+    //*Пустышка
+    doEmpty() {
+
     }
 
     handleClickShadow() {
@@ -131,6 +136,7 @@ export default class Form_Main extends React.Component {
                                         value={this.value[3] ? this.value[3].value : ''}
                                         // value={this.value[3].value}
                                         onChangeValue={this.doChangeValue}
+                                        onChangeVisionBlock={this.doEmpty}
                                     />
                                 </Row>
                                 <Row>
@@ -280,6 +286,7 @@ export default class Form_Main extends React.Component {
                                         value={this.value[14] ? this.value[14].value : ''}
                                         // value={this.value[14].value}
                                         onChangeValue={this.doChangeValue}
+                                        onChangeVisionBlock={this.doEmpty}
                                     />
                                     <SelectForm
                                         id={15}
@@ -292,6 +299,7 @@ export default class Form_Main extends React.Component {
                                         value={this.value[15] ? this.value[15].value : ''}
                                         // value={this.value[15].value}
                                         onChangeValue={this.doChangeValue}
+                                        onChangeVisionBlock={this.doEmpty}
                                     />
                                 </Row>
                                 <Row>

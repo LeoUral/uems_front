@@ -1,21 +1,24 @@
 /* eslint-disable react/jsx-pascal-case */
 import React from 'react';
 import { Alert, Container, Form, Row, Button } from 'react-bootstrap';
-import Form_Two_Add from './Form_Two_Add';
+import SelectForm from './SelectForm';
+import InputForm from './InputForm';
+import Form_Three_Add from './Form_Three_Add';
 
-export default class Form_Two extends React.Component {
+export default class Form_Three extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
             language: 'rus',
             dataValue: [],
-            id: 1,
-            maxId: 7,
+            id: 3,
+            maxId: 4,
             dataOnServer: [],
             dataFromServer: [],
             lengthDataFromServer: 0,
-            base: []
+            base: [],
+            show: false
         }
 
         this.doChangeValue = this.doChangeValue.bind(this);
@@ -24,6 +27,22 @@ export default class Form_Two extends React.Component {
         this.handleClickAdd = this.handleClickAdd.bind(this);
         this.addForm = this.addForm.bind(this);
         this.createBlockForm = this.createBlockForm.bind(this);
+        this.doChangeVisionBlock = this.doChangeVisionBlock.bind(this);
+        this.doEmpty = this.doEmpty.bind(this);
+    }
+
+    //*Пустышка
+    doEmpty() {
+
+    }
+
+    //* меняем видимость блока при выборе ДА / НЕТ
+    doChangeVisionBlock(data) {
+        if (data === 'Да') {
+            this.setState({ show: true })
+        } else {
+            this.setState({ show: false })
+        }
     }
 
     handleClickAdd() {
@@ -31,7 +50,7 @@ export default class Form_Two extends React.Component {
     }
 
     handleClickShadow() {
-        this.props.onChangeView('Two');
+        this.props.onChangeView('Three');
     }
 
     //*формируем данные в массив объектов для отправки на сервер
@@ -60,10 +79,10 @@ export default class Form_Two extends React.Component {
         this.setState({ dataOnServer: data }) //todo проверка на наличие данных на сервере
         if (this.state.lengthDataFromServer < 1) {
             console.log('CREATE DATA');
-            this.props.onCreateDataServer(data, 'Two', Number(localStorage.getItem('idUser')));
+            this.props.onCreateDataServer(data, 'Three', Number(localStorage.getItem('idUser')));
         } else {
             console.log('UPDATE DATA');
-            this.props.onUpdateDataOnServer(data, 'Two', Number(localStorage.getItem('idUser')));
+            this.props.onUpdateDataOnServer(data, 'Three', Number(localStorage.getItem('idUser')));
         }
         setTimeout(() => { console.log(this.state.dataOnServer) })//test
         this.handleClickShadow();
@@ -80,15 +99,15 @@ export default class Form_Two extends React.Component {
         this.setState({
             base: [...this.state.base,
             <React.Fragment key={this.state.id}>
-                <Form_Two_Add
+                <Form_Three_Add
                     id={this.state.id}
                     value={this.value}
                     onChangeValue={this.doChangeValue}
                 />
             </React.Fragment>
             ],
-            id: +this.state.id + 7,
-            maxId: +this.state.maxId + 7
+            id: +this.state.id + 2,
+            maxId: +this.state.maxId + 2
         })
     }
 
@@ -99,12 +118,15 @@ export default class Form_Two extends React.Component {
         let data = this.state.dataFromServer;
 
         this.addForm();
-        for (let i = 8; i < (lengthData); i++) {
 
-            if ((i - 1) % 7 === 0 && Number(data[i].id > 0)) {
-                this.addForm();
+        for (let i = 5; i < lengthData; i++) {
+            if ([5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33].includes(i) && Number(data[i].id > 0)) {
+                this.addForm()
+                console.log(Number(data[i].id));
             }
         }
+
+
         console.log('createBlockForm');
     }
 
@@ -127,6 +149,7 @@ export default class Form_Two extends React.Component {
         const id = this.state.id;
         const view = this.props.view;
         this.value = this.props.data;
+        const show = this.state.show;
 
 
         return (
@@ -135,12 +158,44 @@ export default class Form_Two extends React.Component {
                     <div className="shadow_form" onClick={this.handleClickShadow} ></div>
                     <Form className="form_main" >
                         <Alert variant="dark" onClose={() => this.handleClickShadow()} dismissible>
-                            <Alert.Heading > Форма технического аудита: "Механическая обработка деталей и узлов" </Alert.Heading>
+                            <Alert.Heading > Форма технического аудита: "Сварочное производство" </Alert.Heading>
                         </Alert>
                         <Container>
+                            <Form.Group>
+                                <Row>Сварочное производство (марки и типы сварочного оборудования, максимальная толщина свариваемых деталей по каждому виду сварки):</Row>
+                                <Row>Наличие сварочных колонн:</Row>
+                                <Row>
+                                    <SelectForm
+                                        id={1}
+                                        width={4}
+                                        show={true}
+                                        label=""
+                                        placeholder="Наличие сварочных колонн"
+                                        description="Сварочное производство"
+                                        option="Да, Нет"
+                                        value={this.value[1] ? this.value[1].value : ''}
+                                        // value={this.value[3].value}
+                                        onChangeValue={this.doChangeValue}
+                                        onChangeVisionBlock={this.doChangeVisionBlock}
+                                    />
+                                    <InputForm
+                                        id={2}
+                                        width={2}
+                                        show={show}
+                                        verify="number"
+                                        label=""
+                                        placeholder="Мах диаметр, мм"
+                                        description="Сварочное производство"
+                                        value={this.value[2] ? this.value[2].value : ''}
+                                        onChangeValue={this.doChangeValue}
+                                    />
+                                </Row>
+                                <Row><div> &nbsp; </div></Row>
+                                <Row>Максимальная толщина свариваемых деталей по каждому виду сварки:</Row>
 
-                            {this.state.base}
+                                {this.state.base}
 
+                            </Form.Group>
                             <Form.Group>
                                 <Row>
                                     <Container>

@@ -10,7 +10,7 @@ export default class Form_One extends React.Component {
         this.state = {
             language: 'rus',
             dataValue: [],
-            maxId: 18,
+            maxId: 22,
             dataOnServer: [],
             dataFromServer: [],
             lengthDataFromServer: 0
@@ -266,18 +266,18 @@ export default class Form_One extends React.Component {
                                 <Row>
                                     <InputForm
                                         id={15}
-                                        width={3}
+                                        width={5}
                                         show={true}
                                         verify="number"
                                         label=""
-                                        placeholder="Мах толщина листа при ширине 1,5м., мм, (углер.)"
+                                        placeholder="Мах толщина листа при ширине 1,5м.,мм,(углер.)"
                                         description="Вальцовка(на холдоно)"
                                         value={this.value[15] ? this.value[15].value : ''}
                                         onChangeValue={this.doChangeValue}
                                     />
                                     <InputForm
                                         id={16}
-                                        width={3}
+                                        width={5}
                                         show={true}
                                         verify="number"
                                         label=""
@@ -292,7 +292,7 @@ export default class Form_One extends React.Component {
                                         show={true}
                                         verify="number"
                                         label=""
-                                        placeholder="Диаметр верхнего валка, мм"
+                                        placeholder="Диам. верхнего валка, мм"
                                         description="Вальцовка(на холдоно)"
                                         value={this.value[17] ? this.value[17].value : ''}
                                         onChangeValue={this.doChangeValue}
@@ -312,47 +312,47 @@ export default class Form_One extends React.Component {
                                 <Row><span className="span_title"> Вальцовка(на горячо): </span></Row>
                                 <Row>
                                     <InputForm
-                                        id={15}
-                                        width={3}
+                                        id={19}
+                                        width={5}
                                         show={true}
                                         verify="number"
                                         label=""
                                         placeholder="Мах толщина листа при ширине 1,5м., мм, (углер.)"
                                         description="Вальцовка(на горячо)"
-                                        value={this.value[15] ? this.value[15].value : ''}
+                                        value={this.value[19] ? this.value[19].value : ''}
                                         onChangeValue={this.doChangeValue}
                                     />
                                     <InputForm
-                                        id={16}
-                                        width={3}
+                                        id={20}
+                                        width={5}
                                         show={true}
                                         verify="number"
                                         label=""
                                         placeholder="Мах толщина листа при ширине 1,5м., мм, (нерж.)"
                                         description="Вальцовка(на горячо)"
-                                        value={this.value[16] ? this.value[16].value : ''}
+                                        value={this.value[20] ? this.value[20].value : ''}
                                         onChangeValue={this.doChangeValue}
                                     />
                                     <InputForm
-                                        id={17}
+                                        id={21}
                                         width={3}
                                         show={true}
                                         verify="number"
                                         label=""
                                         placeholder="Диаметр верхнего валка, мм"
                                         description="Вальцовка(на горячо)"
-                                        value={this.value[17] ? this.value[17].value : ''}
+                                        value={this.value[21] ? this.value[21].value : ''}
                                         onChangeValue={this.doChangeValue}
                                     />
                                     <InputForm
-                                        id={18}
+                                        id={22}
                                         width={3}
                                         show={true}
                                         verify="number"
                                         label=""
                                         placeholder="Мах ширина листа, мм"
                                         description="Вальцовка(на горячо)"
-                                        value={this.value[18] ? this.value[18].value : ''}
+                                        value={this.value[22] ? this.value[22].value : ''}
                                         onChangeValue={this.doChangeValue}
                                     />
                                 </Row>

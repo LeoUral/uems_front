@@ -4,6 +4,7 @@ import { Button, Container } from 'react-bootstrap';
 import Form_Main from './Form_Main';
 import Form_One from './Form_One';
 import Form_Two from './Form_Two';
+import Form_Three from './Form_Three';
 import Server from '../server/server';
 import _Sample from './_Sample';
 
@@ -53,6 +54,7 @@ export default class Questionnaire extends React.Component {
         if (name === 'Main') this.setState({ view_Main: !this.state.view_Main })
         if (name === 'One') this.setState({ view_One: !this.state.view_One })
         if (name === 'Two') this.setState({ view_Two: !this.state.view_Two })
+        if (name === 'Three') this.setState({ view_Three: !this.state.view_Three })
     }
 
     //* загружает для выбранной формы данные с сервера и открывает форму
@@ -62,6 +64,7 @@ export default class Questionnaire extends React.Component {
             if (e.target.dataset.name === 'Main') this.setState({ view_Main: !this.state.view_Main })
             if (e.target.dataset.name === 'One') this.setState({ view_One: !this.state.view_One })
             if (e.target.dataset.name === 'Two') this.setState({ view_Two: !this.state.view_Two })
+            if (e.target.dataset.name === 'Three') this.setState({ view_Three: !this.state.view_Three })
         }, 500)
     }
 
@@ -114,6 +117,7 @@ export default class Questionnaire extends React.Component {
         if (name === 'Main') this.setState({ data_Main: dataNew, lengthDataFromServer_Main: dataNew.length })
         if (name === 'One') this.setState({ data_One: dataNew, lengthDataFromServer_One: dataNew.length })
         if (name === 'Two') this.setState({ data_Two: dataNew, lengthDataFromServer_Two: dataNew.length })
+        if (name === 'Three') this.setState({ data_Three: dataNew, lengthDataFromServer_Three: dataNew.length })
     }
 
     //* получаем данные с сервера
@@ -144,6 +148,7 @@ export default class Questionnaire extends React.Component {
         const view_Main = this.state.view_Main;
         const view_One = this.state.view_One;
         const view_Two = this.state.view_Two;
+        const view_Three = this.state.view_Three;
 
         return (
             <>
@@ -185,6 +190,17 @@ export default class Questionnaire extends React.Component {
                             />
                             : ''}
 
+                        {view_Three ?
+                            <Form_Three
+                                onCreateDataServer={this.doCreateDataServer}
+                                onUpdateDataOnServer={this.doUpdateDataOnServer}
+                                onChangeView={this.doChangeView}
+                                lengthDataFromServer={this.state.lengthDataFromServer_Three}
+                                data={this.state.data_Three}
+                                view={view_Three}
+                            />
+                            : ''}
+
 
                         <Button className="btn_form" variant="outline-success" data-name="Main" onClick={this.handleClickView}>
                             Данные предприятия, форма №1
@@ -196,7 +212,7 @@ export default class Questionnaire extends React.Component {
                             Форма технического аудита: "Механическая обработка деталей и узлов"
                             </Button>
                         <Button className="btn_form" variant="outline-success" data-name="Three" onClick={this.handleClickView}>
-                            Технический аудит, форма №4
+                            Форма технического аудита: " Сварочное производство"
                             </Button>
                         <Button className="btn_form" variant="outline-success" data-name="Four" onClick={this.handleClickView}>
                             Технический аудит, форма №5

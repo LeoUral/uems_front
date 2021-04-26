@@ -62,6 +62,7 @@ export default class _Sample extends React.Component {
                             option="position1, position2, position3, position4" //*список для выбора
                             value="position1"
                             onChangeValue={this.doChangeValue}
+                            onChangeVisionBlock={this.onEmpty}
                         />
                     </Row>
                     <Row>
@@ -73,6 +74,7 @@ export default class _Sample extends React.Component {
                             description="Position"
                             value={false}
                             onChangeValue={this.doChangeValue}
+                            onChangeVisionBlock={this.onEmpty}
                         />
                     </Row>
                 </Container>
