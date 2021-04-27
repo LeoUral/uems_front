@@ -7,6 +7,10 @@ import Form_Two from './Form_Two';
 import Form_Three from './Form_Three';
 import Form_Four from './Form_Four';
 import Form_Five from './Form_Five';
+import Form_Six from './Form_Six';
+import Form_Seven from './Form_Seven';
+import Form_Eight from './Form_Eight';
+
 import Server from '../server/server';
 import _Sample from './_Sample';
 
@@ -199,11 +203,14 @@ export default class Questionnaire extends React.Component {
         const view_Three = this.state.view_Three;
         const view_Four = this.state.view_Four;
         const view_Five = this.state.view_Five;
+        const view_Six = this.state.view_Six;
+        const view_Seven = this.state.view_Seven;
+        const view_Eight = this.state.view_Eight;
 
         return (
             <>
                 <div style={{ opacity: show ? '1' : '0', transition: ' 0.75s' }} >
-                    <Container fluid style={{ padding: '0' }}>
+                    <Container fluid style={{ padding: '0', minHeight: '77.5vh' }}>
 
                         {/* <_Sample /> */}
 
@@ -273,6 +280,39 @@ export default class Questionnaire extends React.Component {
                             />
                             : ''}
 
+                        {view_Six ?
+                            <Form_Six
+                                onCreateDataServer={this.doCreateDataServer}
+                                onUpdateDataOnServer={this.doUpdateDataOnServer}
+                                onChangeView={this.doChangeView}
+                                lengthDataFromServer={this.state.lengthDataFromServer_Six}
+                                data={this.state.data_Six}
+                                view={view_Six}
+                            />
+                            : ''}
+
+                        {view_Seven ?
+                            <Form_Seven
+                                onCreateDataServer={this.doCreateDataServer}
+                                onUpdateDataOnServer={this.doUpdateDataOnServer}
+                                onChangeView={this.doChangeView}
+                                lengthDataFromServer={this.state.lengthDataFromServer_Seven}
+                                data={this.state.data_Seven}
+                                view={view_Seven}
+                            />
+                            : ''}
+
+                        {view_Eight ?
+                            <Form_Eight
+                                onCreateDataServer={this.doCreateDataServer}
+                                onUpdateDataOnServer={this.doUpdateDataOnServer}
+                                onChangeView={this.doChangeView}
+                                lengthDataFromServer={this.state.lengthDataFromServer_Eight}
+                                data={this.state.data_Eight}
+                                view={view_Eight}
+                            />
+                            : ''}
+
 
                         <Button className="btn_form" variant="outline-success" data-name="Main" onClick={this.handleClickView}>
                             Данные предприятия
@@ -293,7 +333,25 @@ export default class Questionnaire extends React.Component {
                             Форма технического аудита - Термическая обработка
                             </Button>
                         <Button className="btn_form" variant="outline-success" data-name="Six" onClick={this.handleClickView}>
-                            Технический аудит, форма №7
+                            Форма технического аудита: "Работа с ЛКМ"
+                            </Button>
+                        <Button className="btn_form" variant="outline-success" data-name="Seven" onClick={this.handleClickView}>
+                            Форма технического аудита: "Крепёжные изделия, Поковки"
+                            </Button>
+                        <Button className="btn_form" variant="outline-success" data-name="Eight" onClick={this.handleClickView}>
+                            Форма технического аудита: "Изготовление фланцев и днища"
+                            </Button>
+                        <Button className="btn_form" variant="outline-success" data-name="Nain" onClick={this.handleClickView}>
+                            Форма технического аудита:
+                            </Button>
+                        <Button className="btn_form" variant="outline-success" data-name="Ten" onClick={this.handleClickView}>
+                            Форма технического аудита:
+                            </Button>
+                        <Button className="btn_form" variant="outline-success" data-name="Eleven" onClick={this.handleClickView}>
+                            Форма технического аудита:
+                            </Button>
+                        <Button className="btn_form" variant="outline-success" data-name="Twelve" onClick={this.handleClickView}>
+                            Форма технического аудита:
                             </Button>
                     </Container>
                 </div>
