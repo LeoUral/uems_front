@@ -37,26 +37,53 @@ export default class Form_Four extends React.Component {
 
     //* меняем видимость блока при выборе ДА / НЕТ
     doChangeVisionBlock1(data) {
-        if (data === 'Да' || this.props.data[7].value === 'Да') {
-            this.setState({ show1: true })
+        if (this.state.lengthDataFromServer > 0) {
+
+            if (data === 'Да' || this.props.data[7].value === 'Да') {
+                this.setState({ show1: true })
+            } else {
+                this.setState({ show1: false })
+            }
         } else {
-            this.setState({ show1: false })
+            if (data === 'Да') {
+                this.setState({ show1: true })
+            } else {
+                this.setState({ show1: false })
+            }
         }
     }
 
     doChangeVisionBlock2(data) {
-        if (data === 'Да' || this.props.data[9].value === 'Да') {
-            this.setState({ show2: true })
+        if (this.state.lengthDataFromServer > 0) {
+
+            if (data === 'Да' || this.props.data[9].value === 'Да') {
+                this.setState({ show2: true })
+            } else {
+                this.setState({ show2: false })
+            }
         } else {
-            this.setState({ show2: false })
+            if (data === 'Да') {
+                this.setState({ show2: true })
+            } else {
+                this.setState({ show2: false })
+            }
         }
     }
 
     doChangeVisionBlock3(data) {
-        if (data === 'Да' || this.props.data[12].value === 'Да') {
-            this.setState({ show3: true })
+        if (this.state.lengthDataFromServer > 0) {
+
+            if (data === 'Да' || this.props.data[12].value === 'Да') {
+                this.setState({ show3: true })
+            } else {
+                this.setState({ show3: false })
+            }
         } else {
-            this.setState({ show3: false })
+            if (data === 'Да') {
+                this.setState({ show3: true })
+            } else {
+                this.setState({ show3: false })
+            }
         }
     }
 

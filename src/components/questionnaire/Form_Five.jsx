@@ -41,18 +41,36 @@ export default class Form_Five extends React.Component {
 
     //* меняем видимость блока при выборе ДА / НЕТ
     doChangeVisionBlock(data) {
-        if (data === true || this.props.data[1].value === true) {
-            this.setState({ show: true })
+        if (this.state.lengthDataFromServer > 0) {
+
+            if (data === true || this.props.data[1].value === true) {
+                this.setState({ show: true })
+            } else {
+                this.setState({ show: false })
+            }
         } else {
-            this.setState({ show: false })
+            if (data === true) {
+                this.setState({ show: true })
+            } else {
+                this.setState({ show: false })
+            }
         }
     }
 
     doChangeVisionBlock1(data) {
-        if (data === true || this.props.data[11].value === true) {
-            this.setState({ show1: true })
+        if (this.state.lengthDataFromServer > 0) {
+
+            if (data === true || this.props.data[11].value === true) {
+                this.setState({ show1: true })
+            } else {
+                this.setState({ show1: false })
+            }
         } else {
-            this.setState({ show1: false })
+            if (data === true) {
+                this.setState({ show1: true })
+            } else {
+                this.setState({ show1: false })
+            }
         }
     }
 

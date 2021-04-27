@@ -38,10 +38,19 @@ export default class Form_Three extends React.Component {
 
     //* меняем видимость блока при выборе ДА / НЕТ
     doChangeVisionBlock(data) {
-        if (data === 'Да') {
-            this.setState({ show: true })
+        if (this.state.lengthDataFromServer > 0) {
+
+            if (data === 'Да' || this.props.data[1].value === 'Да') {
+                this.setState({ show: true })
+            } else {
+                this.setState({ show: false })
+            }
         } else {
-            this.setState({ show: false })
+            if (data === 'Да') {
+                this.setState({ show: true })
+            } else {
+                this.setState({ show: false })
+            }
         }
     }
 

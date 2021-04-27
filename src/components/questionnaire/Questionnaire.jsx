@@ -24,6 +24,12 @@ export default class Questionnaire extends React.Component {
             lengthDataFromServer_Four: 0,
             lengthDataFromServer_Five: 0,
             lengthDataFromServer_Six: 0,
+            lengthDataFromServer_Seven: 0,
+            lengthDataFromServer_Eight: 0,
+            lengthDataFromServer_Nine: 0,
+            lengthDataFromServer_Ten: 0,
+            lengthDataFromServer_Eleven: 0,
+            lengthDataFromServer_Twelve: 0,
             data_Main: [],
             data_One: [],
             data_Two: [],
@@ -31,6 +37,12 @@ export default class Questionnaire extends React.Component {
             data_Four: [],
             data_Five: [],
             data_Six: [],
+            data_Seven: [],
+            data_Eight: [],
+            data_Nine: [],
+            data_Ten: [],
+            data_Eleven: [],
+            data_Twelve: [],
             view_Main: false,
             view_One: false,
             view_Two: false,
@@ -38,6 +50,13 @@ export default class Questionnaire extends React.Component {
             view_Four: false,
             view_Five: false,
             view_Six: false,
+            view_Six: false,
+            view_Seven: false,
+            view_Eight: false,
+            view_Nine: false,
+            view_Ten: false,
+            view_Eleven: false,
+            view_Twelve: false
         }
 
         this.createDataServer = this.createDataServer.bind(this);
@@ -59,6 +78,13 @@ export default class Questionnaire extends React.Component {
         if (name === 'Three') this.setState({ view_Three: !this.state.view_Three })
         if (name === 'Four') this.setState({ view_Four: !this.state.view_Four })
         if (name === 'Five') this.setState({ view_Five: !this.state.view_Five })
+        if (name === 'Six') this.setState({ view_Six: !this.state.view_Six })
+        if (name === 'Seven') this.setState({ view_Seven: !this.state.view_Seven })
+        if (name === 'Eight') this.setState({ view_Eight: !this.state.view_Eight })
+        if (name === 'Nine') this.setState({ view_Nine: !this.state.view_Nine })
+        if (name === 'Ten') this.setState({ view_Ten: !this.state.view_Ten })
+        if (name === 'Eleven') this.setState({ view_Eleven: !this.state.view_Eleven })
+        if (name === 'Twelve') this.setState({ view_Twelve: !this.state.view_Twelve })
     }
 
     //* загружает для выбранной формы данные с сервера и открывает форму
@@ -71,6 +97,13 @@ export default class Questionnaire extends React.Component {
             if (e.target.dataset.name === 'Three') this.setState({ view_Three: !this.state.view_Three })
             if (e.target.dataset.name === 'Four') this.setState({ view_Four: !this.state.view_Four })
             if (e.target.dataset.name === 'Five') this.setState({ view_Five: !this.state.view_Five })
+            if (e.target.dataset.name === 'Six') this.setState({ view_Six: !this.state.view_Six })
+            if (e.target.dataset.name === 'Seven') this.setState({ view_Seven: !this.state.view_Seven })
+            if (e.target.dataset.name === 'Eight') this.setState({ view_Eight: !this.state.view_Eight })
+            if (e.target.dataset.name === 'Nine') this.setState({ view_Nine: !this.state.view_Nine })
+            if (e.target.dataset.name === 'Ten') this.setState({ view_Ten: !this.state.view_Ten })
+            if (e.target.dataset.name === 'Eleven') this.setState({ view_Eleven: !this.state.view_Eleven })
+            if (e.target.dataset.name === 'Twelve') this.setState({ view_Twelve: !this.state.view_Twelve })
         }, 500)
     }
 
@@ -126,6 +159,13 @@ export default class Questionnaire extends React.Component {
         if (name === 'Three') this.setState({ data_Three: dataNew, lengthDataFromServer_Three: dataNew.length })
         if (name === 'Four') this.setState({ data_Four: dataNew, lengthDataFromServer_Four: dataNew.length })
         if (name === 'Five') this.setState({ data_Five: dataNew, lengthDataFromServer_Five: dataNew.length })
+        if (name === 'Six') this.setState({ data_Six: dataNew, lengthDataFromServer_Six: dataNew.length })
+        if (name === 'Seven') this.setState({ data_Seven: dataNew, lengthDataFromServer_Seven: dataNew.length })
+        if (name === 'Eight') this.setState({ data_Eight: dataNew, lengthDataFromServer_Eight: dataNew.length })
+        if (name === 'Nine') this.setState({ data_Nine: dataNew, lengthDataFromServer_Nine: dataNew.length })
+        if (name === 'Ten') this.setState({ data_Ten: dataNew, lengthDataFromServer_Ten: dataNew.length })
+        if (name === 'Eleven') this.setState({ data_Eleven: dataNew, lengthDataFromServer_Eleven: dataNew.length })
+        if (name === 'Twelve') this.setState({ data_Twelve: dataNew, lengthDataFromServer_Twelve: dataNew.length })
     }
 
     //* получаем данные с сервера
