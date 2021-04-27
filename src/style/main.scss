@@ -226,12 +226,13 @@
 
 .btn_form {
     margin: 10px 10px;
-    width: 210px;
+    width: 250px;
     height: 140px;
     transition: 0.5s;
     &:hover {
         box-shadow: 3px 3px 5px #6c757d;
-        transition: 0.5s;
+        animation: hover_btn 0.15s;
+        // transition: 0.5s;
     }
 }
 

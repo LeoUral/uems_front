@@ -95,6 +95,44 @@
   }
 }
 
+@-webkit-keyframes hover_btn {
+  from {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  25% {
+    -webkit-transform: rotate(15deg);
+            transform: rotate(15deg);
+  }
+  75% {
+    -webkit-transform: rotate(-15deg);
+            transform: rotate(-15deg);
+  }
+  to {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+}
+
+@keyframes hover_btn {
+  from {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  25% {
+    -webkit-transform: rotate(15deg);
+            transform: rotate(15deg);
+  }
+  75% {
+    -webkit-transform: rotate(-15deg);
+            transform: rotate(-15deg);
+  }
+  to {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+}
+
 .App {
   width: 100%;
 }
@@ -339,7 +377,7 @@
 
 .btn_form {
   margin: 10px 10px;
-  width: 210px;
+  width: 250px;
   height: 140px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -348,8 +386,8 @@
 .btn_form:hover {
   -webkit-box-shadow: 3px 3px 5px #6c757d;
           box-shadow: 3px 3px 5px #6c757d;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  -webkit-animation: hover_btn 0.15s;
+          animation: hover_btn 0.15s;
 }
 
 .span_title {

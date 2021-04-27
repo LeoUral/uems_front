@@ -16,7 +16,7 @@ export default class Form_Eight extends React.Component {
             language: 'rus',
             dataValue: [],
             id: 2,
-            maxId: 21,
+            maxId: 70,
             dataOnServer: [],
             dataFromServer: [],
             lengthDataFromServer: 0,
@@ -33,6 +33,9 @@ export default class Form_Eight extends React.Component {
         this.createBlockForm = this.createBlockForm.bind(this);
         this.doChangeVisionBlock = this.doChangeVisionBlock.bind(this);
         this.doChangeVisionBlock1 = this.doChangeVisionBlock1.bind(this);
+        this.doChangeVisionBlock2 = this.doChangeVisionBlock2.bind(this);
+        this.doChangeVisionBlock3 = this.doChangeVisionBlock3.bind(this);
+        this.doChangeVisionBlock4 = this.doChangeVisionBlock4.bind(this);
         this.doEmpty = this.doEmpty.bind(this);
     }
 
@@ -62,16 +65,67 @@ export default class Form_Eight extends React.Component {
     doChangeVisionBlock1(data) {
         if (this.state.lengthDataFromServer > 0) {
 
-            if (data === true || this.props.data[11].value === true) {
+            if (data === 'Да' || this.props.data[52].value === 'Да') {
                 this.setState({ show1: true })
             } else {
                 this.setState({ show1: false })
             }
         } else {
-            if (data === true) {
+            if (data === 'Да') {
                 this.setState({ show1: true })
             } else {
                 this.setState({ show1: false })
+            }
+        }
+    }
+
+    doChangeVisionBlock2(data) {
+        if (this.state.lengthDataFromServer > 0) {
+
+            if (data === true || this.props.data[53].value === true) {
+                this.setState({ show2: true })
+            } else {
+                this.setState({ show2: false })
+            }
+        } else {
+            if (data === true) {
+                this.setState({ show2: true })
+            } else {
+                this.setState({ show2: false })
+            }
+        }
+    }
+
+    doChangeVisionBlock3(data) {
+        if (this.state.lengthDataFromServer > 0) {
+
+            if (data === true || this.props.data[59].value === true) {
+                this.setState({ show3: true })
+            } else {
+                this.setState({ show3: false })
+            }
+        } else {
+            if (data === true) {
+                this.setState({ show3: true })
+            } else {
+                this.setState({ show3: false })
+            }
+        }
+    }
+
+    doChangeVisionBlock4(data) {
+        if (this.state.lengthDataFromServer > 0) {
+
+            if (data === true || this.props.data[65].value === true) {
+                this.setState({ show4: true })
+            } else {
+                this.setState({ show4: false })
+            }
+        } else {
+            if (data === true) {
+                this.setState({ show4: true })
+            } else {
+                this.setState({ show4: false })
             }
         }
     }
@@ -81,7 +135,7 @@ export default class Form_Eight extends React.Component {
     }
 
     handleClickShadow() {
-        this.props.onChangeView('Five');
+        this.props.onChangeView('Eight');
     }
 
     //*формируем данные в массив объектов для отправки на сервер
@@ -110,10 +164,10 @@ export default class Form_Eight extends React.Component {
         this.setState({ dataOnServer: data }) //todo проверка на наличие данных на сервере
         if (this.state.lengthDataFromServer < 1) {
             console.log('CREATE DATA');
-            this.props.onCreateDataServer(data, 'Five', Number(localStorage.getItem('idUser')));
+            this.props.onCreateDataServer(data, 'Eight', Number(localStorage.getItem('idUser')));
         } else {
             console.log('UPDATE DATA');
-            this.props.onUpdateDataOnServer(data, 'Five', Number(localStorage.getItem('idUser')));
+            this.props.onUpdateDataOnServer(data, 'Eight', Number(localStorage.getItem('idUser')));
         }
         setTimeout(() => { console.log(this.state.dataOnServer) })//test
         this.handleClickShadow();
@@ -137,8 +191,8 @@ export default class Form_Eight extends React.Component {
                 />
             </React.Fragment>
             ],
-            id: +this.state.id + 10,
-            maxId: +this.state.maxId + 10
+            id: +this.state.id + 5,
+            // maxId: +this.state.maxId + 5
         })
     }
 
@@ -149,13 +203,12 @@ export default class Form_Eight extends React.Component {
         let data = this.state.dataFromServer;
 
         this.addForm();
-        // for (let i = 0; i < lengthData; i++) {
+        for (let i = 0; i < lengthData; i++) {
 
-        //     if ([22, 32, 42, 52, 62, 72, 82, 92].includes(i) && Number(data[i].id > 0)) {
-        //         this.addForm();
-        //     }
-        // }
-
+            if ([7, 12, 17, 22, 27, 32, 37, 42, 47].includes(i) && Number(data[i].id > 0)) {
+                this.addForm();
+            }
+        }
         console.log('createBlockForm');
     }
 
@@ -170,7 +223,10 @@ export default class Form_Eight extends React.Component {
             this.createBlockForm();
             if (this.props.lengthDataFromServer > 0) {
                 this.doChangeVisionBlock();
-                // this.doChangeVisionBlock1();
+                this.doChangeVisionBlock1();
+                this.doChangeVisionBlock2();
+                this.doChangeVisionBlock3();
+                this.doChangeVisionBlock4();
             }
         }, 1500)
     }
@@ -182,8 +238,10 @@ export default class Form_Eight extends React.Component {
         const view = this.props.view;
         this.value = this.props.data;
         const show = this.state.show;
-        const show1 = true;
-
+        const show1 = this.state.show1;
+        const show2 = this.state.show2;
+        const show3 = this.state.show3;
+        const show4 = this.state.show4;
 
         return (
             <>
@@ -241,14 +299,14 @@ export default class Form_Eight extends React.Component {
                                 <Row> Изготавливает ли Ваше предприятие днища?</Row>
                                 <Row>
                                     <SelectForm
-                                        id={1}
+                                        id={52}
                                         width={4}
                                         show={true}
                                         label=""
                                         placeholder="Изготовление днища"
                                         description="Изготовление днища"
                                         option="Да, Нет"
-                                        value={this.value[1] ? this.value[1].value : ''}
+                                        value={this.value[52] ? this.value[52].value : ''}
                                         // value={this.value[3].value}
                                         onChangeValue={this.doChangeValue}
                                         onChangeVisionBlock={this.doChangeVisionBlock1}
@@ -261,237 +319,243 @@ export default class Form_Eight extends React.Component {
                             <Form.Group style={{ borderBottom: '1px solid #ccc' }} >
                                 <Row>
                                     <CheckForm
-                                        id={11}
+                                        id={53}
                                         width={4}
                                         show={true}
                                         placeholder="Эллиптические"
                                         description="Изготовление днища"
-                                        value={this.value[11] ? this.value[11].value : ''}
+                                        value={this.value[53] ? this.value[53].value : ''}
                                         onChangeValue={this.doChangeValue}
                                         onChangeVisionBlock={this.doChangeVisionBlock2}
                                     />
                                 </Row>
                                 <Row> &nbsp; </Row>
-                                <Row>
-                                    <Col>
-                                        Материал, минимальный и максимальный диаметр и толщина:
+                                <div style={{ display: show2 ? 'block' : 'none' }}>
+                                    <Row>
+                                        <Col>
+                                            Материал, минимальный и максимальный диаметр и толщина:
                                     </Col>
-                                </Row>
-                                <Row>
-                                    <InputForm
-                                        id={1}
-                                        width={4}
-                                        show={true}
-                                        // verify="number"
-                                        label=""
-                                        placeholder="Материал изготовления"
-                                        description="Изготовление днища"
-                                        value={this.value[1] ? this.value[1].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                    <InputForm
-                                        id={1}
-                                        width={2}
-                                        show={true}
-                                        verify="number"
-                                        label=""
-                                        placeholder="Мин диаметр, мм"
-                                        description="Изготовление днища"
-                                        value={this.value[1] ? this.value[1].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                    <InputForm
-                                        id={1}
-                                        width={2}
-                                        show={true}
-                                        verify="number"
-                                        label=""
-                                        placeholder="Мах диаметр, мм"
-                                        description="Изготовление днища"
-                                        value={this.value[1] ? this.value[1].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                    <InputForm
-                                        id={1}
-                                        width={2}
-                                        show={true}
-                                        verify="number"
-                                        label=""
-                                        placeholder="Мин толщина, мм"
-                                        description="Изготовление днища"
-                                        value={this.value[1] ? this.value[1].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                    <InputForm
-                                        id={1}
-                                        width={2}
-                                        show={true}
-                                        verify="number"
-                                        label=""
-                                        placeholder="Мах толщина, мм"
-                                        description="Изготовление днища"
-                                        value={this.value[1] ? this.value[1].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                </Row>
+                                    </Row>
+                                    <Row>
+                                        <InputForm
+                                            id={54}
+                                            width={4}
+                                            show={show2}
+                                            // verify="number"
+                                            label=""
+                                            placeholder="Материал изготовления"
+                                            description="Изготовление днища"
+                                            value={this.value[54] ? this.value[54].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                        />
+                                        <InputForm
+                                            id={55}
+                                            width={2}
+                                            show={show2}
+                                            verify="number"
+                                            label=""
+                                            placeholder="Мин диаметр, мм"
+                                            description="Изготовление днища"
+                                            value={this.value[55] ? this.value[55].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                        />
+                                        <InputForm
+                                            id={56}
+                                            width={2}
+                                            show={show2}
+                                            verify="number"
+                                            label=""
+                                            placeholder="Мах диаметр, мм"
+                                            description="Изготовление днища"
+                                            value={this.value[56] ? this.value[56].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                        />
+                                        <InputForm
+                                            id={57}
+                                            width={2}
+                                            show={show2}
+                                            verify="number"
+                                            label=""
+                                            placeholder="Мин толщина, мм"
+                                            description="Изготовление днища"
+                                            value={this.value[57] ? this.value[57].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                        />
+                                        <InputForm
+                                            id={58}
+                                            width={2}
+                                            show={show2}
+                                            verify="number"
+                                            label=""
+                                            placeholder="Мах толщина, мм"
+                                            description="Изготовление днища"
+                                            value={this.value[58] ? this.value[58].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                        />
+                                    </Row>
+                                </div>
                                 <Row> &nbsp; </Row>
                             </Form.Group>
 
                             <Form.Group style={{ borderBottom: '1px solid #ccc' }} >
                                 <Row>
                                     <CheckForm
-                                        id={11}
+                                        id={59}
                                         width={4}
                                         show={true}
                                         placeholder="Торосферические"
                                         description="Изготовление днища"
-                                        value={this.value[11] ? this.value[11].value : ''}
+                                        value={this.value[59] ? this.value[59].value : ''}
                                         onChangeValue={this.doChangeValue}
-                                        onChangeVisionBlock={this.doChangeVisionBlock2}
+                                        onChangeVisionBlock={this.doChangeVisionBlock3}
                                     />
                                 </Row>
                                 <Row> &nbsp; </Row>
-                                <Row>
-                                    <Col>
-                                        Материал, минимальный и максимальный диаметр и толщина:
+                                <div style={{ display: show3 ? 'block' : 'none' }}>
+                                    <Row>
+                                        <Col>
+                                            Материал, минимальный и максимальный диаметр и толщина:
                                     </Col>
-                                </Row>
-                                <Row>
-                                    <InputForm
-                                        id={1}
-                                        width={4}
-                                        show={true}
-                                        // verify="number"
-                                        label=""
-                                        placeholder="Материал изготовления"
-                                        description="Изготовление днища"
-                                        value={this.value[1] ? this.value[1].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                    <InputForm
-                                        id={1}
-                                        width={2}
-                                        show={true}
-                                        verify="number"
-                                        label=""
-                                        placeholder="Мин диаметр, мм"
-                                        description="Изготовление днища"
-                                        value={this.value[1] ? this.value[1].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                    <InputForm
-                                        id={1}
-                                        width={2}
-                                        show={true}
-                                        verify="number"
-                                        label=""
-                                        placeholder="Мах диаметр, мм"
-                                        description="Изготовление днища"
-                                        value={this.value[1] ? this.value[1].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                    <InputForm
-                                        id={1}
-                                        width={2}
-                                        show={true}
-                                        verify="number"
-                                        label=""
-                                        placeholder="Мин толщина, мм"
-                                        description="Изготовление днища"
-                                        value={this.value[1] ? this.value[1].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                    <InputForm
-                                        id={1}
-                                        width={2}
-                                        show={true}
-                                        verify="number"
-                                        label=""
-                                        placeholder="Мах толщина, мм"
-                                        description="Изготовление днища"
-                                        value={this.value[1] ? this.value[1].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                </Row>
+                                    </Row>
+                                    <Row>
+                                        <InputForm
+                                            id={60}
+                                            width={4}
+                                            show={show3}
+                                            // verify="number"
+                                            label=""
+                                            placeholder="Материал изготовления"
+                                            description="Изготовление днища"
+                                            value={this.value[60] ? this.value[60].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                        />
+                                        <InputForm
+                                            id={61}
+                                            width={2}
+                                            show={show3}
+                                            verify="number"
+                                            label=""
+                                            placeholder="Мин диаметр, мм"
+                                            description="Изготовление днища"
+                                            value={this.value[61] ? this.value[61].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                        />
+                                        <InputForm
+                                            id={62}
+                                            width={2}
+                                            show={show3}
+                                            verify="number"
+                                            label=""
+                                            placeholder="Мах диаметр, мм"
+                                            description="Изготовление днища"
+                                            value={this.value[62] ? this.value[62].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                        />
+                                        <InputForm
+                                            id={63}
+                                            width={2}
+                                            show={show3}
+                                            verify="number"
+                                            label=""
+                                            placeholder="Мин толщина, мм"
+                                            description="Изготовление днища"
+                                            value={this.value[63] ? this.value[63].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                        />
+                                        <InputForm
+                                            id={64}
+                                            width={2}
+                                            show={show3}
+                                            verify="number"
+                                            label=""
+                                            placeholder="Мах толщина, мм"
+                                            description="Изготовление днища"
+                                            value={this.value[64] ? this.value[64].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                        />
+                                    </Row>
+                                </div>
                                 <Row> &nbsp; </Row>
                             </Form.Group>
 
                             <Form.Group style={{ borderBottom: '1px solid #ccc' }} >
                                 <Row>
                                     <CheckForm
-                                        id={11}
+                                        id={65}
                                         width={4}
                                         show={true}
                                         placeholder="Сферические"
                                         description="Изготовление днища"
-                                        value={this.value[11] ? this.value[11].value : ''}
+                                        value={this.value[65] ? this.value[65].value : ''}
                                         onChangeValue={this.doChangeValue}
-                                        onChangeVisionBlock={this.doChangeVisionBlock2}
+                                        onChangeVisionBlock={this.doChangeVisionBlock4}
                                     />
                                 </Row>
                                 <Row> &nbsp; </Row>
-                                <Row>
-                                    <Col>
-                                        Материал, минимальный и максимальный диаметр и толщина:
+                                <div style={{ display: show4 ? 'block' : 'none' }}>
+                                    <Row>
+                                        <Col>
+                                            Материал, минимальный и максимальный диаметр и толщина:
                                     </Col>
-                                </Row>
-                                <Row>
-                                    <InputForm
-                                        id={1}
-                                        width={4}
-                                        show={true}
-                                        // verify="number"
-                                        label=""
-                                        placeholder="Материал изготовления"
-                                        description="Изготовление днища"
-                                        value={this.value[1] ? this.value[1].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                    <InputForm
-                                        id={1}
-                                        width={2}
-                                        show={true}
-                                        verify="number"
-                                        label=""
-                                        placeholder="Мин диаметр, мм"
-                                        description="Изготовление днища"
-                                        value={this.value[1] ? this.value[1].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                    <InputForm
-                                        id={1}
-                                        width={2}
-                                        show={true}
-                                        verify="number"
-                                        label=""
-                                        placeholder="Мах диаметр, мм"
-                                        description="Изготовление днища"
-                                        value={this.value[1] ? this.value[1].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                    <InputForm
-                                        id={1}
-                                        width={2}
-                                        show={true}
-                                        verify="number"
-                                        label=""
-                                        placeholder="Мин толщина, мм"
-                                        description="Изготовление днища"
-                                        value={this.value[1] ? this.value[1].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                    <InputForm
-                                        id={1}
-                                        width={2}
-                                        show={true}
-                                        verify="number"
-                                        label=""
-                                        placeholder="Мах толщина, мм"
-                                        description="Изготовление днища"
-                                        value={this.value[1] ? this.value[1].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                </Row>
+                                    </Row>
+                                    <Row>
+                                        <InputForm
+                                            id={66}
+                                            width={4}
+                                            show={show4}
+                                            // verify="number"
+                                            label=""
+                                            placeholder="Материал изготовления"
+                                            description="Изготовление днища"
+                                            value={this.value[66] ? this.value[66].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                        />
+                                        <InputForm
+                                            id={67}
+                                            width={2}
+                                            show={show4}
+                                            verify="number"
+                                            label=""
+                                            placeholder="Мин диаметр, мм"
+                                            description="Изготовление днища"
+                                            value={this.value[67] ? this.value[67].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                        />
+                                        <InputForm
+                                            id={68}
+                                            width={2}
+                                            show={show4}
+                                            verify="number"
+                                            label=""
+                                            placeholder="Мах диаметр, мм"
+                                            description="Изготовление днища"
+                                            value={this.value[68] ? this.value[68].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                        />
+                                        <InputForm
+                                            id={69}
+                                            width={2}
+                                            show={show4}
+                                            verify="number"
+                                            label=""
+                                            placeholder="Мин толщина, мм"
+                                            description="Изготовление днища"
+                                            value={this.value[69] ? this.value[69].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                        />
+                                        <InputForm
+                                            id={70}
+                                            width={2}
+                                            show={show4}
+                                            verify="number"
+                                            label=""
+                                            placeholder="Мах толщина, мм"
+                                            description="Изготовление днища"
+                                            value={this.value[70] ? this.value[70].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                        />
+                                    </Row>
+                                </div>
                                 <Row> &nbsp; </Row>
                             </Form.Group>
 

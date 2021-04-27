@@ -10,6 +10,7 @@ import Form_Five from './Form_Five';
 import Form_Six from './Form_Six';
 import Form_Seven from './Form_Seven';
 import Form_Eight from './Form_Eight';
+import Form_Nine from './Form_Nine';
 
 import Server from '../server/server';
 import _Sample from './_Sample';
@@ -206,11 +207,12 @@ export default class Questionnaire extends React.Component {
         const view_Six = this.state.view_Six;
         const view_Seven = this.state.view_Seven;
         const view_Eight = this.state.view_Eight;
+        const view_Nine = this.state.view_Nine;
 
         return (
             <>
                 <div style={{ opacity: show ? '1' : '0', transition: ' 0.75s' }} >
-                    <Container fluid style={{ padding: '0', minHeight: '77.5vh' }}>
+                    <Container fluid style={{ padding: '0', minHeight: '77.5vh', display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignContent: 'start' }}>
 
                         {/* <_Sample /> */}
 
@@ -313,6 +315,17 @@ export default class Questionnaire extends React.Component {
                             />
                             : ''}
 
+                        {view_Nine ?
+                            <Form_Nine
+                                onCreateDataServer={this.doCreateDataServer}
+                                onUpdateDataOnServer={this.doUpdateDataOnServer}
+                                onChangeView={this.doChangeView}
+                                lengthDataFromServer={this.state.lengthDataFromServer_Nine}
+                                data={this.state.data_Nine}
+                                view={view_Nine}
+                            />
+                            : ''}
+
 
                         <Button className="btn_form" variant="outline-success" data-name="Main" onClick={this.handleClickView}>
                             Данные предприятия
@@ -327,10 +340,10 @@ export default class Questionnaire extends React.Component {
                             Форма технического аудита: " Сварочное производство"
                             </Button>
                         <Button className="btn_form" variant="outline-success" data-name="Four" onClick={this.handleClickView}>
-                            Форма технического аудита - "Материалы", "Развальцовка", "Испытания"
+                            Форма технического аудита: "Материалы", "Развальцовка", "Испытания"
                             </Button>
                         <Button className="btn_form" variant="outline-success" data-name="Five" onClick={this.handleClickView}>
-                            Форма технического аудита - Термическая обработка
+                            Форма технического аудита: "Термическая обработка"
                             </Button>
                         <Button className="btn_form" variant="outline-success" data-name="Six" onClick={this.handleClickView}>
                             Форма технического аудита: "Работа с ЛКМ"
@@ -341,8 +354,8 @@ export default class Questionnaire extends React.Component {
                         <Button className="btn_form" variant="outline-success" data-name="Eight" onClick={this.handleClickView}>
                             Форма технического аудита: "Изготовление фланцев и днища"
                             </Button>
-                        <Button className="btn_form" variant="outline-success" data-name="Nain" onClick={this.handleClickView}>
-                            Форма технического аудита:
+                        <Button className="btn_form" variant="outline-success" data-name="Nine" onClick={this.handleClickView}>
+                            Форма технического аудита: "Изготовление полулинз и линзовых компенсаторов / Подъемно-транспортные механизмы"
                             </Button>
                         <Button className="btn_form" variant="outline-success" data-name="Ten" onClick={this.handleClickView}>
                             Форма технического аудита:
