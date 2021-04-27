@@ -11,6 +11,7 @@ import Form_Six from './Form_Six';
 import Form_Seven from './Form_Seven';
 import Form_Eight from './Form_Eight';
 import Form_Nine from './Form_Nine';
+import Form_Ten from './Form_Ten';
 
 import Server from '../server/server';
 import _Sample from './_Sample';
@@ -208,6 +209,7 @@ export default class Questionnaire extends React.Component {
         const view_Seven = this.state.view_Seven;
         const view_Eight = this.state.view_Eight;
         const view_Nine = this.state.view_Nine;
+        const view_Ten = this.state.view_Ten;
 
         return (
             <>
@@ -326,6 +328,17 @@ export default class Questionnaire extends React.Component {
                             />
                             : ''}
 
+                        {view_Ten ?
+                            <Form_Ten
+                                onCreateDataServer={this.doCreateDataServer}
+                                onUpdateDataOnServer={this.doUpdateDataOnServer}
+                                onChangeView={this.doChangeView}
+                                lengthDataFromServer={this.state.lengthDataFromServer_Ten}
+                                data={this.state.data_Ten}
+                                view={view_Ten}
+                            />
+                            : ''}
+
 
                         <Button className="btn_form" variant="outline-success" data-name="Main" onClick={this.handleClickView}>
                             Данные предприятия
@@ -358,7 +371,7 @@ export default class Questionnaire extends React.Component {
                             Форма технического аудита: "Изготовление полулинз и линзовых компенсаторов / Подъемно-транспортные механизмы"
                             </Button>
                         <Button className="btn_form" variant="outline-success" data-name="Ten" onClick={this.handleClickView}>
-                            Форма технического аудита:
+                            Форма технического аудита: "Технология сварки"
                             </Button>
                         <Button className="btn_form" variant="outline-success" data-name="Eleven" onClick={this.handleClickView}>
                             Форма технического аудита:
