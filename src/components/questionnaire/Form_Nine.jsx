@@ -245,7 +245,7 @@ export default class Form_Nine extends React.Component {
                                         label=""
                                         placeholder="Материал изготовления"
                                         description="Изготовление полулинз"
-                                        value={this.value[54] ? this.value[2].value : ''}
+                                        value={this.value[2] ? this.value[2].value : ''}
                                         onChangeValue={this.doChangeValue}
                                     />
                                     <InputForm

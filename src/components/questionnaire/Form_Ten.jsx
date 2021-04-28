@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-pascal-case */
 import React from 'react';
 import { Alert, Container, Form, Row, Button, Col } from 'react-bootstrap';
-import InputForm from './InputForm';
 import SelectForm from './SelectForm';
-import TextareaForm from './TextareaForm';
-import Form_Nine_Add from './Form_Nine_Add';
+import Form_Ten_Add from './Form_Ten_Add';
+import Form_Ten_Add1 from './Form_Ten_Add1';
+import Form_Ten_Add2 from './Form_Ten_Add2';
 
 export default class Form_Ten extends React.Component {
     constructor(props) {
@@ -13,12 +13,16 @@ export default class Form_Ten extends React.Component {
         this.state = {
             language: 'rus',
             dataValue: [],
-            id: 8,
-            maxId: 35,
+            id: 2,
+            id1: 10,
+            id2: 18,
+            maxId: 52,
             dataOnServer: [],
             dataFromServer: [],
             lengthDataFromServer: 0,
             base: [],
+            base1: [],
+            base2: [],
             show: false,
             show1: false
         }
@@ -27,17 +31,18 @@ export default class Form_Ten extends React.Component {
         this.handleClickSave = this.handleClickSave.bind(this);
         this.handleClickShadow = this.handleClickShadow.bind(this);
         this.handleClickAdd = this.handleClickAdd.bind(this);
+        this.handleClickAdd1 = this.handleClickAdd1.bind(this);
+        this.handleClickAdd2 = this.handleClickAdd2.bind(this);
         this.addForm = this.addForm.bind(this);
+        this.addForm1 = this.addForm1.bind(this);
+        this.addForm2 = this.addForm2.bind(this);
         this.createBlockForm = this.createBlockForm.bind(this);
         this.doChangeVisionBlock = this.doChangeVisionBlock.bind(this);
-        this.doChangeVisionBlock1 = this.doChangeVisionBlock1.bind(this);
-        this.doChangeVisionBlock2 = this.doChangeVisionBlock2.bind(this);
         this.doEmpty = this.doEmpty.bind(this);
     }
 
     //*Пустышка
     doEmpty() {
-
     }
 
     //* меняем видимость блока при выборе ДА / НЕТ
@@ -58,44 +63,16 @@ export default class Form_Ten extends React.Component {
         }
     }
 
-    doChangeVisionBlock1(data) {
-        if (this.state.lengthDataFromServer > 0) {
-
-            if (data === 'Да' || this.props.data[7].value === 'Да') {
-                this.setState({ show1: true })
-            } else {
-                this.setState({ show1: false })
-            }
-        } else {
-            if (data === 'Да') {
-                this.setState({ show1: true })
-            } else {
-                this.setState({ show1: false })
-            }
-        }
-    }
-
-    doChangeVisionBlock2(data) {
-        if (this.state.lengthDataFromServer > 0) {
-
-            if (data === 'Да' || this.props.data[34].value === 'Да') {
-                this.setState({ show2: true })
-            } else {
-                this.setState({ show2: false })
-            }
-        } else {
-            if (data === 'Да') {
-                this.setState({ show2: true })
-            } else {
-                this.setState({ show2: false })
-            }
-        }
-    }
-
-
-
     handleClickAdd() {
         this.addForm();
+    }
+
+    handleClickAdd1() {
+        this.addForm1();
+    }
+
+    handleClickAdd2() {
+        this.addForm2();
     }
 
     handleClickShadow() {
@@ -145,21 +122,64 @@ export default class Form_Ten extends React.Component {
     }
 
     addForm() {
-        // this.setState({
-        //     base: [...this.state.base,
-        //     <React.Fragment key={this.state.id}>
-        //         <Form_Nine_Add
-        //             id={this.state.id}
-        //             value={this.value}
-        //             onChangeValue={this.doChangeValue}
-        //         />
-        //     </React.Fragment>
-        //     ],
-        //     id: +this.state.id + 3,
-        //     // maxId: +this.state.maxId + 5
-        // })
+
+        if (this.state.id < 8) {
+
+            this.setState({
+                base: [...this.state.base,
+                <React.Fragment key={this.state.id}>
+                    <Form_Ten_Add
+                        id={this.state.id}
+                        value={this.value}
+                        onChangeValue={this.doChangeValue}
+                    />
+                </React.Fragment>
+                ],
+                id: +this.state.id + 2
+                // maxId: +this.state.maxId + 5
+            })
+        }
     }
 
+    addForm1() {
+
+        if (this.state.id1 < 17) {
+
+            this.setState({
+                base1: [...this.state.base1,
+                <React.Fragment key={this.state.id1}>
+                    <Form_Ten_Add1
+                        id1={this.state.id1}
+                        value={this.value}
+                        onChangeValue={this.doChangeValue}
+                    />
+                </React.Fragment>
+                ],
+                id1: +this.state.id1 + 1
+                // maxId: +this.state.maxId + 5
+            })
+        }
+    }
+
+    addForm2() {
+
+        if (this.state.id2 < 52) {
+
+            this.setState({
+                base2: [...this.state.base2,
+                <React.Fragment key={this.state.id2}>
+                    <Form_Ten_Add2
+                        id2={this.state.id2}
+                        value={this.value}
+                        onChangeValue={this.doChangeValue}
+                    />
+                </React.Fragment>
+                ],
+                id2: +this.state.id2 + 5
+                // maxId: +this.state.maxId + 5
+            })
+        }
+    }
 
     //*создаем необходимое количество блоков
     createBlockForm() {
@@ -167,13 +187,23 @@ export default class Form_Ten extends React.Component {
         let data = this.state.dataFromServer;
 
         this.addForm();
-        // for (let i = 0; i < lengthData; i++) {
+        this.addForm1();
+        this.addForm2();
 
-        //     if ([11, 14, 17, 20, 23, 26, 29].includes(i) && Number(data[i].id > 0)) {
-        //         this.addForm();
-        //     }
-        // }
-        // console.log('createBlockForm');
+        for (let i = 0; i < lengthData; i++) {
+
+            if ([4, 6, 8].includes(i) && Number(data[i].id > 0)) {
+                this.addForm();
+            }
+
+            if ([11, 12, 13, 14, 15, 16, 17].includes(i) && Number(data[i].id > 0)) {
+                this.addForm1();
+            }
+
+            if ([23, 28, 33, 38, 43, 48].includes(i) && Number(data[i].id > 0)) {
+                this.addForm2();
+            }
+        }
     }
 
     componentDidMount() {
@@ -187,8 +217,6 @@ export default class Form_Ten extends React.Component {
             this.createBlockForm();
             if (this.props.lengthDataFromServer > 0) {
                 this.doChangeVisionBlock();
-                this.doChangeVisionBlock1();
-                this.doChangeVisionBlock2();
             }
         }, 1500)
     }
@@ -197,11 +225,11 @@ export default class Form_Ten extends React.Component {
         console.log('RENDER');
 
         const id = this.state.id;
+        const id1 = this.state.id1;
+        const id2 = this.state.id2;
         const view = this.props.view;
         this.value = this.props.data;
         const show = this.state.show;
-        const show1 = this.state.show1;
-        const show2 = this.state.show2;
 
         return (
             <>
@@ -214,8 +242,8 @@ export default class Form_Ten extends React.Component {
                         <Container>
                             <Form.Group>
                                 <Row>
-                                    <Col sm={10} style={{ paddingTop: '28px' }}>
-                                        Изготавливает ли Ваше предприятие полулинзы а так же полулинзы для изготовления линзовых компенсаторов?
+                                    <Col sm={3} style={{ paddingTop: '28px' }}>
+                                        Аттестация по СМК
                                      </Col>
 
                                     <SelectForm
@@ -224,7 +252,7 @@ export default class Form_Ten extends React.Component {
                                         show={true}
                                         label=""
                                         placeholder="Ваш ответ"
-                                        description="Изготовление полулинз"
+                                        description="Аттестация по СМК"
                                         option="Да, Нет"
                                         value={this.value[1] ? this.value[1].value : ''}
                                         // value={this.value[3].value}
@@ -235,105 +263,13 @@ export default class Form_Ten extends React.Component {
                             </Form.Group>
                         </Container>
                         <Container style={{ display: show ? 'block' : 'none' }}>
+                            <Row> &nbsp; </Row>
                             <Form.Group style={{ borderBottom: '1px solid #ccc' }}>
                                 <Row>
-                                    <InputForm
-                                        id={2}
-                                        width={3}
-                                        show={show}
-                                        // verify="number"
-                                        label=""
-                                        placeholder="Материал изготовления"
-                                        description="Изготовление полулинз"
-                                        value={this.value[54] ? this.value[2].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                    <InputForm
-                                        id={3}
-                                        width={3}
-                                        show={show}
-                                        verify="number"
-                                        label=""
-                                        placeholder="Мин диаметр, мм"
-                                        description="Изготовление полулинз"
-                                        value={this.value[3] ? this.value[3].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                    <InputForm
-                                        id={4}
-                                        width={3}
-                                        show={show}
-                                        verify="number"
-                                        label=""
-                                        placeholder="Мах диаметр, мм"
-                                        description="Изготовление полулинз"
-                                        value={this.value[4] ? this.value[4].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                    <InputForm
-                                        id={5}
-                                        width={3}
-                                        show={show}
-                                        verify="number"
-                                        label=""
-                                        placeholder="Толщина, мм"
-                                        description="Изготовление полулинз"
-                                        value={this.value[5] ? this.value[5].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                </Row>
-                                <Row> &nbsp; </Row>
-                            </Form.Group>
-                        </Container>
-
-                        <Container>
-                            <Form.Group>
-                                <Row>
-                                    <Col sm={10} style={{ paddingTop: '28px' }}>
-                                        Имеется ли на вашем предприятии возможность гибки теплообменных труб?
+                                    <Col sm={12} style={{ paddingTop: '28px' }}>
+                                        Количество и уровень аттестации технологов по сварке:
                                      </Col>
-                                    <SelectForm
-                                        id={6}
-                                        width={2}
-                                        show={true}
-                                        label=""
-                                        placeholder="Ваш ответ"
-                                        description="Гибки теплообменных труб"
-                                        option="Да, Нет"
-                                        value={this.value[6] ? this.value[6].value : ''}
-                                        // value={this.value[3].value}
-                                        onChangeValue={this.doChangeValue}
-                                        onChangeVisionBlock={this.doEmpty}
-                                    />
                                 </Row>
-                            </Form.Group>
-                        </Container>
-
-                        <Container>
-                            <Form.Group>
-                                <Row>
-                                    <Col sm={10} style={{ paddingTop: '28px' }}>
-                                        Имеется ли грузоподъемное оборудование на вашем производстве?
-                                     </Col>
-                                    <SelectForm
-                                        id={7}
-                                        width={2}
-                                        show={true}
-                                        label=""
-                                        placeholder="Ваш ответ"
-                                        description="Грузоподъемное оборудование"
-                                        option="Да, Нет"
-                                        value={this.value[7] ? this.value[7].value : ''}
-                                        // value={this.value[3].value}
-                                        onChangeValue={this.doChangeValue}
-                                        onChangeVisionBlock={this.doChangeVisionBlock1}
-                                    />
-                                </Row>
-                            </Form.Group>
-                        </Container>
-
-                        <Container style={{ display: show1 ? 'block' : 'none' }}>
-                            <Form.Group style={{ borderBottom: '1px solid #ccc' }} >
 
                                 {this.state.base}
 
@@ -346,82 +282,45 @@ export default class Form_Ten extends React.Component {
                                             </Button>
                                 <Row> &nbsp; </Row>
                             </Form.Group>
-                        </Container>
 
-                        <Container>
-                            <Form.Group>
+                            <Form.Group style={{ borderBottom: '1px solid #ccc' }}>
                                 <Row>
-                                    <Col sm={10} style={{ paddingTop: '20px' }}>
-                                        Укажите количество конструкторов в штате Вашего предприятия с опытом проектирования кожухотрубных теплообменных аппаратов и аппаратов, работающих под давлением.
+                                    <Col sm={12} style={{ paddingTop: '28px' }}>
+                                        Аттестованные технологии сварки, применяемые на Вашем предприятии:
                                      </Col>
-                                    <InputForm
-                                        id={32}
-                                        width={2}
-                                        show={true}
-                                        verify="number"
-                                        label=""
-                                        placeholder="Количество, чел"
-                                        description="Конструктора с опытом проектирования"
-                                        value={this.value[32] ? this.value[32].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
                                 </Row>
-                            </Form.Group>
-                        </Container>
 
-                        <Container>
-                            <Form.Group>
-                                <Row>
-                                    <Col sm={10} style={{ paddingTop: '20px' }}>
-                                        Укажите количество технологов в штате Вашего предприятия с опытом разработки технологии изготовления кожухотрубных теплообменных аппаратов и аппаратов, работающих под давлениемом проектирования кожухотрубных теплообменных аппаратов и аппаратов, работающих под давлением.
-                                     </Col>
-                                    <InputForm
-                                        id={33}
-                                        width={2}
-                                        show={true}
-                                        verify="number"
-                                        label=""
-                                        placeholder="Количество, чел"
-                                        description="Технологи с опытом разработки"
-                                        value={this.value[33] ? this.value[33].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                </Row>
-                            </Form.Group>
-                        </Container>
+                                {this.state.base1}
 
-                        <Container>
-                            <Form.Group>
-                                <Row>
-                                    <Col sm={10} style={{ paddingTop: '20px' }}>
-                                        Укажите наличие системы технологического контроля изготовления теплообменного оборудования, начиная от входного контроля материалов до момента отгрузки готового изделия и её описание (технологический паспорт и т.п.)
-                                     </Col>
-                                    <SelectForm
-                                        id={34}
-                                        width={2}
-                                        show={true}
-                                        label=""
-                                        placeholder="Ваш ответ"
-                                        description="Cистемы технологического контроля изготовления теплообменного оборудования"
-                                        option="Да, Нет"
-                                        value={this.value[34] ? this.value[34].value : ''}
-                                        // value={this.value[3].value}
-                                        onChangeValue={this.doChangeValue}
-                                        onChangeVisionBlock={this.doChangeVisionBlock2}
-                                    />
-                                    <TextareaForm
-                                        id={35}
-                                        width={12}
-                                        rows={3}
-                                        show={show2}
-                                        label=""
-                                        placeholder="Наличие системы контроля, описание"
-                                        description="Cистемы технологического контроля изготовления теплообменного оборудования"
-                                        value={this.value[35] ? this.value[35].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                </Row>
+                                <Button
+                                    variant="outline-secondary"
+                                    onClick={this.handleClickAdd1}
+                                    style={{ marginLeft: '20px' }}
+                                >
+                                    Добавить позицию
+                                            </Button>
+                                <Row> &nbsp; </Row>
                             </Form.Group>
+
+                            <Form.Group style={{ borderBottom: '1px solid #ccc' }}>
+                                <Row>
+                                    <Col sm={12} style={{ paddingTop: '28px' }}>
+                                        Укажите количество сварщиков аттестованных НАКС в штате предприятия с указанием следующих параметров:
+                                     </Col>
+                                </Row>
+
+                                {this.state.base2}
+
+                                <Button
+                                    variant="outline-secondary"
+                                    onClick={this.handleClickAdd2}
+                                    style={{ marginLeft: '20px' }}
+                                >
+                                    Добавить позицию
+                                            </Button>
+                                <Row> &nbsp; </Row>
+                            </Form.Group>
+
                         </Container>
 
                         <Container>

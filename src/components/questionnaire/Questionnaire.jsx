@@ -12,6 +12,8 @@ import Form_Seven from './Form_Seven';
 import Form_Eight from './Form_Eight';
 import Form_Nine from './Form_Nine';
 import Form_Ten from './Form_Ten';
+import Form_Eleven from './Form_Eleven';
+import Form_Twelve from './Form_Twelve';
 
 import Server from '../server/server';
 import _Sample from './_Sample';
@@ -36,6 +38,8 @@ export default class Questionnaire extends React.Component {
             lengthDataFromServer_Ten: 0,
             lengthDataFromServer_Eleven: 0,
             lengthDataFromServer_Twelve: 0,
+            lengthDataFromServer_Thirteen: 0,
+            lengthDataFromServer_Fourteen: 0,
             data_Main: [],
             data_One: [],
             data_Two: [],
@@ -49,6 +53,8 @@ export default class Questionnaire extends React.Component {
             data_Ten: [],
             data_Eleven: [],
             data_Twelve: [],
+            data_Thirteen: [],
+            data_Fourteen: [],
             view_Main: false,
             view_One: false,
             view_Two: false,
@@ -56,13 +62,14 @@ export default class Questionnaire extends React.Component {
             view_Four: false,
             view_Five: false,
             view_Six: false,
-            view_Six: false,
             view_Seven: false,
             view_Eight: false,
             view_Nine: false,
             view_Ten: false,
             view_Eleven: false,
-            view_Twelve: false
+            view_Twelve: false,
+            view_Thirteen: false,
+            view_Fourteen: false
         }
 
         this.createDataServer = this.createDataServer.bind(this);
@@ -91,6 +98,8 @@ export default class Questionnaire extends React.Component {
         if (name === 'Ten') this.setState({ view_Ten: !this.state.view_Ten })
         if (name === 'Eleven') this.setState({ view_Eleven: !this.state.view_Eleven })
         if (name === 'Twelve') this.setState({ view_Twelve: !this.state.view_Twelve })
+        if (name === 'Thirteen') this.setState({ view_Thirteen: !this.state.view_Thirteen })
+        if (name === 'Fourteen') this.setState({ view_Fourteen: !this.state.view_Fourteen })
     }
 
     //* загружает для выбранной формы данные с сервера и открывает форму
@@ -110,6 +119,8 @@ export default class Questionnaire extends React.Component {
             if (e.target.dataset.name === 'Ten') this.setState({ view_Ten: !this.state.view_Ten })
             if (e.target.dataset.name === 'Eleven') this.setState({ view_Eleven: !this.state.view_Eleven })
             if (e.target.dataset.name === 'Twelve') this.setState({ view_Twelve: !this.state.view_Twelve })
+            if (e.target.dataset.name === 'Thirteen') this.setState({ view_Thirteen: !this.state.view_Thirteen })
+            if (e.target.dataset.name === 'Fourteen') this.setState({ view_Fourteen: !this.state.view_Fourteen })
         }, 500)
     }
 
@@ -172,6 +183,8 @@ export default class Questionnaire extends React.Component {
         if (name === 'Ten') this.setState({ data_Ten: dataNew, lengthDataFromServer_Ten: dataNew.length })
         if (name === 'Eleven') this.setState({ data_Eleven: dataNew, lengthDataFromServer_Eleven: dataNew.length })
         if (name === 'Twelve') this.setState({ data_Twelve: dataNew, lengthDataFromServer_Twelve: dataNew.length })
+        if (name === 'Thirteen') this.setState({ data_Thirteen: dataNew, lengthDataFromServer_Thirteen: dataNew.length })
+        if (name === 'Fourteen') this.setState({ data_Fourteen: dataNew, lengthDataFromServer_Fourteen: dataNew.length })
     }
 
     //* получаем данные с сервера
@@ -210,6 +223,10 @@ export default class Questionnaire extends React.Component {
         const view_Eight = this.state.view_Eight;
         const view_Nine = this.state.view_Nine;
         const view_Ten = this.state.view_Ten;
+        const view_Eleven = this.state.view_Eleven;
+        const view_Twelve = this.state.view_Twelve;
+        const view_Thirteen = this.state.view_Thirteen;
+        const view_Fourteen = this.state.view_Fourteen;
 
         return (
             <>
@@ -339,6 +356,28 @@ export default class Questionnaire extends React.Component {
                             />
                             : ''}
 
+                        {view_Eleven ?
+                            <Form_Eleven
+                                onCreateDataServer={this.doCreateDataServer}
+                                onUpdateDataOnServer={this.doUpdateDataOnServer}
+                                onChangeView={this.doChangeView}
+                                lengthDataFromServer={this.state.lengthDataFromServer_Eleven}
+                                data={this.state.data_Eleven}
+                                view={view_Eleven}
+                            />
+                            : ''}
+
+                        {view_Twelve ?
+                            <Form_Twelve
+                                onCreateDataServer={this.doCreateDataServer}
+                                onUpdateDataOnServer={this.doUpdateDataOnServer}
+                                onChangeView={this.doChangeView}
+                                lengthDataFromServer={this.state.lengthDataFromServer_Twelve}
+                                data={this.state.data_Twelve}
+                                view={view_Twelve}
+                            />
+                            : ''}
+
 
                         <Button className="btn_form" variant="outline-success" data-name="Main" onClick={this.handleClickView}>
                             Данные предприятия
@@ -374,9 +413,15 @@ export default class Questionnaire extends React.Component {
                             Форма технического аудита: "Технология сварки"
                             </Button>
                         <Button className="btn_form" variant="outline-success" data-name="Eleven" onClick={this.handleClickView}>
-                            Форма технического аудита:
+                            Форма технического аудита: "Развальцовка"
                             </Button>
                         <Button className="btn_form" variant="outline-success" data-name="Twelve" onClick={this.handleClickView}>
+                            Форма технического аудита: "Методы контроля качества"
+                            </Button>
+                        <Button className="btn_form" variant="outline-success" data-name="Thirteen" onClick={this.handleClickView}>
+                            Форма технического аудита:
+                            </Button>
+                        <Button className="btn_form" variant="outline-success" data-name="Fourteen" onClick={this.handleClickView}>
                             Форма технического аудита:
                             </Button>
                     </Container>
