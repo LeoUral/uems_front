@@ -14,6 +14,7 @@ import Form_Nine from './Form_Nine';
 import Form_Ten from './Form_Ten';
 import Form_Eleven from './Form_Eleven';
 import Form_Twelve from './Form_Twelve';
+import Form_Thirteen from './Form_Thirteen';
 
 import Server from '../server/server';
 import _Sample from './_Sample';
@@ -378,6 +379,17 @@ export default class Questionnaire extends React.Component {
                             />
                             : ''}
 
+                        {view_Thirteen ?
+                            <Form_Thirteen
+                                onCreateDataServer={this.doCreateDataServer}
+                                onUpdateDataOnServer={this.doUpdateDataOnServer}
+                                onChangeView={this.doChangeView}
+                                lengthDataFromServer={this.state.lengthDataFromServer_Thirteen}
+                                data={this.state.data_Thirteen}
+                                view={view_Thirteen}
+                            />
+                            : ''}
+
 
                         <Button className="btn_form" variant="outline-success" data-name="Main" onClick={this.handleClickView}>
                             Данные предприятия
@@ -419,7 +431,7 @@ export default class Questionnaire extends React.Component {
                             Форма технического аудита: "Методы контроля качества"
                             </Button>
                         <Button className="btn_form" variant="outline-success" data-name="Thirteen" onClick={this.handleClickView}>
-                            Форма технического аудита:
+                            Форма технического аудита: "Планирование производства"
                             </Button>
                         <Button className="btn_form" variant="outline-success" data-name="Fourteen" onClick={this.handleClickView}>
                             Форма технического аудита:

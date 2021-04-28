@@ -162,7 +162,7 @@ export default class Form_Twelve extends React.Component {
 
     addForm() {
 
-        if (this.state.id < 8) {
+        if (this.state.id < 14) {
 
             this.setState({
                 base: [...this.state.base,
@@ -182,7 +182,7 @@ export default class Form_Twelve extends React.Component {
 
     addForm1() {
 
-        if (this.state.id1 < 29) {
+        if (this.state.id1 < 32) {
 
             this.setState({
                 base1: [...this.state.base1,
@@ -202,7 +202,7 @@ export default class Form_Twelve extends React.Component {
 
     addForm2() {
 
-        if (this.state.id2 < 40) {
+        if (this.state.id2 < 44) {
 
             this.setState({
                 base2: [...this.state.base2,
