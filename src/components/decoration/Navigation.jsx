@@ -32,6 +32,9 @@ export default class Navigation extends React.Component {
     }
 
     render() {
+
+        this.nameCompany = this.props.nameCompany;
+
         return (
             <>
                 <Container className="navigation" fluid style={{ paddingLeft: '0', paddingRight: '0' }}>
@@ -40,6 +43,7 @@ export default class Navigation extends React.Component {
                         show={this.state.show}
                         onFocusSaidBar={this.doFocusSaidBar}
                         onTransferUrl={this.doTransferUrl}
+                        nameCompany={this.nameCompany}
                     />
 
                     <RightMenuBlock

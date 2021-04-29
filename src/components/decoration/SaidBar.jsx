@@ -3,6 +3,7 @@ import MenuPositionParent from './MenuPositionParent';
 import Svg_Circle from '../../icon/Svg_Circle';
 import SideBarLogo from './SideBarLogo';
 
+
 export default class SaidBar extends React.Component {
     constructor(props) {
         super(props);
@@ -13,6 +14,7 @@ export default class SaidBar extends React.Component {
 
         this.handleFocus = this.handleFocus.bind(this);
         this.doTransferUrl = this.doTransferUrl.bind(this);
+
     }
 
     doTransferUrl(url) {
@@ -23,10 +25,14 @@ export default class SaidBar extends React.Component {
         this.props.onFocusSaidBar();
     }
 
+    componentDidMount() {
+
+    }
 
     render() {
 
         const show = this.props.show;
+        this.nameCompany = this.props.nameCompany;
 
         return (
             <>
@@ -34,6 +40,7 @@ export default class SaidBar extends React.Component {
 
                     <SideBarLogo
                         show={show}
+                        nameCompany={this.nameCompany}
                     />
 
                     <MenuPositionParent
