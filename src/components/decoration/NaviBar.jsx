@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-pascal-case */
 import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, Form } from 'react-bootstrap';
 import Svg_Angle_double_left from '../../icon/Svg_Angle_double_left';
 import Svg_Angle_double_right from '../../icon/Svg_Angle_double_right';
 
@@ -43,11 +43,16 @@ export default class NaviBar extends React.Component {
                                 colorSvg="rgba(25, 25, 25, 0.51)"
                             />}
                     </Navbar.Brand>
-                    <Nav className="mr-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#features">Features</Nav.Link>
-                        <Nav.Link href="#pricing" onClick={this.handleClickExit} >Выход</Nav.Link>
-                    </Nav>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+
+                        <Nav className="mr-auto">
+                            <Nav.Link href="#home">Home</Nav.Link>
+                            <Nav.Link href="#features">Features</Nav.Link>
+                            <Nav.Link href="#pricing" onClick={this.handleClickExit} >Выход</Nav.Link>
+                        </Nav>
+
+                    </Navbar.Collapse>
                 </Navbar>
             </>
         )

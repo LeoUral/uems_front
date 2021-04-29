@@ -1,11 +1,7 @@
 import React from 'react';
-import { Col } from 'react-bootstrap';
-import DatePicker from 'react-date-picker';
-import '../../style/calendarDataPicker.css';
+import { Col, Form } from 'react-bootstrap';
 
-//* https://github.com/wojtekmaj/react-date-picker - GitHub изготовителя
-
-export default class CalendarForm extends React.Component {
+export default class SelectForm_City extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -13,74 +9,75 @@ export default class CalendarForm extends React.Component {
             id: '',
             description: '',
             information: '',
-            value: new Date(),
+            value: '',
             colorError: '#fff'
         }
 
         this.handleChange = this.handleChange.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
+        this.viewListOptions = this.viewListOptions.bind(this);
+
     }
 
     handleBlur(e) {
         this.setState({
-            id: this.props.id,
-            description: this.props.description,
-            information: this.props.placeholder + ' DATE: '
+            id: e.target.dataset.id,
+            description: e.target.dataset.description,
+            information: e.target.dataset.information
         })
         setTimeout(() => { this.props.onChangeValue(this.state) })
     }
 
     handleChange(e) {
-        // e.preventDefault();
-        this.setState({ value: e })
-        console.log(e);//test
+        e.preventDefault();
+        console.log(e.target.value);//test
+        this.setState({ value: e.target.value })
+        this.props.onChangeVisionBlock(e.target.value);
+    }
+
+    viewListOptions(arr) {
+        this.optionArr = [];
+        arr.forEach(data => {
+            this.optionArr.push(
+                <option key={data} >{data}</option>
+            )
+        })
     }
 
     componentDidMount() {
-        if (this.props.value) this.setState({ value: this.props.value })
+        this.setState({ value: this.props.value })
 
+        this.viewListOptions(this.props.option)
     }
 
     render() {
-
-        if (this.props.value) {
-            this.value = this.props.value;
-            this.disabled = true;
-        } else {
-            this.value = this.state.value;
-            this.disabled = false;
-        }
 
         const width = this.props.width;
         const label = this.props.label;
         const id = this.props.id;
         const description = this.props.description;
         const placeholder = this.props.placeholder;
-        // const value = this.state.value;
+        const value = this.state.value;
         const show = this.props.show;
-        console.log(this.value);
 
         return (
             <React.Fragment key={id}>
-
                 <Col sm={width} style={{ visibility: show ? 'visible' : 'collapse' }} >
-                    <div
-                        className="calendar"
+                    <Form.Label>{label}</Form.Label>
+                    <Form.Control
+                        as="select"
+                        type="text"
                         data-id={id}
                         placeholder={placeholder}
                         data-information={placeholder}
                         data-description={description}
+                        value={value}
+                        onChange={this.handleChange}
                         onBlur={this.handleBlur}
                     >
-                        <DatePicker
-                            format={"dd/MM/yyyy"}
-                            value={this.value}
-                            onChange={this.handleChange}
-                            disabled={this.disabled}
-
-                        />
-
-                    </div>
+                        <option key={placeholder}>{placeholder}</option>
+                        {this.optionArr}
+                    </Form.Control>
                 </Col>
             </React.Fragment>
         )

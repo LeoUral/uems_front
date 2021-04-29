@@ -15,6 +15,7 @@ import Form_Ten from './Form_Ten';
 import Form_Eleven from './Form_Eleven';
 import Form_Twelve from './Form_Twelve';
 import Form_Thirteen from './Form_Thirteen';
+import Form_Fourteen from './Form_Fourteen';
 
 import Server from '../server/server';
 import _Sample from './_Sample';
@@ -70,7 +71,9 @@ export default class Questionnaire extends React.Component {
             view_Eleven: false,
             view_Twelve: false,
             view_Thirteen: false,
-            view_Fourteen: false
+            view_Fourteen: false,
+            emptyOnServer: ['btn_form', 'btn_form ', 'btn_form', 'btn_form ', 'btn_form', 'btn_form ', 'btn_form', 'btn_form', 'btn_form', 'btn_form ', 'btn_form', 'btn_form', 'btn_form', 'btn_form ', 'btn_form'],
+            positionMember: ['Main', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen']
         }
 
         this.createDataServer = this.createDataServer.bind(this);
@@ -82,6 +85,7 @@ export default class Questionnaire extends React.Component {
         this.writeParseData = this.writeParseData.bind(this);
         this.handleClickView = this.handleClickView.bind(this);
         this.doChangeView = this.doChangeView.bind(this);
+        this.changeColorButton = this.changeColorButton.bind(this);
     }
 
     //*закрывает форму по нажатию на фон
@@ -125,16 +129,29 @@ export default class Questionnaire extends React.Component {
         }, 500)
     }
 
+    changeColorButton(name) {
+        let position = 0;
+        this.state.positionMember.forEach((member, index) => {
+            if (member === name) position = index;
+        })
+        let arrEmpty = this.state.emptyOnServer;
+        arrEmpty[position] = 'btn_form active';
+        this.setState({ emptyOnServer: arrEmpty })
+    }
+
     doGetDataFromServer(name, id) {
         this.getDataFromServer(name, id);
+
     }
 
     doCreateDataServer(data, name, id) {
         this.createDataServer(data, name, id);
+        this.changeColorButton(name);
     }
 
     doUpdateDataOnServer(data, name, id) {
         this.sendDataServer(data, name, id);
+        this.changeColorButton(name);
     }
 
     //*Создаем новые данные на сервере
@@ -228,6 +245,8 @@ export default class Questionnaire extends React.Component {
         const view_Twelve = this.state.view_Twelve;
         const view_Thirteen = this.state.view_Thirteen;
         const view_Fourteen = this.state.view_Fourteen;
+
+        const classEmpty = this.state.emptyOnServer;
 
         return (
             <>
@@ -390,51 +409,62 @@ export default class Questionnaire extends React.Component {
                             />
                             : ''}
 
+                        {view_Fourteen ?
+                            <Form_Fourteen
+                                onCreateDataServer={this.doCreateDataServer}
+                                onUpdateDataOnServer={this.doUpdateDataOnServer}
+                                onChangeView={this.doChangeView}
+                                lengthDataFromServer={this.state.lengthDataFromServer_Fourteen}
+                                data={this.state.data_Fourteen}
+                                view={view_Fourteen}
+                            />
+                            : ''}
 
-                        <Button className="btn_form" variant="outline-success" data-name="Main" onClick={this.handleClickView}>
+
+                        <Button className={classEmpty[0]} variant="outline-success" data-name="Main" onClick={this.handleClickView}>
                             Данные предприятия
                             </Button>
-                        <Button className="btn_form" variant="outline-success" data-name="One" onClick={this.handleClickView}>
+                        <Button className={classEmpty[1]} variant="outline-success" data-name="One" onClick={this.handleClickView}>
                             Форма технического аудита: "Заготовительное производство"
                             </Button>
-                        <Button className="btn_form" variant="outline-success" data-name="Two" onClick={this.handleClickView}>
+                        <Button className={classEmpty[2]} variant="outline-success" data-name="Two" onClick={this.handleClickView}>
                             Форма технического аудита: "Механическая обработка деталей и узлов"
                             </Button>
-                        <Button className="btn_form" variant="outline-success" data-name="Three" onClick={this.handleClickView}>
+                        <Button className={classEmpty[3]} variant="outline-success" data-name="Three" onClick={this.handleClickView}>
                             Форма технического аудита: " Сварочное производство"
                             </Button>
-                        <Button className="btn_form" variant="outline-success" data-name="Four" onClick={this.handleClickView}>
+                        <Button className={classEmpty[4]} variant="outline-success" data-name="Four" onClick={this.handleClickView}>
                             Форма технического аудита: "Материалы", "Развальцовка", "Испытания"
                             </Button>
-                        <Button className="btn_form" variant="outline-success" data-name="Five" onClick={this.handleClickView}>
+                        <Button className={classEmpty[5]} variant="outline-success" data-name="Five" onClick={this.handleClickView}>
                             Форма технического аудита: "Термическая обработка"
                             </Button>
-                        <Button className="btn_form" variant="outline-success" data-name="Six" onClick={this.handleClickView}>
+                        <Button className={classEmpty[6]} variant="outline-success" data-name="Six" onClick={this.handleClickView}>
                             Форма технического аудита: "Работа с ЛКМ"
                             </Button>
-                        <Button className="btn_form" variant="outline-success" data-name="Seven" onClick={this.handleClickView}>
+                        <Button className={classEmpty[7]} variant="outline-success" data-name="Seven" onClick={this.handleClickView}>
                             Форма технического аудита: "Крепёжные изделия, Поковки"
                             </Button>
-                        <Button className="btn_form" variant="outline-success" data-name="Eight" onClick={this.handleClickView}>
+                        <Button className={classEmpty[8]} variant="outline-success" data-name="Eight" onClick={this.handleClickView}>
                             Форма технического аудита: "Изготовление фланцев и днища"
                             </Button>
-                        <Button className="btn_form" variant="outline-success" data-name="Nine" onClick={this.handleClickView}>
+                        <Button className={classEmpty[9]} variant="outline-success" data-name="Nine" onClick={this.handleClickView}>
                             Форма технического аудита: "Изготовление полулинз и линзовых компенсаторов / Подъемно-транспортные механизмы"
                             </Button>
-                        <Button className="btn_form" variant="outline-success" data-name="Ten" onClick={this.handleClickView}>
+                        <Button className={classEmpty[10]} variant="outline-success" data-name="Ten" onClick={this.handleClickView}>
                             Форма технического аудита: "Технология сварки"
                             </Button>
-                        <Button className="btn_form" variant="outline-success" data-name="Eleven" onClick={this.handleClickView}>
+                        <Button className={classEmpty[11]} variant="outline-success" data-name="Eleven" onClick={this.handleClickView}>
                             Форма технического аудита: "Развальцовка"
                             </Button>
-                        <Button className="btn_form" variant="outline-success" data-name="Twelve" onClick={this.handleClickView}>
+                        <Button className={classEmpty[12]} variant="outline-success" data-name="Twelve" onClick={this.handleClickView}>
                             Форма технического аудита: "Методы контроля качества"
                             </Button>
-                        <Button className="btn_form" variant="outline-success" data-name="Thirteen" onClick={this.handleClickView}>
+                        <Button className={classEmpty[13]} variant="outline-success" data-name="Thirteen" onClick={this.handleClickView}>
                             Форма технического аудита: "Планирование производства"
                             </Button>
-                        <Button className="btn_form" variant="outline-success" data-name="Fourteen" onClick={this.handleClickView}>
-                            Форма технического аудита:
+                        <Button className={classEmpty[14]} variant="outline-success" data-name="Fourteen" onClick={this.handleClickView}>
+                            Форма технического аудита: "Сертификаты, Декларации, Аттестации, Аккредитации"
                             </Button>
                     </Container>
                 </div>

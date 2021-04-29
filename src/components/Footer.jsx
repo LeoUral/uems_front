@@ -15,7 +15,7 @@ export default class Footer extends React.Component {
             <>
                 <Container fluid style={{ padding: '0' }}>
                     <Jumbotron style={{ backgroundColor: '#6c757d' }}>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum, ratione! Obcaecati, dolores saepe alias distinctio cumque. Incidunt minima beatae.</p>
+                        <p>Разработано в LOTUS &copy;</p>
                     </Jumbotron>
                 </Container>
             </>

@@ -1,7 +1,11 @@
+/* eslint-disable react/jsx-pascal-case */
 import React from 'react';
 import { Alert, Container, Form, Row, Button } from 'react-bootstrap';
 import InputForm from './InputForm';
 import SelectForm from './SelectForm';
+import PhoneForm from './PhoneForm';
+import SelectForm_City from './SelectForm_City';
+import { CITY } from './ConstCity';
 
 export default class Form_Main extends React.Component {
     constructor(props) {
@@ -53,12 +57,14 @@ export default class Form_Main extends React.Component {
             })
 
         }
-        this.setState({ dataOnServer: data }) //todo проверка на наличие данных на сервере
+        this.setState({ dataOnServer: data })
+
+        //todo проверка на наличие данных на сервере
         if (this.state.lengthDataFromServer < 1) {
-            console.log('CREATE DATA');
+            console.log('CREATE DATA');//todo создаем новый блок данных на сервер
             this.props.onCreateDataServer(data, 'Main', Number(localStorage.getItem('idUser')));
         } else {
-            console.log('UPDATE DATA');
+            console.log('UPDATE DATA'); //todo перезаписываем существующий блок данных на срвере
             this.props.onUpdateDataOnServer(data, 'Main', Number(localStorage.getItem('idUser')));
         }
         setTimeout(() => { console.log(this.state.dataOnServer) })//test
@@ -85,6 +91,8 @@ export default class Form_Main extends React.Component {
 
         const view = this.props.view;
         this.value = this.props.data;
+
+        const city = CITY;
 
         console.log(this.value);//test
 
@@ -140,11 +148,10 @@ export default class Form_Main extends React.Component {
                                     />
                                 </Row>
                                 <Row>
-                                    <InputForm
+                                    <PhoneForm
                                         id={4}
                                         width={4}
                                         show={true}
-                                        // verify="number"
                                         label=""
                                         placeholder="Телефон"
                                         description="Предприятие"
@@ -288,14 +295,14 @@ export default class Form_Main extends React.Component {
                                         onChangeValue={this.doChangeValue}
                                         onChangeVisionBlock={this.doEmpty}
                                     />
-                                    <SelectForm
+                                    <SelectForm_City
                                         id={15}
                                         width={4}
                                         show={true}
                                         label=""
                                         placeholder="Город"
                                         description="Предприятие"
-                                        option="Города России"
+                                        option={city}
                                         value={this.value[15] ? this.value[15].value : ''}
                                         // value={this.value[15].value}
                                         onChangeValue={this.doChangeValue}
