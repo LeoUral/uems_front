@@ -37,9 +37,9 @@ export default class SelectForm_City extends React.Component {
 
     viewListOptions(arr) {
         this.optionArr = [];
-        arr.forEach(data => {
+        arr.forEach((data, index) => {
             this.optionArr.push(
-                <option key={data} >{data}</option>
+                <option key={index} >{data}</option>
             )
         })
     }

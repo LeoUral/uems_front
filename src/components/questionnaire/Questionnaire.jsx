@@ -72,8 +72,11 @@ export default class Questionnaire extends React.Component {
             view_Twelve: false,
             view_Thirteen: false,
             view_Fourteen: false,
-            emptyOnServer: ['btn_form', 'btn_form ', 'btn_form', 'btn_form ', 'btn_form', 'btn_form ', 'btn_form', 'btn_form', 'btn_form', 'btn_form ', 'btn_form', 'btn_form', 'btn_form', 'btn_form ', 'btn_form'],
-            positionMember: ['Main', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen']
+            infoBlock: {
+                language: 'rus',
+                classQuestBlock: ['btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form'],
+                nameQuestBlock: ['Main', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen']
+            }
         }
 
         this.createDataServer = this.createDataServer.bind(this);
@@ -129,19 +132,20 @@ export default class Questionnaire extends React.Component {
         }, 500)
     }
 
+    //* меняем цвет кнопки при выходе через SAVE
     changeColorButton(name) {
         let position = 0;
-        this.state.positionMember.forEach((member, index) => {
+        this.state.infoBlock.nameQuestBlock.forEach((member, index) => {
             if (member === name) position = index;
         })
-        let arrEmpty = this.state.emptyOnServer;
+        let arrEmpty = this.state.infoBlock.classQuestBlock;
         arrEmpty[position] = 'btn_form active';
-        this.setState({ emptyOnServer: arrEmpty })
+        this.setState({ classQuestBlock: arrEmpty })
+        setTimeout(() => { this.props.onUpInfoBlock(this.state.infoblock) })
     }
 
     doGetDataFromServer(name, id) {
         this.getDataFromServer(name, id);
-
     }
 
     doCreateDataServer(data, name, id) {
@@ -221,9 +225,10 @@ export default class Questionnaire extends React.Component {
     }
 
     componentDidMount() {
+        this.setState({ infoBlock: this.props.infoBlock })
         setTimeout(() => {
             this.setState({ show: true })
-        }, 500)
+        }, 500)//
     }
 
     render() {
@@ -246,7 +251,7 @@ export default class Questionnaire extends React.Component {
         const view_Thirteen = this.state.view_Thirteen;
         const view_Fourteen = this.state.view_Fourteen;
 
-        const classEmpty = this.state.emptyOnServer;
+        const classEmpty = this.state.infoBlock.classQuestBlock;
 
         return (
             <>

@@ -16,6 +16,11 @@ export default class Navigation extends React.Component {
         this.doChangeShow = this.doChangeShow.bind(this);
         this.doFocusSaidBar = this.doFocusSaidBar.bind(this);
         this.doTransferUrl = this.doTransferUrl.bind(this);
+        this.doUpInfoBlock = this.doUpInfoBlock.bind(this);
+    }
+
+    doUpInfoBlock(data) {
+        this.props.onUpInfoBlock(data);
     }
 
     doTransferUrl(url) {
@@ -50,6 +55,8 @@ export default class Navigation extends React.Component {
                         show={this.state.show}
                         urlPosition={this.state.urlPosition}
                         onChangeShow={this.doChangeShow}
+                        infoBlock={this.props.infoBlock}
+                        onUpInfoBlock={this.doUpInfoBlock}
                     />
 
                 </Container>

@@ -11,6 +11,11 @@ export default class RightMenuBlock extends React.Component {
         }
 
         this.doChangeShow = this.doChangeShow.bind(this);
+        this.doUpInfoBlock = this.doUpInfoBlock.bind(this);
+    }
+
+    doUpInfoBlock(data) {
+        this.props.onUpInfoBlock(data);
     }
 
     doChangeShow() {
@@ -30,6 +35,8 @@ export default class RightMenuBlock extends React.Component {
 
                     <Main
                         urlPosition={this.props.urlPosition}
+                        infoBlock={this.props.infoBlock}
+                        onUpInfoBlock={this.doUpInfoBlock}
                     />
 
                     <Footer />
