@@ -101,8 +101,12 @@
             transform: scale(1);
   }
   25% {
-    -webkit-transform: scale(1.1);
-            transform: scale(1.1);
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+  }
+  50% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
   }
   75% {
     -webkit-transform: scale(0.9);
@@ -120,8 +124,12 @@
             transform: scale(1);
   }
   25% {
-    -webkit-transform: scale(1.1);
-            transform: scale(1.1);
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+  }
+  50% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
   }
   75% {
     -webkit-transform: scale(0.9);
@@ -387,8 +395,8 @@
 .btn_form:hover {
   -webkit-box-shadow: 3px 3px 5px #6c757d;
           box-shadow: 3px 3px 5px #6c757d;
-  -webkit-animation: hover_btn 0.35s;
-          animation: hover_btn 0.35s;
+  -webkit-animation: hover_btn 0.5s;
+          animation: hover_btn 0.5s;
 }
 
 .span_title {
