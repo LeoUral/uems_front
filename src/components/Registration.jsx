@@ -77,7 +77,7 @@ export default class Registration extends React.Component {
             setTimeout(() => {
                 this.props.onChangeShowLoginPage();
                 this.props.onChangeShowRegistration();
-            }, 1500)
+            }, 750)
 
         } else {
             setTimeout(() => {

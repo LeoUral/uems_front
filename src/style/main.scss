@@ -18,7 +18,7 @@
 
 .said-bar {
     width: 300px;
-    min-height: 10vh;
+    min-height: 100vh;
     background-color: #343a40;
     color: #fff;
     transition: 0.5s;
@@ -190,7 +190,7 @@
     left: 30%;
     width: 40%;
     z-index: 20;
-    animation: opacity_1 1.5s;
+    animation: opacity_1 0.75s;
     //* время завязано с формами
     //* LoginPage, Registration
 }
@@ -204,7 +204,7 @@
     left: 30%;
     width: 40%;
     z-index: 20;
-    animation: opacity_0 1.5s;
+    animation: opacity_0 0.75s;
     //* время завязано с формами
     //* LoginPage, Registration
 }
@@ -232,7 +232,7 @@
     transition: 0.5s;
     &:hover {
         box-shadow: 3px 3px 5px #6c757d;
-        animation: hover_btn 0.15s;
+        animation: hover_btn 0.35s;
         // transition: 0.5s;
     }
 }

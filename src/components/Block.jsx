@@ -129,7 +129,7 @@ export default class Block extends React.Component {
     }
 
     componentDidMount() {
-
+        this.doLoadStart(Number(localStorage.getItem('idUser')));
     }
 
     render() {

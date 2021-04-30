@@ -40,7 +40,7 @@ export default class LoginPage extends React.Component {
         setTimeout(() => {
             this.props.onChangeShowLoginPage();
             this.props.onChangeShowRegistration();
-        }, 1500) // время так же завазано в css
+        }, 750) // время так же завазано в css
     }
 
     //* Обрабатываем ввход в ситстему. 
@@ -54,7 +54,7 @@ export default class LoginPage extends React.Component {
 
         setTimeout(() => {
             this.props.onChangeShowLoginPage();
-        }, 1500) // время так же завазано в css
+        }, 750) // время так же завазано в css
     }
 
     //* Данные с сервера о соответствии данных

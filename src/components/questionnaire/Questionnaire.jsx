@@ -228,7 +228,7 @@ export default class Questionnaire extends React.Component {
         this.setState({ infoBlock: this.props.infoBlock })
         setTimeout(() => {
             this.setState({ show: true })
-        }, 500)//
+        }, 500)
     }
 
     render() {
