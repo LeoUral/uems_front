@@ -1,6 +1,7 @@
 import React from 'react';
 import MainContent from './MainContent';
 import Questionnaire from './questionnaire/Questionnaire';
+import Search from './search/Search';
 
 
 export default class Main extends React.Component {
@@ -32,6 +33,8 @@ export default class Main extends React.Component {
                             onUpInfoBlock={this.doUpInfoBlock}
                         />
                         : ''}
+                    {urlPosition === '/tech_others' ?
+                        <Search /> : ''}
                 </div>
             </>
         )
