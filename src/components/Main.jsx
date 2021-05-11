@@ -9,6 +9,11 @@ export default class Main extends React.Component {
         this.state = {
             language: 'rus'
         }
+        this.doUpInfoBlock = this.doUpInfoBlock.bind(this);
+    }
+
+    doUpInfoBlock(data) {
+        this.props.onUpInfoBlock(data);
     }
 
     render() {
@@ -21,7 +26,12 @@ export default class Main extends React.Component {
             <>
                 <div>
                     {urlPosition === '' ? <MainContent /> : ''}
-                    {urlPosition === "/questionnaire" ? <Questionnaire /> : ''}
+                    {urlPosition === "/questionnaire" ?
+                        <Questionnaire
+                            infoBlock={this.props.infoBlock}
+                            onUpInfoBlock={this.doUpInfoBlock}
+                        />
+                        : ''}
                 </div>
             </>
         )

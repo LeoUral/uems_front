@@ -97,39 +97,47 @@
 
 @-webkit-keyframes hover_btn {
   from {
-    -webkit-transform: rotate(0);
-            transform: rotate(0);
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
   25% {
-    -webkit-transform: rotate(15deg);
-            transform: rotate(15deg);
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+  }
+  50% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
   }
   75% {
-    -webkit-transform: rotate(-15deg);
-            transform: rotate(-15deg);
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
   }
   to {
-    -webkit-transform: rotate(0);
-            transform: rotate(0);
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
 }
 
 @keyframes hover_btn {
   from {
-    -webkit-transform: rotate(0);
-            transform: rotate(0);
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
   25% {
-    -webkit-transform: rotate(15deg);
-            transform: rotate(15deg);
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+  }
+  50% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
   }
   75% {
-    -webkit-transform: rotate(-15deg);
-            transform: rotate(-15deg);
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
   }
   to {
-    -webkit-transform: rotate(0);
-            transform: rotate(0);
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
 }
 
@@ -156,7 +164,7 @@
 
 .said-bar {
   width: 300px;
-  min-height: 10vh;
+  min-height: 100vh;
   background-color: #343a40;
   color: #fff;
   -webkit-transition: 0.5s;
@@ -345,8 +353,8 @@
   left: 30%;
   width: 40%;
   z-index: 20;
-  -webkit-animation: opacity_1 1.5s;
-          animation: opacity_1 1.5s;
+  -webkit-animation: opacity_1 0.75s;
+          animation: opacity_1 0.75s;
 }
 
 .modal_form_off {
@@ -358,8 +366,8 @@
   left: 30%;
   width: 40%;
   z-index: 20;
-  -webkit-animation: opacity_0 1.5s;
-          animation: opacity_0 1.5s;
+  -webkit-animation: opacity_0 0.75s;
+          animation: opacity_0 0.75s;
 }
 
 .form_main {
@@ -387,8 +395,8 @@
 .btn_form:hover {
   -webkit-box-shadow: 3px 3px 5px #6c757d;
           box-shadow: 3px 3px 5px #6c757d;
-  -webkit-animation: hover_btn 0.15s;
-          animation: hover_btn 0.15s;
+  -webkit-animation: hover_btn 0.5s;
+          animation: hover_btn 0.5s;
 }
 
 .span_title {
