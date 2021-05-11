@@ -241,11 +241,11 @@ export default class Form_Main extends React.Component {
                                         // value={this.value[10].value}
                                         onChangeValue={this.doChangeValue}
                                     />
-                                    <InputForm
+
+                                    <PhoneForm
                                         id={11}
                                         width={4}
                                         show={true}
-                                        // verify="number"
                                         label=""
                                         placeholder="Телефон"
                                         description="Контактное лицо"
@@ -287,7 +287,7 @@ export default class Form_Main extends React.Component {
                                         width={4}
                                         show={true}
                                         label=""
-                                        placeholder="Срана"
+                                        placeholder="Страна"
                                         description="Предприятие"
                                         option="Россия, не Россия"
                                         value={this.value[14] ? this.value[14].value : ''}

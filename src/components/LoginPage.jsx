@@ -115,7 +115,7 @@ export default class LoginPage extends React.Component {
                     <Form className={this.state.showOff ? "modal_form_off" : "modal_form"}>
                         <Container className="container">
                             <Alert variant={error ? "danger" : "success"} style={{ textAlign: 'center' }}>
-                                <Alert.Heading>{error ? 'Ошибка входа' : 'Ввойдите в систему'}</Alert.Heading>
+                                <Alert.Heading>{error ? 'Ошибка входа' : 'Войдите в систему'}</Alert.Heading>
 
                             </Alert>
                             <Form.Group controlId="formBasicEmail">

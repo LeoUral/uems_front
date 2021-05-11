@@ -44,13 +44,16 @@ export default class SelectForm extends React.Component {
         })
     }
 
+
     componentDidMount() {
         this.setState({ value: this.props.value })
 
-        this.viewListOptions(this.props.option)
+        // this.viewListOptions(this.props.option)
     }
 
     render() {
+
+        this.viewListOptions(this.props.option)
 
         const width = this.props.width;
         const label = this.props.label;

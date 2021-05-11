@@ -5,6 +5,31 @@ class Server {
         this.arrDataFromServer = [];
     }
 
+    //* получаем данные с сервера без ID
+    async getDataFromServerNotId(name, id) {
+        let urlReg = 'http://api.uems.ru:5000/sthe/api/v1.0/object_read'; // для чтения
+
+
+        let userBody = {
+            key: 'weifeiph7Pie',
+            userid: '', //*опционально, может быть пустой
+            name: name //todo основной ключ
+        };
+
+        let response = await fetch(urlReg, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'Access-Control-Allow-Origin;application/json;charset=utf-8',
+            },
+            body: JSON.stringify(userBody)
+        });
+        // console.log(response);
+
+        let result = await response.json();
+
+        return result
+    }
+
     //* получаем данные с сервера
     async getDataFromServer(name, id) {
         let urlReg = 'http://api.uems.ru:5000/sthe/api/v1.0/object_read'; // для чтения
@@ -116,9 +141,7 @@ class Server {
     //*Сервер для регистрации нового пользователя
     async sendDataRegistration(eMail, password) {
 
-        let urlReg = 'https://api.uems.ru/sthe/api/v1.0/client_reg'; // для регистрации
-
-        console.log('СЕРВЕР РЕГИСТРАЦИИ');
+        let urlReg = 'http://api.uems.ru:5000/sthe/api/v1.0/client_reg'; // для регистрации
 
         let userBody = {
             key: 'weifeiph7Pie',
