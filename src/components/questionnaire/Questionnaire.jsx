@@ -18,8 +18,6 @@ import Form_Thirteen from './Form_Thirteen';
 import Form_Fourteen from './Form_Fourteen';
 
 import Server from '../server/server';
-import _Sample from './_Sample';
-
 
 export default class Questionnaire extends React.Component {
     constructor(props) {

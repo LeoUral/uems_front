@@ -118,6 +118,8 @@ class Server {
 
         let urlReg = 'https://api.uems.ru/sthe/api/v1.0/client_reg'; // для регистрации
 
+        console.log('СЕРВЕР РЕГИСТРАЦИИ');
+
         let userBody = {
             key: 'weifeiph7Pie',
             login: eMail,
