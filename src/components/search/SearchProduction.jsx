@@ -20,7 +20,8 @@ export default class SearchProduction extends React.Component {
         this.state = {
             show: false,
             show1: false,
-            typeProduction: ''
+            typeProduction: '',
+            descript: ''
         }
 
         this.doChangeVisionBlock = this.doChangeVisionBlock.bind(this);
@@ -33,7 +34,9 @@ export default class SearchProduction extends React.Component {
     }
 
     doChangeValue(data) {
-        console.log(data.value);
+        // console.log(data.value);
+        data.description = this.state.descript;
+        this.props.onChangeValue(data);
     }
 
     assignConst(constData) {
@@ -49,42 +52,42 @@ export default class SearchProduction extends React.Component {
         switch (data) {
             case arrProduction[0]:
                 this.assignConst(cutting);
-                this.setState({ show1: true });
+                this.setState({ show1: true, descript: 'One' });
                 break;
 
             case arrProduction[1]:
                 this.assignConst(rolling);
-                this.setState({ show1: true });
+                this.setState({ show1: true, descript: 'One' });
                 break;
 
             case arrProduction[2]:
                 this.assignConst(mechanical);
-                this.setState({ show1: true });
+                this.setState({ show1: true, descript: 'Two' });
                 break;
 
             case arrProduction[3]:
                 this.assignConst(welding);
-                this.setState({ show1: true });
+                this.setState({ show1: true, descript: 'Three' });
                 break;
 
             case arrProduction[4]:
                 this.assignConst(thermal);
-                this.setState({ show1: true });
+                this.setState({ show1: true, descript: 'Five' });
                 break;
 
             case arrProduction[5]:
                 this.assignConst(paintJob);
-                this.setState({ show1: true });
+                this.setState({ show1: true, descript: 'Six' });
                 break;
 
             case arrProduction[6]:
                 this.assignConst(flange);
-                this.setState({ show1: true });
+                this.setState({ show1: true, descript: 'Eight' });
                 break;
 
             case arrProduction[7]:
                 this.assignConst(bottomMetal);
-                this.setState({ show1: true });
+                this.setState({ show1: true, descript: 'Eight' });
                 break;
         }
     }

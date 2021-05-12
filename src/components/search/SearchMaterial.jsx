@@ -21,7 +21,9 @@ export default class SearchMaterial extends React.Component {
     }
 
     doChangeValue(data) {
-        console.log(data.value);
+        // console.log(data.value);
+        data.description = 'Four';
+        this.props.onChangeValue(data);
     }
 
     render() {

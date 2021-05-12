@@ -160,5 +160,31 @@ class Server {
 
         return result;
     }
+
+    //*Поисковый запрос на Сервер
+    async sendSearchData(data) {
+        let urlReg = 'http://api.uems.ru:5000/sthe/api/v1.0/object_search'; // для поиска
+
+        let userBody = {
+            key: 'weifeiph7Pie',
+            id: localStorage.getItem('idUser'),
+            // name: name,
+            anketa: data
+        };
+
+        let response = await fetch(urlReg, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8;Access-Control-Allow-Origin',
+            },
+            body: JSON.stringify(userBody)
+        });
+
+        let result = await response.json();
+        console.log('ПОИСКОВЫЙ ОТВЕТ СЕРВЕРА: ');
+        console.log(result);
+        return result;
+    }
+
 }
 export default new Server();

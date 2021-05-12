@@ -20,7 +20,9 @@ export default class SearchNameCompany extends React.Component {
     }
 
     doChangeValue(data) {
+        data.description = 'Main';
         console.log(data);
+        this.props.onChangeValue(data);
     }
 
     async getDataNotId() {
