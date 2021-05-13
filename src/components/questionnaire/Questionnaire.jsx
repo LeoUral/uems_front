@@ -16,6 +16,7 @@ import Form_Eleven from './Form_Eleven';
 import Form_Twelve from './Form_Twelve';
 import Form_Thirteen from './Form_Thirteen';
 import Form_Fourteen from './Form_Fourteen';
+import Svg_Circle from '../../icon/Svg_Circle';
 
 import Server from '../server/server';
 
@@ -424,51 +425,81 @@ export default class Questionnaire extends React.Component {
                             : ''}
 
 
-                        <Button className={classEmpty[0]} variant="outline-success" data-name="Main" onClick={this.handleClickView}>
-                            Данные предприятия
-                            </Button>
-                        <Button className={classEmpty[1]} variant="outline-success" data-name="One" onClick={this.handleClickView}>
-                            Форма технического аудита: "Заготовительное производство"
-                            </Button>
-                        <Button className={classEmpty[2]} variant="outline-success" data-name="Two" onClick={this.handleClickView}>
-                            Форма технического аудита: "Механическая обработка деталей и узлов"
-                            </Button>
-                        <Button className={classEmpty[3]} variant="outline-success" data-name="Three" onClick={this.handleClickView}>
-                            Форма технического аудита: " Сварочное производство"
-                            </Button>
-                        <Button className={classEmpty[4]} variant="outline-success" data-name="Four" onClick={this.handleClickView}>
-                            Форма технического аудита: "Материалы", "Развальцовка", "Испытания"
-                            </Button>
-                        <Button className={classEmpty[5]} variant="outline-success" data-name="Five" onClick={this.handleClickView}>
-                            Форма технического аудита: "Термическая обработка"
-                            </Button>
-                        <Button className={classEmpty[6]} variant="outline-success" data-name="Six" onClick={this.handleClickView}>
-                            Форма технического аудита: "Работа с ЛКМ"
-                            </Button>
-                        <Button className={classEmpty[7]} variant="outline-success" data-name="Seven" onClick={this.handleClickView}>
-                            Форма технического аудита: "Крепёжные изделия, Поковки"
-                            </Button>
-                        <Button className={classEmpty[8]} variant="outline-success" data-name="Eight" onClick={this.handleClickView}>
-                            Форма технического аудита: "Изготовление фланцев и днища"
-                            </Button>
-                        <Button className={classEmpty[9]} variant="outline-success" data-name="Nine" onClick={this.handleClickView}>
-                            Форма технического аудита: "Изготовление полулинз и линзовых компенсаторов / Подъемно-транспортные механизмы"
-                            </Button>
-                        <Button className={classEmpty[10]} variant="outline-success" data-name="Ten" onClick={this.handleClickView}>
-                            Форма технического аудита: "Технология сварки"
-                            </Button>
-                        <Button className={classEmpty[11]} variant="outline-success" data-name="Eleven" onClick={this.handleClickView}>
-                            Форма технического аудита: "Развальцовка"
-                            </Button>
-                        <Button className={classEmpty[12]} variant="outline-success" data-name="Twelve" onClick={this.handleClickView}>
-                            Форма технического аудита: "Методы контроля качества"
-                            </Button>
-                        <Button className={classEmpty[13]} variant="outline-success" data-name="Thirteen" onClick={this.handleClickView}>
-                            Форма технического аудита: "Планирование производства"
-                            </Button>
-                        <Button className={classEmpty[14]} variant="outline-success" data-name="Fourteen" onClick={this.handleClickView}>
-                            Форма технического аудита: "Сертификаты, Декларации, Аттестации, Аккредитации"
-                            </Button>
+                        <Button className={classEmpty[0]} variant="success" data-name="Main" onClick={this.handleClickView}>
+                            <span style={{ display: 'block' }}>
+                                Данные предприятия
+                                 </span>
+                        </Button>
+                        <Button className={classEmpty[1]} variant="success" data-name="One" onClick={this.handleClickView}>
+                            <span style={{ display: 'block' }}>
+                                Форма технического аудита: "Заготовительное производство"
+                            </span>
+                        </Button>
+                        <Button className={classEmpty[2]} variant="success" data-name="Two" onClick={this.handleClickView}>
+                            <span style={{ display: 'block' }}>
+                                Форма технического аудита: "Механическая обработка деталей и узлов"
+                                </span>
+                        </Button>
+                        <Button className={classEmpty[3]} variant="success" data-name="Three" onClick={this.handleClickView}>
+                            <span style={{ display: 'block' }}>
+                                Форма технического аудита: " Сварочное производство"
+                            </span>
+                        </Button>
+                        <Button className={classEmpty[4]} variant="success" data-name="Four" onClick={this.handleClickView}>
+                            <span style={{ display: 'block' }}>
+                                Форма технического аудита: "Материалы", "Развальцовка", "Испытания"
+                            </span>
+                        </Button>
+                        <Button className={classEmpty[5]} variant="success" data-name="Five" onClick={this.handleClickView}>
+                            <span style={{ display: 'block' }}>
+                                Форма технического аудита: "Термическая обработка"
+                            </span>
+                        </Button>
+                        <Button className={classEmpty[6]} variant="success" data-name="Six" onClick={this.handleClickView}>
+                            <span style={{ display: 'block' }}>
+                                Форма технического аудита: "Работа с ЛКМ"
+                            </span>
+                        </Button>
+                        <Button className={classEmpty[7]} variant="success" data-name="Seven" onClick={this.handleClickView}>
+                            <span style={{ display: 'block' }}>
+                                Форма технического аудита: "Крепёжные изделия, Поковки"
+                            </span>
+                        </Button>
+                        <Button className={classEmpty[8]} variant="success" data-name="Eight" onClick={this.handleClickView}>
+                            <span style={{ display: 'block' }}>
+                                Форма технического аудита: "Изготовление фланцев и днища"
+                            </span>
+                        </Button>
+                        <Button className={classEmpty[9]} variant="success" data-name="Nine" onClick={this.handleClickView}>
+                            <span style={{ display: 'block' }}>
+                                Форма технического аудита: "Изготовление полулинз и линзовых компенсаторов / Подъемно-транспортные механизмы"
+                            </span>
+                        </Button>
+                        <Button className={classEmpty[10]} variant="success" data-name="Ten" onClick={this.handleClickView}>
+                            <span style={{ display: 'block' }}>
+                                Форма технического аудита: "Технология сварки"
+                            </span>
+                        </Button>
+                        <Button className={classEmpty[11]} variant="success" data-name="Eleven" onClick={this.handleClickView}>
+                            <span style={{ display: 'block' }}>
+                                Форма технического аудита: "Развальцовка"
+                            </span>
+                        </Button>
+                        <Button className={classEmpty[12]} variant="success" data-name="Twelve" onClick={this.handleClickView}>
+                            <span style={{ display: 'block' }}>
+                                Форма технического аудита: "Методы контроля качества"
+                            </span>
+                        </Button>
+                        <Button className={classEmpty[13]} variant="success" data-name="Thirteen" onClick={this.handleClickView}>
+                            <span style={{ display: 'block' }}>
+                                Форма технического аудита: "Планирование производства"
+                            </span>
+                        </Button>
+                        <Button className={classEmpty[14]} variant="success" data-name="Fourteen" onClick={this.handleClickView}>
+                            <span style={{ display: 'block' }}>
+                                Форма технического аудита: "Сертификаты, Декларации, Аттестации, Аккредитации"
+                                </span>
+                        </Button>
                     </Container>
                 </div>
             </>

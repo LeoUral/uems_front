@@ -18,7 +18,7 @@
 
 .said-bar {
     width: 300px;
-    min-height: 100vh;
+    min-height: 101.2vh;
     background-color: #343a40;
     color: #fff;
     transition: 0.5s;
@@ -39,6 +39,7 @@
 }
 
 .menu-position-parent {
+    width: 120%;
     margin: 20px 10px 10px 10px;
     display: flex;
     flex-direction: row;
@@ -77,15 +78,42 @@
     transition: 1s;
 }
 
+.svg-left {
+    width: 20px;
+    height: 20px;
+    padding: 0px 0 0 0;
+    animation: rotate_left 0.5s;
+    transition: 1s;
+}
+
+.svg-down {
+    width: 20px;
+    height: 20px;
+    padding: 0px 0 0 0;
+    animation: rotate_down 0.5s;
+    transition: 1s;
+}
+
+.icon_circle {
+    width: 20px;
+    height: 20px;
+    padding: 3px 0 0 0;
+}
+
 .card-my {
-    width: 200px;
+    width: 220px;
     height: 40px;
+    padding: 5px 0 0 0;
     text-align: left;
     border: none;
     outline: none;
     color: #fff;
     background-color: #343a40;
     transition: 0.5s;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .card-my:hover {
@@ -108,8 +136,8 @@
 
 .chaild-link {
     display: block;
-    padding: 5px 0 5px 5px!important;
-    padding: 0px;
+    margin: 5px 0 5px 0;
+    padding: 5px 0 5px 40px!important;
     width: 100%;
     text-decoration: none!important;
     color: #fff;
@@ -120,8 +148,9 @@
 }
 
 .card-body {
-    padding: 0;
-    width: 155px!important;
+    padding: 0 0 0 0;
+    // width: 155px!important;
+    font-size: 15px;
 }
 
 .side_bar_logo {
@@ -229,12 +258,20 @@
     margin: 10px 10px;
     width: 250px;
     height: 140px;
-    transition: 0.5s;
-    &:hover {
-        box-shadow: 3px 3px 5px #6c757d;
-        animation: hover_btn 0.5s;
-        // transition: 0.5s;
-    }
+    transition: 1s;
+}
+
+.btn_form:hover span {
+    // box-shadow: 3px 3px 5px #6c757d;
+    animation: hover_btn 0.75s;
+    animation-fill-mode: forwards;
+    // transition: 0.5s;
+}
+
+.btn_form span {
+    opacity: 0.7;
+    animation: hover_btn_end 0.75s;
+    transition: 1s;
 }
 
 .btn_trade_form {

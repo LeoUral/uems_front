@@ -1,16 +1,25 @@
 import React from 'react';
 import { Accordion, Card, Button } from 'react-bootstrap';
+import Svg_Angle_left from '../../icon/Svg_Angle_left';
+import Svg_Angle_down from '../../icon/Svg_Angle_down';
+
 
 export default class PositionChaild extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             language: 'rus',
-            viewData: []
+            viewData: [],
+            show1: false
         }
 
         this.renderMenu = this.renderMenu.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.handleClickShow = this.handleClickShow.bind(this);
+    }
+
+    handleClickShow(e) {
+        this.setState({ show1: !this.state.show1 })
     }
 
     handleClick(e) {
@@ -50,18 +59,21 @@ export default class PositionChaild extends React.Component {
 
         const show = this.props.show;
         const name = this.props.name;
+        const show1 = this.state.show1;
+        const icon = this.props.icon;
 
         return (
             <>
-                {/* <div className={this.classChild} > {this.props.name} </div> */}
                 <Accordion
                     defaultActiveKey="1"
-                    style={{ transition: '0.5s', width: show ? '0px' : '200px' }}
+                    style={{ transition: '0.5s', width: show ? '0px' : '240px' }}
                 >
-                    <Card>
-                        <Card.Header style={{ padding: '0px' }} >
-                            <Accordion.Toggle variant="link" eventKey="0" className="card-my" >
+                    <Card style={{ width: '240px', transition: '0.5s', width: show ? '0px' : '240px' }} >
+                        <Card.Header style={{ padding: '0px', width: '240px' }} >
+                            <Accordion.Toggle variant="link" eventKey="0" className="card-my" onClick={this.handleClickShow}>
+                                {icon}
                                 {name}
+                                {show1 ? <Svg_Angle_down colorSvg="#ccc" /> : <Svg_Angle_left colorSvg="#ccc" />}
                             </Accordion.Toggle>
                         </Card.Header>
                         <Accordion.Collapse eventKey="0">

@@ -21,6 +21,50 @@
   }
 }
 
+@-webkit-keyframes rotate_left {
+  from {
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+  }
+  to {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+}
+
+@keyframes rotate_left {
+  from {
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+  }
+  to {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+}
+
+@-webkit-keyframes rotate_down {
+  from {
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+  }
+  to {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+}
+
+@keyframes rotate_down {
+  from {
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+  }
+  to {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+}
+
 @-webkit-keyframes opacity_1 {
   from {
     opacity: 0;
@@ -99,22 +143,18 @@
   from {
     -webkit-transform: scale(1);
             transform: scale(1);
+    opacity: 0.7;
   }
   25% {
-    -webkit-transform: scale(0.5);
-            transform: scale(0.5);
   }
   50% {
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2);
   }
   75% {
-    -webkit-transform: scale(0.9);
-            transform: scale(0.9);
   }
   to {
-    -webkit-transform: scale(1);
-            transform: scale(1);
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+    opacity: 1;
   }
 }
 
@@ -122,22 +162,44 @@
   from {
     -webkit-transform: scale(1);
             transform: scale(1);
+    opacity: 0.7;
   }
   25% {
-    -webkit-transform: scale(0.5);
-            transform: scale(0.5);
   }
   50% {
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2);
   }
   75% {
-    -webkit-transform: scale(0.9);
-            transform: scale(0.9);
+  }
+  to {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes hover_btn_end {
+  from {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+    opacity: 1;
   }
   to {
     -webkit-transform: scale(1);
             transform: scale(1);
+    opacity: 0.7;
+  }
+}
+
+@keyframes hover_btn_end {
+  from {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+    opacity: 1;
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 0.7;
   }
 }
 
@@ -164,7 +226,7 @@
 
 .said-bar {
   width: 300px;
-  min-height: 100vh;
+  min-height: 101.2vh;
   background-color: #343a40;
   color: #fff;
   -webkit-transition: 0.5s;
@@ -185,6 +247,7 @@
 }
 
 .menu-position-parent {
+  width: 120%;
   margin: 20px 10px 10px 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -229,9 +292,36 @@
   transition: 1s;
 }
 
+.svg-left {
+  width: 20px;
+  height: 20px;
+  padding: 0px 0 0 0;
+  -webkit-animation: rotate_left 0.5s;
+          animation: rotate_left 0.5s;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.svg-down {
+  width: 20px;
+  height: 20px;
+  padding: 0px 0 0 0;
+  -webkit-animation: rotate_down 0.5s;
+          animation: rotate_down 0.5s;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.icon_circle {
+  width: 20px;
+  height: 20px;
+  padding: 3px 0 0 0;
+}
+
 .card-my {
-  width: 200px;
+  width: 220px;
   height: 40px;
+  padding: 5px 0 0 0;
   text-align: left;
   border: none;
   outline: none;
@@ -239,6 +329,18 @@
   background-color: #343a40;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .card-my:hover {
@@ -263,8 +365,8 @@
 
 .chaild-link {
   display: block;
-  padding: 5px 0 5px 5px !important;
-  padding: 0px;
+  margin: 5px 0 5px 0;
+  padding: 5px 0 5px 40px !important;
   width: 100%;
   text-decoration: none !important;
   color: #fff;
@@ -276,8 +378,8 @@
 }
 
 .card-body {
-  padding: 0;
-  width: 155px !important;
+  padding: 0 0 0 0;
+  font-size: 15px;
 }
 
 .side_bar_logo {
@@ -388,15 +490,23 @@
   margin: 10px 10px;
   width: 250px;
   height: 140px;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  -webkit-transition: 1s;
+  transition: 1s;
 }
 
-.btn_form:hover {
-  -webkit-box-shadow: 3px 3px 5px #6c757d;
-          box-shadow: 3px 3px 5px #6c757d;
-  -webkit-animation: hover_btn 0.5s;
-          animation: hover_btn 0.5s;
+.btn_form:hover span {
+  -webkit-animation: hover_btn 0.75s;
+          animation: hover_btn 0.75s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+.btn_form span {
+  opacity: 0.7;
+  -webkit-animation: hover_btn_end 0.75s;
+          animation: hover_btn_end 0.75s;
+  -webkit-transition: 1s;
+  transition: 1s;
 }
 
 .btn_trade_form {
