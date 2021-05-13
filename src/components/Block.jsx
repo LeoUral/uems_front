@@ -16,6 +16,7 @@ export default class Block extends React.Component {
             lengthDataFromServer_Main: 0,
             infoBlock: {
                 language: 'rus',
+                cardCompany: [],
                 classQuestBlock: ['btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form'],
                 nameQuestBlock: ['Main', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen']
             }
@@ -116,7 +117,12 @@ export default class Block extends React.Component {
         dataJson.forEach((data) => {
             dataNew = [...dataNew, { id: data.id, description: data.description, information: data.information, value: data.value }]
         })
-        if (name === 'Main') this.setState({ data_Main: dataNew, lengthDataFromServer_Main: dataNew.length })
+        if (name === 'Main') {
+            this.card = this.state.infoBlock;
+            this.card.cardCompany = dataNew;
+            this.setState({ infoBlock: this.card, lengthDataFromServer_Main: dataNew.length });
+            // setTimeout(() => { console.log(this.state.infoBlock.cardCompany[1]) }, 500)//test
+        }
     }
 
     doChangeShowRegistration() {
@@ -133,6 +139,9 @@ export default class Block extends React.Component {
     }
 
     render() {
+
+        const cardCompany = this.state.infoBlock.cardCompany;
+
         return (
             <>
                 { this.state.show_LoginPage ?
@@ -149,7 +158,7 @@ export default class Block extends React.Component {
                     /> : ''}
 
                 <Navigation
-                    nameCompany={this.state.data_Main[1]}
+                    nameCompany={cardCompany && cardCompany[1]}
                     infoBlock={this.state.infoBlock}
                     onUpInfoBlock={this.doUpInfoBlock}
                 />

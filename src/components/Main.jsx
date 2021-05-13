@@ -2,6 +2,8 @@ import React from 'react';
 import MainContent from './MainContent';
 import Questionnaire from './questionnaire/Questionnaire';
 import Search from './search/Search';
+import TradeCustomer from './trade/TradeCustomer';
+import TradeParticipant from './trade/TradeParticipant';
 
 
 export default class Main extends React.Component {
@@ -10,11 +12,15 @@ export default class Main extends React.Component {
         this.state = {
             language: 'rus'
         }
+
         this.doUpInfoBlock = this.doUpInfoBlock.bind(this);
     }
 
     doUpInfoBlock(data) {
         this.props.onUpInfoBlock(data);
+    }
+
+    componentDidMount() {
     }
 
     render() {
@@ -35,6 +41,10 @@ export default class Main extends React.Component {
                         : ''}
                     {urlPosition === '/tech_others' ?
                         <Search /> : ''}
+                    {urlPosition === '/customer' ?
+                        <TradeCustomer /> : ''}
+                    {urlPosition === '/participant' ?
+                        <TradeParticipant /> : ''}
                 </div>
             </>
         )

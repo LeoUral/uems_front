@@ -237,6 +237,16 @@
     }
 }
 
+.btn_trade_form {
+    margin: 10px;
+    width: 280px;
+    transition: 0.5s;
+    &:hover {
+        box-shadow: 3px 3px 5px #6c757d;
+        transition: 0.5s;
+    }
+}
+
 .span_title {
     margin: 20px 0 -15px 15px;
 }

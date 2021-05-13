@@ -1,13 +1,13 @@
 /* eslint-disable default-case */
 
 import React from 'react';
-import { Jumbotron, Container, Form, Alert, Button, Row, Col } from 'react-bootstrap';
+import { Jumbotron, Container, Form, Alert, Button, Row, Col, Table } from 'react-bootstrap';
 import SelectForm from '../questionnaire/SelectForm';
 import SearchNameCompany from './SearchNameCompany';
 import SearchProduction from './SearchProduction';
 import SearchMaterial from './SearchMaterial';
 import Server from '../server/server';
-import SaerchTable from './SearchTable';
+// import SaerchTable from './SearchTable';
 
 
 export default class Search extends React.Component {
@@ -17,7 +17,8 @@ export default class Search extends React.Component {
             show: false,
             nameCompany: '',
             data: [],
-            dataSearch: []
+            dataSearch: [],
+            viewDataTable: []
         }
 
         this.handleClickShadow = this.handleClickShadow.bind(this);
@@ -29,6 +30,14 @@ export default class Search extends React.Component {
         this.sendRequestSearch = this.sendRequestSearch.bind(this);
         this.parsingDataFromServer = this.parsingDataFromServer.bind(this);
         this.doNotRepeat = this.doNotRepeat.bind(this);
+        this.doWriteTable = this.doWriteTable.bind(this);
+        this.handleClickTable = this.handleClickTable.bind(this);
+    }
+
+    // определяем ID выбранного предприятия в таблице
+    handleClickTable(e) {
+        console.log(e.target.dataset.id);
+        //todo прописать позже функции
     }
 
     handleClickSearch() {
@@ -49,16 +58,34 @@ export default class Search extends React.Component {
         })
     }
 
+    //*делаем верстку таблицы с надйенными данными
+    doWriteTable(data) {
+        this.arrData = [];
+
+        data.forEach(element => {
+            this.arrData = [...this.arrData,
+            <tr key={element.id} style={{ cursor: 'pointer' }} onClick={this.handleClickTable} >
+                <td data-id={element.id} >{element.nameCompany}</td>
+                <td data-id={element.id} >{element.phone}</td>
+                <td data-id={element.id} >{element.eMail}</td>
+                <td data-id={element.id} >{element.city}</td>
+            </tr>
+            ]
+        });
+        this.setState({ viewDataTable: this.arrData })
+    }
+
     //*группируем данные, убираем повторы
     doNotRepeat() {
         this.dData = [];
         this.state.dataSearch.forEach((data) => {
-            //определяем наличие объекта в массиве, если его нет получаем undefined и добавляем его в массив
+            //определяем наличие объекта в массиве, если его нет получаем undefined и добавляем его в массив один раз
             if ((this.dData.find(item => item.nameCompany == data.nameCompany)) === undefined) {
                 this.dData = [...this.dData, data]
             }
         })
         this.setState({ dataSearch: this.dData });
+        this.doWriteTable(this.dData);
     }
 
     //*парсинг данных с сервера
@@ -78,10 +105,18 @@ export default class Search extends React.Component {
     //* парсинг данных для отправки запросом на сервер
     parsingDataForSearch(data) {
         this.dData = [];
+        this.check = true;
+
         data.forEach(data => {
             this.dData[+data.id] = { id: data.id, description: data.description, information: data.information, data: data.value }
+            if (data.value === undefined) this.check = false;//проверка на undefined
         })
-        this.sendRequestSearch(this.dData);
+        //проверка на undefined
+        if (this.check) {
+            this.sendRequestSearch(this.dData)
+        } else {
+            this.setState({ data: [] })
+        }
         console.log(this.dData);
     }
 
@@ -105,7 +140,7 @@ export default class Search extends React.Component {
 
     doChangeValue(data) {
         // console.log(data);
-        this.setState({ data: [...this.state.data, data] })
+        if (data.value !== undefined) this.setState({ data: [...this.state.data, data] }) // проверка на undefined
         setTimeout(() => { console.log(this.state.data); })
     }
 
@@ -127,7 +162,6 @@ export default class Search extends React.Component {
 
         return (
             <>
-
                 <div className="modal_window" style={{ display: show ? 'block' : 'none' }} >
                     <div className="shadow_form" onClick={this.handleClickShadow} ></div>
                     <Form className="form_main">
@@ -158,7 +192,19 @@ export default class Search extends React.Component {
                         </Container>
                         <Container>
                             {/** таблица с результатами поиска  */}
-                            <SaerchTable />
+                            <Table striped bordered hover size="sm">
+                                <thead>
+                                    <tr>
+                                        <th>Компания</th>
+                                        <th>Телефон</th>
+                                        <th>E-mail</th>
+                                        <th>Город</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {this.state.viewDataTable}
+                                </tbody>
+                            </Table>
                         </Container>
 
                     </Form>

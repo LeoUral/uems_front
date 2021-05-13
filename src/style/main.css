@@ -399,6 +399,20 @@
           animation: hover_btn 0.5s;
 }
 
+.btn_trade_form {
+  margin: 10px;
+  width: 280px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.btn_trade_form:hover {
+  -webkit-box-shadow: 3px 3px 5px #6c757d;
+          box-shadow: 3px 3px 5px #6c757d;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
 .span_title {
   margin: 20px 0 -15px 15px;
 }

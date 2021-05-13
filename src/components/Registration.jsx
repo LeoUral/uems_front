@@ -122,32 +122,32 @@ export default class Registration extends React.Component {
 
                                 </Alert>
                                 <Form.Group controlId="formBasicEmail">
-                                    <Form.Label>Email address</Form.Label>
+                                    <Form.Label>Адрес электронной почты</Form.Label>
                                     <Form.Control
                                         type="email"
-                                        placeholder="Enter email"
+                                        placeholder="Введите email"
                                         onChange={this.handleChangeEmail}
                                         style={{ backgroundColor: `${colorErrorMail}` }}
                                     />
                                     <Form.Text className="text-muted">
-                                        We'll never share your email with anyone else.
+                                        *Мы никогда не будем делиться вашей электронной почтой ни с кем другим.
                             </Form.Text>
                                 </Form.Group>
 
                                 <Form.Group controlId="formBasicPassword">
-                                    <Form.Label>Password</Form.Label>
+                                    <Form.Label>Пароль для входа</Form.Label>
                                     <Form.Control
                                         type="password"
-                                        placeholder="Password"
+                                        placeholder="Пароль"
                                         onChange={this.handleChangePassword}
                                         style={{ backgroundColor: `${colorErrorPass}`, transition: '0.5s' }}
                                     />
                                 </Form.Group>
                                 <Form.Group controlId="formBasicPassword">
-                                    <Form.Label>repeat Password</Form.Label>
+                                    <Form.Label>Повторите пароль</Form.Label>
                                     <Form.Control
                                         type="password"
-                                        placeholder="repeat Password"
+                                        placeholder="Повторите пароль"
                                         onChange={this.handleChangeRePassword}
                                         style={{ backgroundColor: `${colorErrorPass}`, transition: '0.5s' }}
                                     />

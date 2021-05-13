@@ -119,23 +119,23 @@ export default class LoginPage extends React.Component {
 
                             </Alert>
                             <Form.Group controlId="formBasicEmail">
-                                <Form.Label>Email address</Form.Label>
+                                <Form.Label>Адрес электронной почты</Form.Label>
                                 <Form.Control
                                     type="email"
-                                    placeholder="Enter email"
+                                    placeholder="Введите email"
                                     onChange={this.handleChangeEmail}
                                     value={this.state.eMail}
                                 />
                                 <Form.Text className="text-muted">
-                                    We'll never share your email with anyone else.
+                                    *Мы никогда не будем делиться вашей электронной почтой ни с кем другим.
                             </Form.Text>
                             </Form.Group>
 
                             <Form.Group controlId="formBasicPassword">
-                                <Form.Label>Password</Form.Label>
+                                <Form.Label>Пароль для входа</Form.Label>
                                 <Form.Control
                                     type="password"
-                                    placeholder="Password"
+                                    placeholder="Пароль"
                                     onChange={this.handleChangePassword}
                                     value={this.state.password}
                                 />
