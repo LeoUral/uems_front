@@ -203,6 +203,43 @@
   }
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: inherit;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5cdcd;
+  /* цвет фона у дорожки */
+  -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2) inset;
+          box-shadow: 0 0 2px rgba(0, 0, 0, 0.2) inset;
+  /* тень у дорожки */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e47e7e;
+  /* цвет фона у дорожки */
+  border-radius: 8px;
+  /* скругление углов */
+  border: 3px solid #f5cdcd;
+  /* толщина, стиль и цвет рамки */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b91414;
+  /* ползунок меняет цвет при наведении */
+}
+
+::-webkit-scrollbar-button {
+  height: 10px;
+  border-radius: 50%;
+  background-color: #e47e7e;
+}
+
+::-webkit-scrollbar-button:hover {
+  background: #b91414;
+}
+
 .App {
   width: 100%;
 }

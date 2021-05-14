@@ -1,6 +1,10 @@
 import React from 'react';
 import { Form, Button, Container, Alert, Row, Col } from 'react-bootstrap';
 import TechDataTrade from './TechDataTrade';
+import ComercialTrade from './ComercialTrade';
+import DateTrade from './DateTrade';
+import ParticipantTrade from './ParticipantTrade';
+import FeaturesTrade from './FeaturesTrade';
 
 
 export default class CreateTrade extends React.Component {
@@ -8,7 +12,11 @@ export default class CreateTrade extends React.Component {
         super(props);
         this.state = {
             language: 'rus',
-            showTech: false
+            showTech: false,
+            showComercial: false,
+            showDate: false,
+            showParticipant: false,
+            showFeatures: false
 
         }
         this.handleClickShadow = this.handleClickShadow.bind(this);
@@ -17,10 +25,35 @@ export default class CreateTrade extends React.Component {
 
     handleClick(e) {
         console.log(e.target.dataset.index);
+
         if (e.target.dataset.index === 'tech') {
             this.setState({ showTech: true })
         } else {
             this.setState({ showTech: false })
+        }
+
+        if (e.target.dataset.index === 'comercial') {
+            this.setState({ showComercial: true })
+        } else {
+            this.setState({ showComercial: false })
+        }
+
+        if (e.target.dataset.index === 'date') {
+            this.setState({ showDate: true })
+        } else {
+            this.setState({ showDate: false })
+        }
+
+        if (e.target.dataset.index === 'participant') {
+            this.setState({ showParticipant: true })
+        } else {
+            this.setState({ showParticipant: false })
+        }
+
+        if (e.target.dataset.index === 'features') {
+            this.setState({ showFeatures: true })
+        } else {
+            this.setState({ showFeatures: false })
         }
     }
 
@@ -36,6 +69,10 @@ export default class CreateTrade extends React.Component {
 
         const show = this.props.show;
         const showTech = this.state.showTech;
+        const showComercial = this.state.showComercial;
+        const showDate = this.state.showDate;
+        const showParticipant = this.state.showParticipant;
+        const showFeatures = this.state.showFeatures;
 
         return (
             <>
@@ -95,6 +132,10 @@ export default class CreateTrade extends React.Component {
                         <Row> &nbsp; </Row>
                         <Container>
                             {showTech ? <TechDataTrade /> : ''}
+                            {showComercial ? <ComercialTrade /> : ''}
+                            {showDate ? <DateTrade /> : ''}
+                            {showParticipant ? <ParticipantTrade /> : ''}
+                            {showFeatures ? <FeaturesTrade /> : ''}
                         </Container>
                         <Row> &nbsp; </Row>
                     </ div>

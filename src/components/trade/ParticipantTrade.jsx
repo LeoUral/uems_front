@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Button, Container, Alert, Row, Col, Badge } from 'react-bootstrap';
 import TechDataTradeAdd from './TechDataTradeAdd';
 
-export default class TechDataTrade extends React.Component {
+export default class ParticipantTrade extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -51,7 +51,7 @@ export default class TechDataTrade extends React.Component {
                     <Row>
                         <Col>
                             <h4>
-                                Технические параметры торгов <Badge variant="danger">Незаполнено</Badge>
+                                Участники торгов <Badge variant="danger">Невыбраны</Badge>
                             </h4>
                         </Col>
                     </Row>
@@ -71,23 +71,8 @@ export default class TechDataTrade extends React.Component {
                         Сохранить параметры
                            </Button>
 
-                    {this.state.base}
 
-                    <Row>&nbsp;</Row>
-                    <Button
-                        variant="secondary"
-                        className="btn_trade_form"
-                        onClick={this.handleClickAdd}
-                    >
-                        Добавить позицию
-                         </Button>
-                    <Button
-                        variant="warning"
-                        className="btn_trade_form"
-                        onClick={this.handleClickSave}
-                    >
-                        Сохранить параметры
-                           </Button>
+
                 </Container>
             </>
         )
