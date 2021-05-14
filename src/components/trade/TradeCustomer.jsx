@@ -1,24 +1,38 @@
 import React from 'react';
-import { Jumbotron, Container, Row, Button, Col } from 'react-bootstrap';
+import { Jumbotron, Container, Row, Button, Col, Form, Alert } from 'react-bootstrap';
+import CreateTrade from './CreateTrade';
 
 export default class TradeCustomer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            show: false
+            showTrade: false
         }
 
         this.handleClickBtn = this.handleClickBtn.bind(this);
+        this.doChangeShowTrade = this.doChangeShowTrade.bind(this);
+    }
+
+    doChangeShowTrade() {
+        this.setState({ showTrade: false })
     }
 
     handleClickBtn(e) {
         console.log(e.target.dataset.index);
+        if (e.target.dataset.index === 'trade') this.setState({ showTrade: true })
     }
 
     render() {
 
+        const showTrade = this.state.showTrade;
+
         return (
             <>
+                <CreateTrade
+                    show={this.state.showTrade}
+                    onChangeShowTrade={this.doChangeShowTrade}
+                />
+
                 <Container fluid style={{ padding: '0' }}>
                     <Jumbotron style={{ marginBottom: '0', minHeight: '78vh' }}>
                         <h1>Площадка торгов</h1>
@@ -33,42 +47,13 @@ export default class TradeCustomer extends React.Component {
                                     data-index="trade"
                                     onClick={this.handleClickBtn}
                                 >
-                                    Данные по торгам
+                                    Создать торги
                                      </Button>
-                                <Button
-                                    className="btn_trade_form"
-                                    variant="outline-primary"
-                                    data-index="tech"
-                                    onClick={this.handleClickBtn}
-                                >
-                                    Технические параметры торгов
-                                       </Button>
-                                <Button
-                                    className="btn_trade_form"
-                                    variant="outline-primary"
-                                    data-index="commercial"
-                                    onClick={this.handleClickBtn}
-                                >
-                                    Коммерческие параметры торгов
-                                     </Button>
-                                <Button
-                                    className="btn_trade_form"
-                                    variant="outline-primary"
-                                    data-index="participant"
-                                    onClick={this.handleClickBtn}
-                                >
-                                    Участники торгов
-                                     </Button>
-                                <Button
-                                    className="btn_trade_form"
-                                    variant="outline-primary"
-                                    data-index="date"
-                                    onClick={this.handleClickBtn}
-                                >
-                                    Дата начала торгов, время
-            </Button>
 
                             </Col >
+                            <Col>
+                                Созданные торги
+                            </Col>
                         </Row >
                     </Jumbotron >
                 </Container >

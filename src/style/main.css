@@ -247,7 +247,7 @@
 }
 
 .menu-position-parent {
-  width: 120%;
+  width: 100%;
   margin: 20px 10px 10px 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -511,7 +511,7 @@
 
 .btn_trade_form {
   margin: 10px;
-  width: 280px;
+  width: 200px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }

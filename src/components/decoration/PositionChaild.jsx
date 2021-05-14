@@ -68,7 +68,7 @@ export default class PositionChaild extends React.Component {
                     defaultActiveKey="1"
                     style={{ transition: '0.5s', width: show ? '0px' : '240px' }}
                 >
-                    <Card style={{ width: '240px', transition: '0.5s', width: show ? '0px' : '240px' }} >
+                    <Card style={{ width: '240px', transition: '0.5s', width: show ? '40px' : '240px' }} >
                         <Card.Header style={{ padding: '0px', width: '240px' }} >
                             <Accordion.Toggle variant="link" eventKey="0" className="card-my" onClick={this.handleClickShow}>
                                 {icon}
