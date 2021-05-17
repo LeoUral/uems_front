@@ -74,7 +74,7 @@ export default class Search extends React.Component {
     //добавление ID компании при выборе
     addIdConpany(id) {
         this.setState({ idSearchCompany: [...this.state.idSearchCompany, id] })
-        console.log('add');
+        console.log('add');//test
     }
 
     //удаление ID компании при повторном выборе
@@ -116,7 +116,7 @@ export default class Search extends React.Component {
 
         data.forEach(element => {
             let choice = element.choice;
-            console.log(choice);
+            console.log(choice);//test
 
             this.arrData = [...this.arrData,
             <tr key={element.id} style={{ cursor: 'pointer', backgroundColor: choice ? '#fd7e14' : '' }} onClick={this.handleClickTable} >
@@ -141,6 +141,7 @@ export default class Search extends React.Component {
         })
         this.setState({ dataSearch: this.dData });
         this.doWriteTable(this.dData);
+        setTimeout(() => { console.log(this.state.dataSearch); console.log(this.state.dataSearch.length); })
     }
 
     //*парсинг данных с сервера
