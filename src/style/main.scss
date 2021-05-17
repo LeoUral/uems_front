@@ -1,5 +1,6 @@
 /* основной файл стилей */
 
+@import './color';
 @import './animation';
 @import './scroll';
 .App {
@@ -296,4 +297,12 @@
 
 .phone_form {
     margin-top: 24px;
+}
+
+.date_trade_text {
+    padding-top: 30px;
+}
+
+.class-mask-error {
+    background-color: $colorError;
 }

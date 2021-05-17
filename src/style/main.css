@@ -213,13 +213,14 @@
   /* цвет фона у дорожки */
   -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2) inset;
           box-shadow: 0 0 2px rgba(0, 0, 0, 0.2) inset;
+  border-radius: 5px;
   /* тень у дорожки */
 }
 
 ::-webkit-scrollbar-thumb {
   background: #e47e7e;
   /* цвет фона у дорожки */
-  border-radius: 8px;
+  border-radius: 5px;
   /* скругление углов */
   border: 3px solid #f5cdcd;
   /* толщина, стиль и цвет рамки */
@@ -571,5 +572,13 @@
 
 .phone_form {
   margin-top: 24px;
+}
+
+.date_trade_text {
+  padding-top: 30px;
+}
+
+.class-mask-error {
+  background-color: #dc3545;
 }
 /*# sourceMappingURL=main.css.map */

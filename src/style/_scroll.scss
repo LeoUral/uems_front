@@ -7,13 +7,14 @@
     background: #f5cdcd;
     /* цвет фона у дорожки */
     box-shadow: 0 0 2px rgba(0, 0, 0, .2) inset;
+    border-radius: 5px;
     /* тень у дорожки */
 }
 
  ::-webkit-scrollbar-thumb {
     background: #e47e7e;
     /* цвет фона у дорожки */
-    border-radius: 8px;
+    border-radius: 5px;
     /* скругление углов */
     border: 3px solid #f5cdcd;
     /* толщина, стиль и цвет рамки */

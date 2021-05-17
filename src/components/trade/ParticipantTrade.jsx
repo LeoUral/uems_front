@@ -1,6 +1,6 @@
 import React from 'react';
-import { Form, Button, Container, Alert, Row, Col, Badge } from 'react-bootstrap';
-import TechDataTradeAdd from './TechDataTradeAdd';
+import { Form, Button, Container, Alert, Row, Col, Badge, Jumbotron } from 'react-bootstrap';
+import SearchModal from '../search/SearchModal';
 
 export default class ParticipantTrade extends React.Component {
     constructor(props) {
@@ -11,9 +11,13 @@ export default class ParticipantTrade extends React.Component {
             base: []
         }
 
-        this.handleClickAdd = this.handleClickAdd.bind(this);
         this.doChangeValue = this.doChangeValue.bind(this);
         this.handleClickSave = this.handleClickSave.bind(this);
+        this.doChangeShow = this.doChangeShow.bind(this);
+    }
+
+    doChangeShow() {
+        this.setState({ show: !this.state.show })
     }
 
     handleClickSave() {
@@ -24,29 +28,22 @@ export default class ParticipantTrade extends React.Component {
         console.log(data);
     }
 
-    handleClickAdd() {
-        this.setState({
-            base: [...this.state.base,
-            <React.Fragment key={this.state.id}>
-                <TechDataTradeAdd
-                    onChangeValue={this.doChangeValue}
-                    id={this.state.id}
-                />
-            </React.Fragment>
-            ],
-            id: +this.state.id + 2
-        })
-        setTimeout(() => { console.log(this.state.id + ' <- ADD ID'); })
-    }
 
     componentDidMount() {
-        this.handleClickAdd();
     }
 
     render() {
 
+        const show = this.state.show;
+
         return (
             <>
+                <div style={{ position: 'absolute', left: '0', top: '-10%' }} >
+                    <SearchModal
+                        show={show}
+                        onChangeShow={this.doChangeShow}
+                    />
+                </div>
                 <Container style={{ maxHeight: '60vh', overflowY: 'auto' }} >
                     <Row>
                         <Col>
@@ -56,13 +53,12 @@ export default class ParticipantTrade extends React.Component {
                         </Col>
                     </Row>
                     <Row>&nbsp;</Row>
-                    <Button
-                        variant="secondary"
-                        className="btn_trade_form"
-                        onClick={this.handleClickAdd}
-                    >
-                        Добавить позицию
-                         </Button>
+                    <Container fluid style={{ padding: '0' }}>
+                        <Jumbotron style={{ marginBottom: '0', minHeight: '20vh' }}>
+                            <h1>Блок поиска по предприятиям в базе LOTUS</h1>
+                            <Button variant="outline-secondary" onClick={this.doChangeShow} > Запустить форму поиска </Button>
+                        </Jumbotron>
+                    </Container>
                     <Button
                         variant="warning"
                         className="btn_trade_form"
@@ -70,8 +66,6 @@ export default class ParticipantTrade extends React.Component {
                     >
                         Сохранить параметры
                            </Button>
-
-
 
                 </Container>
             </>
