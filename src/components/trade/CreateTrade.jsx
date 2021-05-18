@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Button, Container, Alert, Row, Col } from 'react-bootstrap';
 import TechDataTrade from './TechDataTrade';
-import ComercialTrade from './ComercialTrade';
+import CommercialTrade from './CommercialTrade';
 import DateTrade from './DateTrade';
 import ParticipantTrade from './ParticipantTrade';
 import FeaturesTrade from './FeaturesTrade';
@@ -13,14 +13,38 @@ export default class CreateTrade extends React.Component {
         this.state = {
             language: 'rus',
             showTech: false,
-            showComercial: false,
+            showCommercial: false,
             showDate: false,
             showParticipant: false,
-            showFeatures: false
+            showFeatures: false,
+            trade: {
+                tech: [],
+                commercial: [],
+                date: [],
+                participant: [],
+                features: [],
+                nameTrade: ''
+            }
 
         }
         this.handleClickShadow = this.handleClickShadow.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.doSaveDataTrade = this.doSaveDataTrade.bind(this);
+        this.doSaveDataCommercial = this.doSaveDataCommercial.bind(this);
+    }
+
+    doSaveDataTrade(data) {
+        let techData = this.state.trade;
+        techData.tech = data;
+        this.setState({ trade: techData })
+        setTimeout(() => { console.log(this.state.trade) })
+    }
+
+    doSaveDataCommercial(data) {
+        let comData = this.state.trade;
+        comData.commercial = data;
+        this.setState({ trade: comData })
+        setTimeout(() => { console.log(this.state.trade) })
     }
 
     handleClick(e) {
@@ -32,10 +56,10 @@ export default class CreateTrade extends React.Component {
             this.setState({ showTech: false })
         }
 
-        if (e.target.dataset.index === 'comercial') {
-            this.setState({ showComercial: true })
+        if (e.target.dataset.index === 'commercial') {
+            this.setState({ showCommercial: true })
         } else {
-            this.setState({ showComercial: false })
+            this.setState({ showCommercial: false })
         }
 
         if (e.target.dataset.index === 'date') {
@@ -69,7 +93,7 @@ export default class CreateTrade extends React.Component {
 
         const show = this.props.show;
         const showTech = this.state.showTech;
-        const showComercial = this.state.showComercial;
+        const showCommercial = this.state.showCommercial;
         const showDate = this.state.showDate;
         const showParticipant = this.state.showParticipant;
         const showFeatures = this.state.showFeatures;
@@ -95,7 +119,7 @@ export default class CreateTrade extends React.Component {
                             <Button
                                 variant="primary"
                                 className="btn_trade_form"
-                                data-index="comercial"
+                                data-index="commercial"
                                 onClick={this.handleClick}
                             >
                                 Коммерческие параметры торгов
@@ -131,8 +155,16 @@ export default class CreateTrade extends React.Component {
                         </ Container>
                         <Row> &nbsp; </Row>
                         <Container>
-                            {showTech ? <TechDataTrade /> : ''}
-                            {showComercial ? <ComercialTrade /> : ''}
+                            {showTech ?
+                                <TechDataTrade
+                                    onSaveDataTrade={this.doSaveDataTrade}
+                                    value={this.state.trade.tech}
+                                /> : ''}
+                            {showCommercial ?
+                                <CommercialTrade
+                                    onSaveDataCommercial={this.doSaveDataCommercial}
+                                    value={this.state.trade.commercial}
+                                /> : ''}
                             {showDate ? <DateTrade /> : ''}
                             {showParticipant ? <ParticipantTrade /> : ''}
                             {showFeatures ? <FeaturesTrade /> : ''}

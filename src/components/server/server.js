@@ -40,7 +40,7 @@ class Server {
             userid: id, //*опционально, может быть пустой
             name: name //todo основной ключ
         };
-
+        console.log(id + ' ' + name);
         let response = await fetch(urlReg, {
             method: 'POST',
             headers: {

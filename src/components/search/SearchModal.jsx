@@ -141,7 +141,6 @@ export default class Search extends React.Component {
         })
         this.setState({ dataSearch: this.dData });
         this.doWriteTable(this.dData);
-        setTimeout(() => { console.log(this.state.dataSearch); console.log(this.state.dataSearch.length); })
     }
 
     //*парсинг данных с сервера

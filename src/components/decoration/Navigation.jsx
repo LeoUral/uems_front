@@ -39,6 +39,7 @@ export default class Navigation extends React.Component {
     render() {
 
         this.nameCompany = this.props.nameCompany;
+        // console.log(this.nameCompany);//test
 
         return (
             <>

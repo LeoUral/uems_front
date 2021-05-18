@@ -27,7 +27,7 @@ export default class Main extends React.Component {
 
         //* пропсы с URL по которому следует загрузить блок
         const urlPosition = this.props.urlPosition;
-        console.log(urlPosition + ' < in Main');
+        // console.log(urlPosition + ' < in Main');//test
 
         return (
             <>

@@ -20,6 +20,8 @@ export default class TechDataTradeAdd extends React.Component {
 
         const id = this.props.id;
 
+        this.value = this.props.value;
+
         return (
             <>
                 <Row>
@@ -33,6 +35,7 @@ export default class TechDataTradeAdd extends React.Component {
                         information="Технические параметры торгов"
                         description="Технические параметры торгов"
                         // value={value}
+                        value={this.value[+id] && this.value[+id].value}
                         onChangeValue={this.doChangeValue}
                     />
 
@@ -46,6 +49,7 @@ export default class TechDataTradeAdd extends React.Component {
                         information="Требование к параметру"
                         description="Технические параметры торгов"
                         // value={value}
+                        value={this.value[+id + 1] && this.value[+id + 1].value}
                         onChangeValue={this.doChangeValue}
                     />
                 </Row>

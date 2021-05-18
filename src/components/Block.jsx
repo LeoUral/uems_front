@@ -37,7 +37,7 @@ export default class Block extends React.Component {
 
         //todo обновить infoBlock на сервере
         setTimeout(() => {
-            console.log(this.state.infoBlock);
+            console.log(this.state.infoBlock);//test
             this.sendInfoBlockOnServer(this.state.infoBlock, 'start', Number(localStorage.getItem('idUser')))
         })
     }
@@ -46,10 +46,12 @@ export default class Block extends React.Component {
     doLoadStart(id) {
         this.getInfoBlockfromServer('start', id);
         setTimeout(() => {
-            if (this.state.lengthDataFromServer === 0) {
+            // console.log(this.state.lengthDataFromServer + ' <<<<<<<<< info block length');//test
+            if (this.state.lengthDataFromServer === 0 || this.state.lengthDataFromServer === undefined) {
                 this.createInfoBlockOnServer(this.state.infoBlock, 'start', id);
+                console.log('CREATE !!!!!!!!!!!!!!!');//test
             }
-        }, 500)
+        }, 1000)
     }
 
     //* ЗАГРУЖАЕМ с сервера ИНФОБЛОК
@@ -58,8 +60,9 @@ export default class Block extends React.Component {
         new Promise((resolve) => {
             resolve(Server.getDataFromServer(name, id))
         }).then((result) => {
-            this.setState({ lengthDataFromServer: result.length });
-            console.log(result); // test
+            this.setState({ lengthDataFromServer: result.classQuestBlock.length });
+            // console.log(result); // test
+            // console.log(result.classQuestBlock);//test
             this.setState({ infoBlock: result });
         }).catch((result) => {
             this.setState({ lengthDataFromServer: 0 });
@@ -121,7 +124,7 @@ export default class Block extends React.Component {
             this.card = this.state.infoBlock;
             this.card.cardCompany = dataNew;
             this.setState({ infoBlock: this.card, lengthDataFromServer_Main: dataNew.length });
-            // setTimeout(() => { console.log(this.state.infoBlock.cardCompany[1]) }, 500)//test
+            // setTimeout(() => { console.log(this.state.infoBlock.cardCompany[1]); console.log(this.state.infoBlock) }, 500)//test
         }
     }
 
@@ -141,6 +144,7 @@ export default class Block extends React.Component {
     render() {
 
         const cardCompany = this.state.infoBlock.cardCompany;
+        // console.log(cardCompany);//test
 
         return (
             <>

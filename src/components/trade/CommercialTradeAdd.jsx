@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Button, Container, Alert, Row, Col } from 'react-bootstrap';
 import InputForm from '../questionnaire/InputForm';
 
-export default class ComercialTradeAdd extends React.Component {
+export default class CommercialTradeAdd extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -19,6 +19,7 @@ export default class ComercialTradeAdd extends React.Component {
     render() {
 
         const id = this.props.id;
+        this.value = this.props.value;
 
         return (
             <>
@@ -31,7 +32,7 @@ export default class ComercialTradeAdd extends React.Component {
                         label=""
                         placeholder="Название дополнительного параметра"
                         description="Коммерческие параметры торгов"
-                        // value={this.value[1] ? this.value[1].value : ''}
+                        value={this.value[+id] ? this.value[+id].value : ''}
                         onChangeValue={this.doChangeValue}
                     />
 
@@ -43,7 +44,7 @@ export default class ComercialTradeAdd extends React.Component {
                         label=""
                         placeholder="Требование к дополнительному параметру"
                         description="Коммерческие параметры торгов"
-                        // value={this.value[1] ? this.value[1].value : ''}
+                        value={this.value[+id + 1] ? this.value[+id + 1].value : ''}
                         onChangeValue={this.doChangeValue}
                     />
                 </Row>
