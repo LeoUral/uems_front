@@ -140,7 +140,7 @@ export default class Questionnaire extends React.Component {
         let arrEmpty = this.state.infoBlock.classQuestBlock;
         arrEmpty[position] = 'btn_form active';
         this.setState({ classQuestBlock: arrEmpty })
-        setTimeout(() => { this.props.onUpInfoBlock(this.state.infoblock) })
+        setTimeout(() => { this.props.onUpInfoBlock(this.state.infoBlock) })
     }
 
     doGetDataFromServer(name, id) {

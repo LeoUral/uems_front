@@ -11,6 +11,13 @@ export default class TradeCustomer extends React.Component {
 
         this.handleClickBtn = this.handleClickBtn.bind(this);
         this.doChangeShowTrade = this.doChangeShowTrade.bind(this);
+        this.doCreateTrade = this.doCreateTrade.bind(this);
+    }
+
+    doCreateTrade(data) {
+        console.log('Create TRADE ->');
+        console.log(data);
+        this.props.onCreateTrade(data);
     }
 
     doChangeShowTrade() {
@@ -31,6 +38,7 @@ export default class TradeCustomer extends React.Component {
                 <CreateTrade
                     show={this.state.showTrade}
                     onChangeShowTrade={this.doChangeShowTrade}
+                    onCreateTrade={this.doCreateTrade}
                 />
 
                 <Container fluid style={{ padding: '0' }}>

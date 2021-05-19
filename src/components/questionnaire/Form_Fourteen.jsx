@@ -172,7 +172,7 @@ export default class Form_Fourteen extends React.Component {
             console.log('UPDATE DATA');
             this.props.onUpdateDataOnServer(data, 'Fourteen', Number(localStorage.getItem('idUser')));
         }
-        setTimeout(() => { console.log(this.state.dataOnServer) })//test
+        // setTimeout(() => { console.log(this.state.dataOnServer) })//test
         this.handleClickShadow();
     }
 

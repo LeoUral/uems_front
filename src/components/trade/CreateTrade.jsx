@@ -44,14 +44,22 @@ export default class CreateTrade extends React.Component {
     }
 
     handleClickCreateTrade() {
-        console.log('click -> create Trade');//test       
+        // console.log('click -> create Trade');//test       
 
         let date = new Date();
         let dateTrade = this.state.trade;
         dateTrade.keyNameTrade = date.getTime();
         dateTrade.organizerId = localStorage.getItem('idUser');
         this.setState({ trade: dateTrade });
-        setTimeout(() => { console.log(this.state.trade); console.log((this.state.trade.keyNameTrade)); })
+        setTimeout(() => {
+            this.props.onCreateTrade(this.state.trade);
+            this.handleClickShadow();
+        }, 500);
+        // setTimeout(() => { console.log(this.state.trade); console.log((this.state.trade.keyNameTrade)); })//test
+    }
+
+    async createTradeObject(data, name, id) {
+        //todo написать функционал создания объекта на сервере с данными по trade
     }
 
     verificationShow() {

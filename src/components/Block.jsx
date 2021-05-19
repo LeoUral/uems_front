@@ -16,7 +16,9 @@ export default class Block extends React.Component {
             lengthDataFromServer_Main: 0,
             infoBlock: {
                 language: 'rus',
-                cardCompany: [],
+                cardCompany: [], //карточка предприятия
+                mineNumberTrade: [], // имена своих торгов
+                otherNumberTrade: [], // имена чужих торгов на которые есть приглашения
                 classQuestBlock: ['btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form', 'btn_form'],
                 nameQuestBlock: ['Main', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen']
             }
@@ -29,17 +31,46 @@ export default class Block extends React.Component {
         this.doLoadStart = this.doLoadStart.bind(this);
         this.getInfoBlockfromServer = this.getInfoBlockfromServer.bind(this);
         this.doUpInfoBlock = this.doUpInfoBlock.bind(this);
+        this.doCreateTrade = this.doCreateTrade.bind(this);
+        this.doUpInfoBlockTrade = this.doUpInfoBlockTrade.bind(this);
+    }
+    //*созданный блок по своим торгам, добавляем в ИНФОБЛОК
+    doCreateTrade(data) {
+        this.block = this.state.infoBlock;
+
+        console.log(data.keyNameTrade);
+
+        this.block.mineNumberTrade = [...this.block.mineNumberTrade, data.keyNameTrade];
+        console.log('BLOCK -> ');
+        console.log(this.block);
+        this.doUpInfoBlockTrade(this.block);
+    }
+
+    //*получили обновленный InfoBlock (TRADE) *** универсалшьная функ. для обновленя infoBlock
+    doUpInfoBlockTrade(data) {
+        this.setState({ infoBlock: data });
+
+        //todo обновить infoBlock на сервере
+        setTimeout(() => {
+            console.log(this.state.infoBlock);//test
+            this.sendInfoBlockOnServer(this.state.infoBlock, 'start', Number(localStorage.getItem('idUser')))
+            console.log(this.state);
+        })
     }
 
     //*получили обновленный InfoBlock (classQuestBlock)
     doUpInfoBlock(data) {
-        this.setState({ infoblock: data });
+        this.dataQuest = this.state.infoBlock;
+        this.dataQuest.classQuestBlock = data.classQuestBlock;
+
+        this.setState({ infoBlock: this.dataQuest });
 
         //todo обновить infoBlock на сервере
         setTimeout(() => {
             console.log(this.state.infoBlock);//test
             this.sendInfoBlockOnServer(this.state.infoBlock, 'start', Number(localStorage.getItem('idUser')))
         })
+
     }
 
     //* проверка наличия, создание, загрузка инфоблока
@@ -139,6 +170,14 @@ export default class Block extends React.Component {
 
     componentDidMount() {
         this.doLoadStart(Number(localStorage.getItem('idUser')));
+        setTimeout(() => { console.log(this.state) }, 1000)
+
+        // setTimeout(() => { //todo удаляет ключи торгов
+        //     this.dData = this.state.infoBlock;
+        //     this.dData.mineNumberTrade = [];
+        //     // this.setState({ infoBlock: this.dData })
+        //     this.doUpInfoBlockTrade(this.dData);
+        // }, 1500)
     }
 
     render() {
@@ -165,6 +204,7 @@ export default class Block extends React.Component {
                     nameCompany={cardCompany && cardCompany[1]}
                     infoBlock={this.state.infoBlock}
                     onUpInfoBlock={this.doUpInfoBlock}
+                    onCreateTrade={this.doCreateTrade}
                 />
             </>
         )

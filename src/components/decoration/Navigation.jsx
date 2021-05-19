@@ -17,6 +17,10 @@ export default class Navigation extends React.Component {
         this.doFocusSaidBar = this.doFocusSaidBar.bind(this);
         this.doTransferUrl = this.doTransferUrl.bind(this);
         this.doUpInfoBlock = this.doUpInfoBlock.bind(this);
+        this.doCreateTrade = this.doCreateTrade.bind(this);
+    }
+    doCreateTrade(data) {
+        this.props.onCreateTrade(data)
     }
 
     doUpInfoBlock(data) {
@@ -58,6 +62,7 @@ export default class Navigation extends React.Component {
                         onChangeShow={this.doChangeShow}
                         infoBlock={this.props.infoBlock}
                         onUpInfoBlock={this.doUpInfoBlock}
+                        onCreateTrade={this.doCreateTrade}
                     />
 
                 </Container>

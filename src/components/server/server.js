@@ -80,6 +80,7 @@ class Server {
 
         let result = await response.json();
         // console.log(result); //test
+        return result;
     }
 
     //* отправляем данные на сервер, обновление
@@ -183,6 +184,56 @@ class Server {
         let result = await response.json();
         console.log('ПОИСКОВЫЙ ОТВЕТ СЕРВЕРА: ');
         console.log(result);
+        return result;
+    }
+
+    //*Сервер выдает список объектов
+    async getListObject() {
+        let urlReg = 'http://api.uems.ru:5000/sthe/api/v1.0/object_list'; // для поиска
+
+        let userBody = {
+            key: 'weifeiph7Pie',
+            userid: '', //*опционально, может быть пустой
+            name: '' //todo основной ключ
+        };
+        let response = await fetch(urlReg, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8;Access-Control-Allow-Origin',
+            },
+            body: JSON.stringify(userBody)
+        });
+        // console.log(response);
+
+        let result = await response.json();
+
+        console.log('Список ОБЪЕКТОВ с СЕРВЕРА');
+        console.log(result);
+        return result;
+    }
+
+    //* удаляем данные с сервера
+    async deleteDataOnServer(name, id) {
+        let urlReg = 'http://api.uems.ru:5000/sthe/api/v1.0/object_read'; // для чтения
+
+
+        let userBody = {
+            key: 'weifeiph7Pie',
+            userid: id, //*опционально, может быть пустой
+            name: name //todo основной ключ
+        };
+        console.log(id + ' ' + name);
+        let response = await fetch(urlReg, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8;Access-Control-Allow-Origin',
+            },
+            body: JSON.stringify(userBody)
+        });
+        // console.log(response);
+
+        let result = await response.json();
+
         return result;
     }
 

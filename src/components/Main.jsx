@@ -4,6 +4,7 @@ import Questionnaire from './questionnaire/Questionnaire';
 import Search from './search/Search';
 import TradeCustomer from './trade/TradeCustomer';
 import TradeParticipant from './trade/TradeParticipant';
+import Laboratory from './laboratory/Laboratory';
 
 
 export default class Main extends React.Component {
@@ -14,6 +15,10 @@ export default class Main extends React.Component {
         }
 
         this.doUpInfoBlock = this.doUpInfoBlock.bind(this);
+        this.doCreateTrade = this.doCreateTrade.bind(this);
+    }
+    doCreateTrade(data) {
+        this.props.onCreateTrade(data);
     }
 
     doUpInfoBlock(data) {
@@ -42,9 +47,13 @@ export default class Main extends React.Component {
                     {urlPosition === '/tech_others' ?
                         <Search /> : ''}
                     {urlPosition === '/customer' ?
-                        <TradeCustomer /> : ''}
+                        <TradeCustomer
+                            onCreateTrade={this.doCreateTrade}
+                        /> : ''}
                     {urlPosition === '/participant' ?
                         <TradeParticipant /> : ''}
+                    {urlPosition === '/laboratory' ?
+                        <Laboratory /> : ''}
                 </div>
             </>
         )
