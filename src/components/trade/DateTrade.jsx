@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Button, Container, Alert, Row, Col, Badge } from 'react-bootstrap';
+import { Button, Container, Row, Col, Badge } from 'react-bootstrap';
 import InputForm from '../questionnaire/InputForm';
 import CalendarForm from '../questionnaire/CalendarForm';
 import TimeForm from './TimeForm';
@@ -12,21 +12,46 @@ export default class DateTrade extends React.Component {
             id: 1,
             base: [],
             value: [],
-            errorOff: ''
+            data: [],
+            errorOff: '',
+            errData: false
         }
 
         this.doChangeValue = this.doChangeValue.bind(this);
         this.handleClickSave = this.handleClickSave.bind(this);
         this.lookOnError = this.lookOnError.bind(this);
+        this.verificationData = this.verificationData.bind(this);
     }
 
     handleClickSave() {
         console.log('click SAVE');
+        console.log(this.state.data);
+
+        this.setState({ value: this.state.data })
+        this.verificationData();
+
+        setTimeout(() => {
+            if (this.state.errData) {
+                this.props.onSaveDataDate(this.state.data);
+            }
+        }, 500)
     }
 
     doChangeValue(data) {
         console.log(data);
         this.lookOnError(data);
+
+        this.setState({ data: [...this.state.data, data] })
+
+        setTimeout(() => {
+            let arrData = [{ id: 0 }];
+
+            this.state.data.forEach((data) => {
+                if (typeof (+data.id) !== undefined) arrData[+data.id] = data;
+            })
+            this.setState({ data: arrData })
+        })
+        this.verificationData();
     }
 
     //проверка введенного время 
@@ -40,18 +65,33 @@ export default class DateTrade extends React.Component {
                 this.setState({ errorOff: '' })
             }
         }
+        // setTimeout(() => {
+        //     this.setState({ errorOff: '' });
+        // }, 1000)
+    }
+
+    verificationData() {
         setTimeout(() => {
-            this.setState({ errorOff: '' });
-        }, 1000)
+            if (this.state.data.length < 4 || this.state.errorOff === 'class-mask-error') {
+                this.setState({ errData: false })
+            } else {
+                this.setState({ errData: true })
+            }
+        })
     }
 
     componentDidMount() {
+        setTimeout(() => {
+            this.setState({ data: this.props.value });// загружаем данные от родителя
+            this.verificationData();
+        }, 500)
     }
 
     render() {
 
-        this.value = this.state.value;
+        this.value = this.props.value;
         const errorOff = this.state.errorOff;
+        const errShow = this.state.errData;
 
         return (
             <>
@@ -59,7 +99,12 @@ export default class DateTrade extends React.Component {
                     <Row>
                         <Col>
                             <h4>
-                                Дата и время <Badge variant="danger">Незаполнено</Badge>
+                                Дата и время торгов
+                                 {errShow ?
+                                    <Badge variant="info"> ok </Badge>
+                                    :
+                                    <Badge variant="danger"> Незаполнено </Badge>
+                                }
                             </h4>
                         </Col>
                     </Row>
@@ -122,11 +167,12 @@ export default class DateTrade extends React.Component {
                     <Row>&nbsp;</Row>
                     <Row>&nbsp;</Row>
                     <Button
-                        variant="warning"
+                        variant={errShow ? "warning" : 'secondary'}
                         className="btn_trade_form"
                         onClick={this.handleClickSave}
+                        style={{ width: '290px' }}
                     >
-                        Сохранить параметры
+                        Проверить и сохранить параметры
                            </Button>
 
 

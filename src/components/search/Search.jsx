@@ -24,9 +24,16 @@ export default class Search extends React.Component {
 
 
         this.handleClickShow = this.handleClickShow.bind(this);
-
+        this.doChoiceCompany = this.doChoiceCompany.bind(this);
+        this.doTableChoice = this.doTableChoice.bind(this);
+    }
+    doTableChoice(renderTable) {
+        //Рендер строк компаний
     }
 
+    doChoiceCompany(data) {
+        //ID выбранных компаний
+    }
 
     handleClickShow() {
         this.setState({ show: !this.state.show })
@@ -49,6 +56,8 @@ export default class Search extends React.Component {
                 <SearchModal
                     show={show}
                     onChangeShow={this.handleClickShow}
+                    onChoiceCompany={this.doChoiceCompany}
+                    onTableChoice={this.doTableChoice}
                 />
                 <Container fluid style={{ padding: '0' }}>
                     <Jumbotron style={{ marginBottom: '0', minHeight: '78vh' }}>

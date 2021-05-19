@@ -93,8 +93,12 @@ export default class Search extends React.Component {
         this.parsingDataForSearch(this.state.data);
     }
 
+    //подтверждение выбора компании
     handleClickChoice() {
         console.log('Подтверждение выбора компаний');
+        this.props.onChoiceCompany(this.state.idSearchCompany);
+        this.handleClickShadow();
+        this.props.onTableChoice(this.state.viewDataTable);
     }
 
     //*отправка поисквого запроса, получаем результат поиска (ID компаний)
@@ -127,7 +131,7 @@ export default class Search extends React.Component {
             </tr>
             ]
         });
-        this.setState({ viewDataTable: this.arrData })
+        this.setState({ viewDataTable: this.arrData })// рендер таблицы
     }
 
     //*группируем данные, убираем повторы
