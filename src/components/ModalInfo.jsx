@@ -8,15 +8,12 @@ export default class ModalInfo extends React.Component {
         super(props);
         this.state = {
             show: false,
-            nameCompany: '',
-            data: [],
-            dataSearch: [],
-            viewDataTable: [],
-            idSearchCompany: [0] // массив ID выбранных компаний
+            base: []
         }
 
         this.handleClickShadow = this.handleClickShadow.bind(this);
         this.handleClickSearch = this.handleClickSearch.bind(this);
+        this.renderDataOn = this.renderDataOn.bind(this);
     }
 
     handleClickSearch() {
@@ -27,7 +24,36 @@ export default class ModalInfo extends React.Component {
         this.props.onChangeShowModalInfo();
     }
 
+    renderDataOn(data) {
+        this.arrData = [];
+
+        data.commercial.forEach((data, index) => {
+            if (data !== null) {
+                this.arrData = [...this.arrData,
+                <React.Fragment key={index}>
+                    <Row>
+                        <Col>
+                            {data.information}
+                        </Col>
+                        <Col>
+                            {data.value}
+                        </Col>
+                    </Row>
+                    <Row> &nbsp; </Row>
+                </React.Fragment>
+                ]
+            }
+
+        })
+        this.setState({ base: this.arrData })
+    }
+
+    componentDidMount() {
+        this.renderDataOn(this.props.dataOnTrade);
+    }
+
     render() {
+
 
         const show = this.props.show;
 
@@ -40,7 +66,7 @@ export default class ModalInfo extends React.Component {
                             <Alert.Heading > Информация </Alert.Heading>
                         </Alert>
                         <Container>
-                            Modal window
+                            {this.state.base}
                         </Container>
 
                     </Form>

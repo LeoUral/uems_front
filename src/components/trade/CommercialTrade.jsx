@@ -45,7 +45,7 @@ export default class CommercialTrade extends React.Component {
 
     //* проверка и отправка данных в PARENT
     doChangeValue(data) {
-        console.log(data);//test
+        console.log(data);//test        
         this.setState({ data: [...this.state.data, data] })
 
         setTimeout(() => {
@@ -102,7 +102,7 @@ export default class CommercialTrade extends React.Component {
     componentDidMount() {
         setTimeout(() => {
             this.renderBlock();
-            this.setState({ data: this.props.value });// загружаем данные от родителя
+            if (this.props.value.length > 0) this.setState({ data: this.props.value });// загружаем данные от родителя
             this.verificationData();
         }, 500)
     }
