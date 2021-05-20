@@ -43,6 +43,7 @@ export default class RightMenuBlock extends React.Component {
                         infoBlock={this.props.infoBlock}
                         onUpInfoBlock={this.doUpInfoBlock}
                         onCreateTrade={this.doCreateTrade}
+                        keyNameTrade={this.props.keyNameTrade}
                     />
 
                     <Footer />

@@ -63,6 +63,7 @@ export default class Navigation extends React.Component {
                         infoBlock={this.props.infoBlock}
                         onUpInfoBlock={this.doUpInfoBlock}
                         onCreateTrade={this.doCreateTrade}
+                        keyNameTrade={this.props.keyNameTrade}
                     />
 
                 </Container>

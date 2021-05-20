@@ -5,6 +5,7 @@ import CommercialTrade from './CommercialTrade';
 import DateTrade from './DateTrade';
 import ParticipantTrade from './ParticipantTrade';
 import FeaturesTrade from './FeaturesTrade';
+import Server from '../server/server';
 
 
 export default class CreateTrade extends React.Component {
@@ -41,6 +42,7 @@ export default class CreateTrade extends React.Component {
         this.doSaveDataFeatures = this.doSaveDataFeatures.bind(this);
         this.handleClickCreateTrade = this.handleClickCreateTrade.bind(this);
         this.verificationShow = this.verificationShow.bind(this);
+        this.createTradeObject = this.createTradeObject.bind(this);
     }
 
     handleClickCreateTrade() {
@@ -53,13 +55,23 @@ export default class CreateTrade extends React.Component {
         this.setState({ trade: dateTrade });
         setTimeout(() => {
             this.props.onCreateTrade(this.state.trade);
+            this.createTradeObject(JSON.stringify(this.state.trade), String(this.state.trade.keyNameTrade), localStorage.getItem('idUser'));
             this.handleClickShadow();
-        }, 500);
+        }, 1000);
         // setTimeout(() => { console.log(this.state.trade); console.log((this.state.trade.keyNameTrade)); })//test
     }
 
     async createTradeObject(data, name, id) {
         //todo написать функционал создания объекта на сервере с данными по trade
+        new Promise((resolve) => {
+            resolve(Server.createDataOnServer(data, name, id))
+        }).then(result => {
+            console.log('All OK');
+            console.log(result);
+        }).catch(result => {
+            console.log('ERROR');
+            console.log(result);
+        })
     }
 
     verificationShow() {

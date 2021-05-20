@@ -1,6 +1,8 @@
 import React from 'react';
 import { Jumbotron, Container, Row, Button, Col, Form, Alert } from 'react-bootstrap';
 import CreateTrade from './CreateTrade';
+import TradeCustomerBuild from './TradeCustomerBuild';
+import ModalInfo from '../ModalInfo';
 
 export default class TradeCustomer extends React.Component {
     constructor(props) {
@@ -12,6 +14,11 @@ export default class TradeCustomer extends React.Component {
         this.handleClickBtn = this.handleClickBtn.bind(this);
         this.doChangeShowTrade = this.doChangeShowTrade.bind(this);
         this.doCreateTrade = this.doCreateTrade.bind(this);
+        this.doChoiceTrade = this.doChoiceTrade.bind(this);
+    }
+
+    doChoiceTrade(numberTrade) {
+        console.log(numberTrade);
     }
 
     doCreateTrade(data) {
@@ -32,6 +39,7 @@ export default class TradeCustomer extends React.Component {
     render() {
 
         const showTrade = this.state.showTrade;
+        const keyNameTrade = this.props.keyNameTrade;
 
         return (
             <>
@@ -40,6 +48,8 @@ export default class TradeCustomer extends React.Component {
                     onChangeShowTrade={this.doChangeShowTrade}
                     onCreateTrade={this.doCreateTrade}
                 />
+
+                <ModalInfo />
 
                 <Container fluid style={{ padding: '0' }}>
                     <Jumbotron style={{ marginBottom: '0', minHeight: '78vh' }}>
@@ -59,10 +69,21 @@ export default class TradeCustomer extends React.Component {
                                      </Button>
 
                             </Col >
+                        </Row>
+                        <Row> &nbsp; </Row>
+                        <Row>
                             <Col>
-                                Созданные торги
+                                Созданные торги:
                             </Col>
                         </Row >
+                        <Row>
+                            <Col>
+                                <TradeCustomerBuild
+                                    keyNameTrade={keyNameTrade}
+                                    onChoiceTrade={this.doChoiceTrade}
+                                />
+                            </Col>
+                        </Row>
                     </Jumbotron >
                 </Container >
             </>

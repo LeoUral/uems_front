@@ -49,6 +49,7 @@ export default class Main extends React.Component {
                     {urlPosition === '/customer' ?
                         <TradeCustomer
                             onCreateTrade={this.doCreateTrade}
+                            keyNameTrade={this.props.keyNameTrade}
                         /> : ''}
                     {urlPosition === '/participant' ?
                         <TradeParticipant /> : ''}

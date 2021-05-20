@@ -205,6 +205,7 @@ export default class Block extends React.Component {
                     infoBlock={this.state.infoBlock}
                     onUpInfoBlock={this.doUpInfoBlock}
                     onCreateTrade={this.doCreateTrade}
+                    keyNameTrade={this.state.infoBlock.mineNumberTrade}
                 />
             </>
         )

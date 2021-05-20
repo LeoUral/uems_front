@@ -79,7 +79,7 @@ class Server {
         });
 
         let result = await response.json();
-        // console.log(result); //test
+        console.log(result); //test
         return result;
     }
 

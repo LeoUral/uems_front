@@ -10,7 +10,7 @@ import Server from '../server/server';
 // import SaerchTable from './SearchTable';
 
 
-export default class Search extends React.Component {
+export default class SearchModal extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
