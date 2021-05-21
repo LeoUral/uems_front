@@ -11,11 +11,13 @@ export default class Main extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            language: 'rus'
+            language: 'rus',
+            showTrade: false
         }
 
         this.doUpInfoBlock = this.doUpInfoBlock.bind(this);
         this.doCreateTrade = this.doCreateTrade.bind(this);
+        this.lookAvailableTrade = this.lookAvailableTrade.bind(this);
     }
     doCreateTrade(data) {
         this.props.onCreateTrade(data);
@@ -25,7 +27,21 @@ export default class Main extends React.Component {
         this.props.onUpInfoBlock(data);
     }
 
+    //*смотрим наличие доступных торгов как участник
+    lookAvailableTrade(data) {
+        if (data.otherNumberTrade) {
+            let lengthArray = data.otherNumberTrade.length;
+            if (lengthArray === 0) {
+                this.setState({ showTrade: false })
+            } else {
+                this.setState({ showTrade: true })
+            }
+        }
+
+    }
+
     componentDidMount() {
+        setTimeout(() => { this.lookAvailableTrade(this.props.infoBlock) }, 500)
     }
 
     render() {
@@ -37,7 +53,10 @@ export default class Main extends React.Component {
         return (
             <>
                 <div>
-                    {urlPosition === '' ? <MainContent /> : ''}
+                    {urlPosition === '' ?
+                        <MainContent
+                            showTrade={this.state.showTrade}
+                        /> : ''}
                     {urlPosition === "/questionnaire" ?
                         <Questionnaire
                             infoBlock={this.props.infoBlock}
@@ -52,7 +71,9 @@ export default class Main extends React.Component {
                             keyNameTrade={this.props.keyNameTrade}
                         /> : ''}
                     {urlPosition === '/participant' ?
-                        <TradeParticipant /> : ''}
+                        <TradeParticipant
+                            keyOtherNumberTrade={this.props.keyOtherNumberTrade}
+                        /> : ''}
                     {urlPosition === '/laboratory' ?
                         <Laboratory /> : ''}
                 </div>

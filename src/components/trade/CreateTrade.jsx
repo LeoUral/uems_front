@@ -43,6 +43,11 @@ export default class CreateTrade extends React.Component {
         this.handleClickCreateTrade = this.handleClickCreateTrade.bind(this);
         this.verificationShow = this.verificationShow.bind(this);
         this.createTradeObject = this.createTradeObject.bind(this);
+
+        this.addTradeInInfoBlock = this.addTradeInInfoBlock.bind(this);
+        this.getInfoBlockParticipant = this.getInfoBlockParticipant.bind(this);
+        this.addTradeInformation = this.addTradeInformation.bind(this);
+        this.saveNewInfoBlock = this.saveNewInfoBlock.bind(this);
     }
 
     handleClickCreateTrade() {
@@ -56,13 +61,69 @@ export default class CreateTrade extends React.Component {
         setTimeout(() => {
             this.props.onCreateTrade(this.state.trade);
             this.createTradeObject(JSON.stringify(this.state.trade), String(this.state.trade.keyNameTrade), localStorage.getItem('idUser'));
+            this.addTradeInInfoBlock(); //размещение информации о торгах в infoBlock участников
             this.handleClickShadow();
         }, 1000);
         // setTimeout(() => { console.log(this.state.trade); console.log((this.state.trade.keyNameTrade)); })//test
     }
+    //! не все данные поступили в файл
+    //* Функция размещения информации о торгах в infoBlock участников
+    addTradeInInfoBlock() {
+        let quantityArray = this.state.trade.participant;
+        let keyNameTrade = this.state.trade.keyNameTrade;
+        let organizerId = this.state.trade.organizerId;
+        let nameTrade = this.state.trade.nameTrade;
 
+        this.dataTrade = { organizerId: organizerId, keyNameTrade: keyNameTrade, nameTrade: nameTrade }
+
+        quantityArray.forEach(id => {
+            if (id !== 0) {
+                //todo функция загрузки и сохранения данных в infoBlock по ID
+                this.getInfoBlockParticipant('start', id, this.dataTrade);//! не все данные поступили в файл
+            }
+        })
+    }
+
+    //* загрузка infoBlock участника торгов из списка приглашенных
+    async getInfoBlockParticipant(name, id, newData) {
+        new Promise((resolve) => {
+            resolve(Server.getDataFromServer(name, id))
+        }).then(result => {
+            console.log(result);
+            //todo функция добавления в infoBlock данных о торгах
+            this.addTradeInformation(result, newData, id);
+        }).catch(result => {
+            console.log('ERROR infoBlock');
+            console.log(result);
+        })
+    }
+
+    //*добавления в infoBlock данных о торгах
+    addTradeInformation(data, newData, id) {
+
+        this.dataD = data.otherNumberTrade;
+
+        this.dataD = [...this.dataD, newData]
+        data.otherNumberTrade = this.dataD;
+        //todo сохраняем обновленный infoBlock на сервере
+        this.saveNewInfoBlock(JSON.stringify(data), 'start', id)
+    }
+
+    //*сохраняем обновленный infoBlock на сервере
+    async saveNewInfoBlock(data, name, id) {
+        new Promise((resolve) => {
+            resolve(Server.sendDataOnServer(data, name, id))
+        }).then(result => {
+            console.log('ALL OK new data in infoBlock');
+            console.log(result);
+        }).catch(result => {
+            console.log('ERROR not new data in infoBlock');
+            console.log(result);
+        })
+    }
+
+    //* СОЗДАЕТ новый файл торгов на сервере
     async createTradeObject(data, name, id) {
-        //todo написать функционал создания объекта на сервере с данными по trade
         new Promise((resolve) => {
             resolve(Server.createDataOnServer(data, name, id))
         }).then(result => {

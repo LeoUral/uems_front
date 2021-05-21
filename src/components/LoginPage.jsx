@@ -50,7 +50,7 @@ export default class LoginPage extends React.Component {
         this.setState({ showOff: true, idUser: id });
         localStorage.setItem('idUser', id);
 
-        this.props.onLoadStart(+id);
+        this.props.onLoadStart(id);
 
         setTimeout(() => {
             this.props.onChangeShowLoginPage();

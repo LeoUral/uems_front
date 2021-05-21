@@ -11,6 +11,7 @@ export default class Block extends React.Component {
             language: 'rus',
             show_LoginPage: true,
             show_Registration: false,
+            showNavigation: false,
             data_Main: [],
             lengthDataFromServer: 0,
             lengthDataFromServer_Main: 0,
@@ -35,15 +36,28 @@ export default class Block extends React.Component {
         this.doUpInfoBlockTrade = this.doUpInfoBlockTrade.bind(this);
     }
     //*созданный блок по своим торгам, добавляем в ИНФОБЛОК
-    doCreateTrade(data) {
-        this.block = this.state.infoBlock;
+    doCreateTrade(data) { //! ************************************************
 
-        console.log(data.keyNameTrade);
+        if (!this.state.infoBlock.mineNumberTrade) {
+            this.block = this.state.infoBlock;
+            this.block.mineNumberTrade = [];
+            this.setState({ infoBlock: this.block });
+        }
 
-        this.block.mineNumberTrade = [...this.block.mineNumberTrade, data.keyNameTrade];
-        console.log('BLOCK -> ');
-        console.log(this.block);
-        this.doUpInfoBlockTrade(this.block);
+        setTimeout(() => {
+            this.block = this.state.infoBlock;
+
+            console.log(data.keyNameTrade);
+
+            this.block.mineNumberTrade = [...this.block.mineNumberTrade, data.keyNameTrade];
+
+            console.log('BLOCK -> ');
+            console.log(this.block);
+            this.doUpInfoBlockTrade(this.block);
+        }, 500)
+
+
+
     }
 
     //*получили обновленный InfoBlock (TRADE) *** универсалшьная функ. для обновленя infoBlock
@@ -75,14 +89,15 @@ export default class Block extends React.Component {
 
     //* проверка наличия, создание, загрузка инфоблока
     doLoadStart(id) {
-        this.getInfoBlockfromServer('start', id);
+        this.getInfoBlockfromServer('start', localStorage.getItem('idUser'));
         setTimeout(() => {
-            // console.log(this.state.lengthDataFromServer + ' <<<<<<<<< info block length');//test
+
             if (this.state.lengthDataFromServer === 0 || this.state.lengthDataFromServer === undefined) {
-                this.createInfoBlockOnServer(this.state.infoBlock, 'start', id);
+                this.createInfoBlockOnServer(this.state.infoBlock, 'start', localStorage.getItem('idUser'));
                 console.log('CREATE !!!!!!!!!!!!!!!');//test
             }
-        }, 1000)
+            this.setState({ showNavigation: true })
+        }, 1500)
     }
 
     //* ЗАГРУЖАЕМ с сервера ИНФОБЛОК
@@ -94,7 +109,9 @@ export default class Block extends React.Component {
             this.setState({ lengthDataFromServer: result.classQuestBlock.length });
             // console.log(result); // test
             // console.log(result.classQuestBlock);//test
-            this.setState({ infoBlock: result });
+            this.setState({ infoBlock: result }); //todo данные поступают асинхронно, уже после верстки
+            setTimeout(() => { this.setState({ showNavigation: true }) }, 1000)
+            setTimeout(() => { console.log(this.state) }, 1500)//test
         }).catch((result) => {
             this.setState({ lengthDataFromServer: 0 });
             console.log(result);
@@ -152,7 +169,7 @@ export default class Block extends React.Component {
             dataNew = [...dataNew, { id: data.id, description: data.description, information: data.information, value: data.value }]
         })
         if (name === 'Main') {
-            this.card = this.state.infoBlock;
+            this.card = this.state.infoBlock; //! *************************************
             this.card.cardCompany = dataNew;
             this.setState({ infoBlock: this.card, lengthDataFromServer_Main: dataNew.length });
             // setTimeout(() => { console.log(this.state.infoBlock.cardCompany[1]); console.log(this.state.infoBlock) }, 500)//test
@@ -169,8 +186,11 @@ export default class Block extends React.Component {
     }
 
     componentDidMount() {
-        this.doLoadStart(Number(localStorage.getItem('idUser')));
-        setTimeout(() => { console.log(this.state) }, 1000)
+        if (localStorage.getItem('idUser')) {
+            this.doLoadStart(Number(localStorage.getItem('idUser')));
+
+        }
+
 
         // setTimeout(() => { //todo удаляет ключи торгов
         //     this.dData = this.state.infoBlock;
@@ -182,6 +202,7 @@ export default class Block extends React.Component {
 
     render() {
 
+        const showNavigation = this.state.showNavigation;
         const cardCompany = this.state.infoBlock.cardCompany;
         // console.log(cardCompany);//test
 
@@ -200,13 +221,17 @@ export default class Block extends React.Component {
                         onChangeShowRegistration={this.doChangeShowRegistration}
                     /> : ''}
 
-                <Navigation
-                    nameCompany={cardCompany && cardCompany[1]}
-                    infoBlock={this.state.infoBlock}
-                    onUpInfoBlock={this.doUpInfoBlock}
-                    onCreateTrade={this.doCreateTrade}
-                    keyNameTrade={this.state.infoBlock.mineNumberTrade}
-                />
+                {showNavigation ?
+                    <Navigation
+                        nameCompany={cardCompany && cardCompany[1]}
+                        infoBlock={this.state.infoBlock}
+                        onUpInfoBlock={this.doUpInfoBlock}
+                        onCreateTrade={this.doCreateTrade}
+                        keyNameTrade={this.state.infoBlock.mineNumberTrade}
+                        keyOtherNumberTrade={this.state.infoBlock.otherNumberTrade}
+                    />
+                    : ''
+                }
             </>
         )
     }

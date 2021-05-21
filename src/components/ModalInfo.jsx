@@ -27,26 +27,43 @@ export default class ModalInfo extends React.Component {
     renderDataOn(data) {
         this.arrData = [];
 
+        data.tech.forEach((data, index) => {
+            if (data !== null) {
+                this.arrData = [...this.arrData,
+                <tr key={index + 'tech'}>
+                    <td >{data.information}</td>
+                    <td >{data.value}</td>
+                </tr>
+                ]
+            }
+        })
+
         data.commercial.forEach((data, index) => {
             if (data !== null) {
                 this.arrData = [...this.arrData,
-                <React.Fragment key={index}>
-                    <Row>
-                        <Col>
-                            {data.information}
-                        </Col>
-                        <Col>
-                            {data.value}
-                        </Col>
-                    </Row>
-                    <Row> &nbsp; </Row>
-                </React.Fragment>
+                <tr key={index + 'comm'}>
+                    <td >{data.information}</td>
+                    <td >{data.value}</td>
+                </tr>
                 ]
             }
-
         })
+
+        data.date.forEach((data, index) => {
+            if (data !== null) {
+
+                this.arrData = [...this.arrData,
+                <tr key={index + 'date'}>
+                    <td >{data.information}</td>
+                    <td >{data.value}</td>
+                </tr>
+                ]
+            }
+        })
+
         this.setState({ base: this.arrData })
     }
+
 
     componentDidMount() {
         this.renderDataOn(this.props.dataOnTrade);
@@ -61,12 +78,23 @@ export default class ModalInfo extends React.Component {
             <>
                 <div className="modal_window" style={{ display: show ? 'block' : 'none' }} >
                     <div className="shadow_form" onClick={this.handleClickShadow} ></div>
-                    <Form className="form_main">
+                    <Form className="form_main" >
                         <Alert variant="info" onClose={() => this.handleClickShadow()} dismissible>
-                            <Alert.Heading > Информация </Alert.Heading>
+                            <Alert.Heading > Информация по торгам </Alert.Heading>
                         </Alert>
-                        <Container>
-                            {this.state.base}
+                        <Container style={{ maxHeight: '60vh', overflowY: 'auto' }}>
+                            <Table striped bordered hover size="sm">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {this.state.base}
+                                </tbody>
+                            </Table>
                         </Container>
 
                     </Form>
