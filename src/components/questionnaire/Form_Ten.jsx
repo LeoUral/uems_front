@@ -239,7 +239,7 @@ export default class Form_Ten extends React.Component {
                         <Alert variant="dark" onClose={() => this.handleClickShadow()} dismissible>
                             <Alert.Heading > Форма технического аудита: "Технология сварки" </Alert.Heading>
                         </Alert>
-                        <Container>
+                        <Container style={{ maxHeight: '60vh', overflowY: 'auto' }}>
                             <Form.Group>
                                 <Row>
                                     <Col sm={3} style={{ paddingTop: '28px' }}>
@@ -261,84 +261,85 @@ export default class Form_Ten extends React.Component {
                                     />
                                 </Row>
                             </Form.Group>
-                        </Container>
-                        <Container style={{ display: show ? 'block' : 'none' }}>
-                            <Row> &nbsp; </Row>
-                            <Form.Group style={{ borderBottom: '1px solid #ccc' }}>
-                                <Row>
-                                    <Col sm={12} style={{ paddingTop: '28px' }}>
-                                        Количество и уровень аттестации технологов по сварке:
-                                     </Col>
-                                </Row>
-
-                                {this.state.base}
-
-                                <Button
-                                    variant="outline-secondary"
-                                    onClick={this.handleClickAdd}
-                                    style={{ marginLeft: '20px' }}
-                                >
-                                    Добавить позицию
-                                            </Button>
+                            {/* </Container> */}
+                            <Container style={{ display: show ? 'block' : 'none' }}>
                                 <Row> &nbsp; </Row>
-                            </Form.Group>
-
-                            <Form.Group style={{ borderBottom: '1px solid #ccc' }}>
-                                <Row>
-                                    <Col sm={12} style={{ paddingTop: '28px' }}>
-                                        Аттестованные технологии сварки, применяемые на Вашем предприятии:
+                                <Form.Group style={{ borderBottom: '1px solid #ccc' }}>
+                                    <Row>
+                                        <Col sm={12} style={{ paddingTop: '28px' }}>
+                                            Количество и уровень аттестации технологов по сварке:
                                      </Col>
-                                </Row>
+                                    </Row>
 
-                                {this.state.base1}
+                                    {this.state.base}
 
-                                <Button
-                                    variant="outline-secondary"
-                                    onClick={this.handleClickAdd1}
-                                    style={{ marginLeft: '20px' }}
-                                >
-                                    Добавить позицию
+                                    <Button
+                                        variant="outline-secondary"
+                                        onClick={this.handleClickAdd}
+                                        style={{ marginLeft: '20px' }}
+                                    >
+                                        Добавить позицию
                                             </Button>
-                                <Row> &nbsp; </Row>
-                            </Form.Group>
+                                    <Row> &nbsp; </Row>
+                                </Form.Group>
 
-                            <Form.Group style={{ borderBottom: '1px solid #ccc' }}>
-                                <Row>
-                                    <Col sm={12} style={{ paddingTop: '28px' }}>
-                                        Укажите количество сварщиков аттестованных НАКС в штате предприятия с указанием следующих параметров:
+                                <Form.Group style={{ borderBottom: '1px solid #ccc' }}>
+                                    <Row>
+                                        <Col sm={12} style={{ paddingTop: '28px' }}>
+                                            Аттестованные технологии сварки, применяемые на Вашем предприятии:
                                      </Col>
-                                </Row>
+                                    </Row>
 
-                                {this.state.base2}
+                                    {this.state.base1}
 
-                                <Button
-                                    variant="outline-secondary"
-                                    onClick={this.handleClickAdd2}
-                                    style={{ marginLeft: '20px' }}
-                                >
-                                    Добавить позицию
+                                    <Button
+                                        variant="outline-secondary"
+                                        onClick={this.handleClickAdd1}
+                                        style={{ marginLeft: '20px' }}
+                                    >
+                                        Добавить позицию
                                             </Button>
+                                    <Row> &nbsp; </Row>
+                                </Form.Group>
+
+                                <Form.Group style={{ borderBottom: '1px solid #ccc' }}>
+                                    <Row>
+                                        <Col sm={12} style={{ paddingTop: '28px' }}>
+                                            Укажите количество сварщиков аттестованных НАКС в штате предприятия с указанием следующих параметров:
+                                     </Col>
+                                    </Row>
+
+                                    {this.state.base2}
+
+                                    <Button
+                                        variant="outline-secondary"
+                                        onClick={this.handleClickAdd2}
+                                        style={{ marginLeft: '20px' }}
+                                    >
+                                        Добавить позицию
+                                            </Button>
+                                    <Row> &nbsp; </Row>
+                                </Form.Group>
+
+                            </Container>
+
+                            <Container>
                                 <Row> &nbsp; </Row>
-                            </Form.Group>
-
-                        </Container>
-
-                        <Container>
-                            <Row> &nbsp; </Row>
-                            <Form.Group>
-                                <Row>
-                                    <Container>
-                                        <Button
-                                            variant="outline-dark"
-                                            onClick={this.handleClickSave}
-                                        >
-                                            Сохранить информацию
+                                <Form.Group>
+                                    <Row>
+                                        <Container>
+                                            <Button
+                                                variant="outline-dark"
+                                                onClick={this.handleClickSave}
+                                            >
+                                                Сохранить информацию
                                              </Button>
-                                    </Container>
-                                </Row>
-                            </Form.Group>
-                            <Row> &nbsp; </Row>
+                                        </Container>
+                                    </Row>
+                                </Form.Group>
+                                <Row> &nbsp; </Row>
 
+                            </Container>
                         </Container>
                     </Form>
                 </div>

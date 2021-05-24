@@ -135,7 +135,7 @@ export default class Form_Seven extends React.Component {
                         <Alert variant="dark" onClose={() => this.handleClickShadow()} dismissible>
                             <Alert.Heading > Форма технического аудита: "Крепёжные изделия, Поковки" </Alert.Heading>
                         </Alert>
-                        <Container>
+                        <Container style={{ maxHeight: '60vh', overflowY: 'auto' }}>
                             <Form.Group>
                                 <Row> &nbsp; </Row>
                                 <Row>
@@ -219,24 +219,25 @@ export default class Form_Seven extends React.Component {
 
                                 </Row>
                             </Form.Group>
-                        </Container>
-                        <Row > &nbsp; </Row>
-                        <Container style={{ display: show ? 'block' : 'none' }} >
-
-                            <Form.Group>
-                                <Row>
-                                    <Container>
-                                        <Button
-                                            variant="outline-dark"
-                                            onClick={this.handleClickSave}
-                                        >
-                                            Сохранить информацию
-                                             </Button>
-                                    </Container>
-                                </Row>
-                            </Form.Group>
+                            {/* </Container> */}
                             <Row > &nbsp; </Row>
+                            <Container style={{ display: show ? 'block' : 'none' }} >
 
+                                <Form.Group>
+                                    <Row>
+                                        <Container>
+                                            <Button
+                                                variant="outline-dark"
+                                                onClick={this.handleClickSave}
+                                            >
+                                                Сохранить информацию
+                                             </Button>
+                                        </Container>
+                                    </Row>
+                                </Form.Group>
+                                <Row > &nbsp; </Row>
+
+                            </Container>
                         </Container>
                     </Form>
                 </div>

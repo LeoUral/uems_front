@@ -282,7 +282,7 @@ export default class Form_Twelve extends React.Component {
                         <Alert variant="dark" onClose={() => this.handleClickShadow()} dismissible>
                             <Alert.Heading > Форма технического аудита: "Методы контроля качества" </Alert.Heading>
                         </Alert>
-                        <Container>
+                        <Container style={{ maxHeight: '60vh', overflowY: 'auto' }}>
                             <Form.Group >
                                 <Row>
                                     <Col sm={12} style={{ paddingTop: '28px' }}>
@@ -301,159 +301,160 @@ export default class Form_Twelve extends React.Component {
                                             </Button>
                                 <Row> &nbsp; </Row>
                             </Form.Group>
-                        </Container>
-                        <Container style={{ display: true ? 'block' : 'none' }}>
-                            <Row> &nbsp; </Row>
-                            <Form.Group>
-                                <Row>
-                                    <Col sm={9} style={{ paddingTop: '28px' }}>
-                                        Численность персонала, работающего в службе качества:
-                                     </Col>
-                                    <InputForm
-                                        id={16}
-                                        width={3}
-                                        show={true}
-                                        verify="number"
-                                        label=""
-                                        placeholder="Кол-во человек"
-                                        description="Численность персонала, работающего в службе качества"
-                                        value={this.value[16] ? this.value[16].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                </Row>
+                            {/* </Container> */}
+                            <Container style={{ display: true ? 'block' : 'none' }}>
                                 <Row> &nbsp; </Row>
-                            </Form.Group>
-                        </Container>
-                        <Container>
-                            <Form.Group >
-                                <Row>
-                                    <Col sm={9} style={{ paddingTop: '28px' }}>
-                                        Система входного контроля материалов и комплектующих
-                                     </Col>
-                                    <SelectForm
-                                        id={17}
-                                        width={3}
-                                        show={true}
-                                        label=""
-                                        placeholder="Ваш ответ"
-                                        description="Система входного контроля материалов и комплектующих"
-                                        option="Да, Нет"
-                                        value={this.value[17] ? this.value[17].value : ''}
-                                        // value={this.value[3].value}
-                                        onChangeValue={this.doChangeValue}
-                                        onChangeVisionBlock={this.doChangeVisionBlock}
-                                    />
-                                </Row>
-                                <Row> &nbsp; </Row>
-                            </Form.Group>
-                        </Container>
-                        <Container style={{ display: show ? 'block' : 'none' }}>
-                            <Form.Group>
-                                <Row>
-                                    <Col sm={9} style={{ paddingTop: '28px' }}>
-                                        Численность персонала, задействованного в оформлении паспортов на оборудование:
-                                     </Col>
-                                    <InputForm
-                                        id={18}
-                                        width={3}
-                                        show={true}
-                                        verify="number"
-                                        label=""
-                                        placeholder="Кол-во человек"
-                                        description="Численность персонала, задействованного в оформлении паспортов на оборудование"
-                                        value={this.value[18] ? this.value[18].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                </Row>
-                            </Form.Group>
-
-                            <Form.Group style={{ borderBottom: '1px solid #ccc' }}>
-                                <Row>
-                                    <Col sm={12} style={{ paddingTop: '28px' }}>
-                                        Методы разрушающего и неразрушающего контроля качества выпускаемой продукции, применяемые на Вашем предприятии:
-                                     </Col>
-                                </Row>
-                                <Row> &nbsp; </Row>
-                                <Row>
-                                    <CheckForm
-                                        id={19}
-                                        width={4}
-                                        show={true}
-                                        placeholder="Собственные"
-                                        description="Методы разрушающего и неразрушающего контроля, собственные"
-                                        value={this.value[19] ? this.value[19].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                        onChangeVisionBlock={this.doChangeVisionBlock1}
-                                    />
-                                </Row>
-                                <Row> &nbsp; </Row>
-                                <div style={{ display: show1 ? 'block' : 'none' }} >
-
-                                    {this.state.base1}
-
-                                    <Row >
-                                        <Button
-                                            variant="outline-secondary"
-                                            onClick={this.handleClickAdd1}
-                                            style={{ marginLeft: '20px' }}
-                                        >
-                                            Добавить позицию
-                                            </Button>
-                                    </Row>
-                                </div>
-                                <Row> &nbsp; </Row>
-                            </Form.Group>
-
-                            <Form.Group style={{ borderBottom: '1px solid #ccc' }}>
-
-                                <Row> &nbsp; </Row>
-                                <Row>
-                                    <CheckForm
-                                        id={32}
-                                        width={4}
-                                        show={true}
-                                        placeholder="Аутсорсинг"
-                                        description="Методы разрушающего и неразрушающего контроля, аутсорсинг"
-                                        value={this.value[32] ? this.value[32].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                        onChangeVisionBlock={this.doChangeVisionBlock2}
-                                    />
-                                </Row>
-                                <Row> &nbsp; </Row>
-                                <div style={{ display: show2 ? 'block' : 'none' }} >
-
-                                    {this.state.base2}
-
+                                <Form.Group>
                                     <Row>
-                                        <Button
-                                            variant="outline-secondary"
-                                            onClick={this.handleClickAdd2}
-                                            style={{ marginLeft: '20px' }}
-                                        >
-                                            Добавить позицию
-                                            </Button>
+                                        <Col sm={9} style={{ paddingTop: '28px' }}>
+                                            Численность персонала, работающего в службе качества:
+                                     </Col>
+                                        <InputForm
+                                            id={16}
+                                            width={3}
+                                            show={true}
+                                            verify="number"
+                                            label=""
+                                            placeholder="Кол-во человек"
+                                            description="Численность персонала, работающего в службе качества"
+                                            value={this.value[16] ? this.value[16].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                        />
                                     </Row>
-                                </div>
+                                    <Row> &nbsp; </Row>
+                                </Form.Group>
+                            </Container>
+                            <Container>
+                                <Form.Group >
+                                    <Row>
+                                        <Col sm={9} style={{ paddingTop: '28px' }}>
+                                            Система входного контроля материалов и комплектующих
+                                     </Col>
+                                        <SelectForm
+                                            id={17}
+                                            width={3}
+                                            show={true}
+                                            label=""
+                                            placeholder="Ваш ответ"
+                                            description="Система входного контроля материалов и комплектующих"
+                                            option="Да, Нет"
+                                            value={this.value[17] ? this.value[17].value : ''}
+                                            // value={this.value[3].value}
+                                            onChangeValue={this.doChangeValue}
+                                            onChangeVisionBlock={this.doChangeVisionBlock}
+                                        />
+                                    </Row>
+                                    <Row> &nbsp; </Row>
+                                </Form.Group>
+                            </Container>
+                            <Container style={{ display: show ? 'block' : 'none' }}>
+                                <Form.Group>
+                                    <Row>
+                                        <Col sm={9} style={{ paddingTop: '28px' }}>
+                                            Численность персонала, задействованного в оформлении паспортов на оборудование:
+                                     </Col>
+                                        <InputForm
+                                            id={18}
+                                            width={3}
+                                            show={true}
+                                            verify="number"
+                                            label=""
+                                            placeholder="Кол-во человек"
+                                            description="Численность персонала, задействованного в оформлении паспортов на оборудование"
+                                            value={this.value[18] ? this.value[18].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                        />
+                                    </Row>
+                                </Form.Group>
+
+                                <Form.Group style={{ borderBottom: '1px solid #ccc' }}>
+                                    <Row>
+                                        <Col sm={12} style={{ paddingTop: '28px' }}>
+                                            Методы разрушающего и неразрушающего контроля качества выпускаемой продукции, применяемые на Вашем предприятии:
+                                     </Col>
+                                    </Row>
+                                    <Row> &nbsp; </Row>
+                                    <Row>
+                                        <CheckForm
+                                            id={19}
+                                            width={4}
+                                            show={true}
+                                            placeholder="Собственные"
+                                            description="Методы разрушающего и неразрушающего контроля, собственные"
+                                            value={this.value[19] ? this.value[19].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                            onChangeVisionBlock={this.doChangeVisionBlock1}
+                                        />
+                                    </Row>
+                                    <Row> &nbsp; </Row>
+                                    <div style={{ display: show1 ? 'block' : 'none' }} >
+
+                                        {this.state.base1}
+
+                                        <Row >
+                                            <Button
+                                                variant="outline-secondary"
+                                                onClick={this.handleClickAdd1}
+                                                style={{ marginLeft: '20px' }}
+                                            >
+                                                Добавить позицию
+                                            </Button>
+                                        </Row>
+                                    </div>
+                                    <Row> &nbsp; </Row>
+                                </Form.Group>
+
+                                <Form.Group style={{ borderBottom: '1px solid #ccc' }}>
+
+                                    <Row> &nbsp; </Row>
+                                    <Row>
+                                        <CheckForm
+                                            id={32}
+                                            width={4}
+                                            show={true}
+                                            placeholder="Аутсорсинг"
+                                            description="Методы разрушающего и неразрушающего контроля, аутсорсинг"
+                                            value={this.value[32] ? this.value[32].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                            onChangeVisionBlock={this.doChangeVisionBlock2}
+                                        />
+                                    </Row>
+                                    <Row> &nbsp; </Row>
+                                    <div style={{ display: show2 ? 'block' : 'none' }} >
+
+                                        {this.state.base2}
+
+                                        <Row>
+                                            <Button
+                                                variant="outline-secondary"
+                                                onClick={this.handleClickAdd2}
+                                                style={{ marginLeft: '20px' }}
+                                            >
+                                                Добавить позицию
+                                            </Button>
+                                        </Row>
+                                    </div>
+                                    <Row> &nbsp; </Row>
+                                </Form.Group>
+                            </Container>
+
+                            <Container>
                                 <Row> &nbsp; </Row>
-                            </Form.Group>
-                        </Container>
-
-                        <Container>
-                            <Row> &nbsp; </Row>
-                            <Form.Group>
-                                <Row>
-                                    <Container>
-                                        <Button
-                                            variant="outline-dark"
-                                            onClick={this.handleClickSave}
-                                        >
-                                            Сохранить информацию
+                                <Form.Group>
+                                    <Row>
+                                        <Container>
+                                            <Button
+                                                variant="outline-dark"
+                                                onClick={this.handleClickSave}
+                                            >
+                                                Сохранить информацию
                                              </Button>
-                                    </Container>
-                                </Row>
-                            </Form.Group>
-                            <Row> &nbsp; </Row>
+                                        </Container>
+                                    </Row>
+                                </Form.Group>
+                                <Row> &nbsp; </Row>
 
+                            </Container>
                         </Container>
                     </Form>
                 </div>

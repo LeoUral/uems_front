@@ -168,7 +168,7 @@ export default class Form_Four extends React.Component {
                         <Alert variant="dark" onClose={() => this.handleClickShadow()} dismissible>
                             <Alert.Heading > Форма технического аудита - "Материалы", "Развальцовка", "Испытания" </Alert.Heading>
                         </Alert>
-                        <Container>
+                        <Container style={{ maxHeight: '60vh', overflowY: 'auto' }}>
                             <Form.Group>
                                 <Row>Материалы, с которыми работает Ваше предприятие:</Row>
                                 <Row>

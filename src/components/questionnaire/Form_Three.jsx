@@ -115,8 +115,8 @@ export default class Form_Three extends React.Component {
                 />
             </React.Fragment>
             ],
-            id: +this.state.id + 2,
-            maxId: +this.state.maxId + 2
+            id: +this.state.id + 3,
+            maxId: +this.state.maxId + 3
         })
     }
 
@@ -128,8 +128,8 @@ export default class Form_Three extends React.Component {
 
         this.addForm();
 
-        for (let i = 5; i < lengthData; i++) {
-            if ([5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33].includes(i) && Number(data[i].id > 0)) {
+        for (let i = 6; i < lengthData; i++) {
+            if ([6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45].includes(i) && Number(data[i].id > 0)) {
                 this.addForm()
 
             }
@@ -169,7 +169,7 @@ export default class Form_Three extends React.Component {
                         <Alert variant="dark" onClose={() => this.handleClickShadow()} dismissible>
                             <Alert.Heading > Форма технического аудита: "Сварочное производство" </Alert.Heading>
                         </Alert>
-                        <Container>
+                        <Container style={{ maxHeight: '60vh', overflowY: 'auto' }}>
                             <Form.Group>
                                 <Row>Сварочное производство (марки и типы сварочного оборудования, максимальная толщина свариваемых деталей по каждому виду сварки):</Row>
                                 <Row>Наличие сварочных колонн:</Row>

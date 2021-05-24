@@ -172,7 +172,7 @@ export default class Form_Thirteen extends React.Component {
                         <Alert variant="dark" onClose={() => this.handleClickShadow()} dismissible>
                             <Alert.Heading > Форма технического аудита: "Планирование производства" </Alert.Heading>
                         </Alert>
-                        <Container>
+                        <Container style={{ maxHeight: '60vh', overflowY: 'auto' }}>
                             <Form.Group>
                                 <Row>
                                     <Col sm={10} style={{ paddingTop: '28px' }}>
@@ -195,186 +195,187 @@ export default class Form_Thirteen extends React.Component {
                                 </Row>
                                 <Row> &nbsp; </Row>
                             </Form.Group>
-                        </Container>
+                            {/* </Container> */}
 
-                        <Container>
-                            <Form.Group>
-                                <Row>
-                                    <Col sm={10} style={{ paddingTop: '28px' }}>
-                                        Наличие ERP системы
+                            <Container>
+                                <Form.Group>
+                                    <Row>
+                                        <Col sm={10} style={{ paddingTop: '28px' }}>
+                                            Наличие ERP системы
                                      </Col>
 
-                                    <SelectForm
-                                        id={2}
-                                        width={2}
-                                        show={true}
-                                        label=""
-                                        placeholder="Ваш ответ"
-                                        description="Система сквозного планирования производства."
-                                        option="Да, Нет"
-                                        value={this.value[2] ? this.value[2].value : ''}
-                                        // value={this.value[3].value}
-                                        onChangeValue={this.doChangeValue}
-                                        onChangeVisionBlock={this.doEmpty}
-                                    />
-                                </Row>
-                                <Row> &nbsp; </Row>
-                            </Form.Group>
-                        </Container>
+                                        <SelectForm
+                                            id={2}
+                                            width={2}
+                                            show={true}
+                                            label=""
+                                            placeholder="Ваш ответ"
+                                            description="Система сквозного планирования производства."
+                                            option="Да, Нет"
+                                            value={this.value[2] ? this.value[2].value : ''}
+                                            // value={this.value[3].value}
+                                            onChangeValue={this.doChangeValue}
+                                            onChangeVisionBlock={this.doEmpty}
+                                        />
+                                    </Row>
+                                    <Row> &nbsp; </Row>
+                                </Form.Group>
+                            </Container>
 
-                        <Container>
-                            <Form.Group>
-                                <Row>
-                                    <Col sm={10} style={{ paddingTop: '28px' }}>
-                                        Наличие автоматизации системы сквозного планирования производства с указанием программного продукта
+                            <Container>
+                                <Form.Group>
+                                    <Row>
+                                        <Col sm={10} style={{ paddingTop: '28px' }}>
+                                            Наличие автоматизации системы сквозного планирования производства с указанием программного продукта
                                      </Col>
 
-                                    <SelectForm
-                                        id={3}
-                                        width={2}
-                                        show={true}
-                                        label=""
-                                        placeholder="Ваш ответ"
-                                        description="Система сквозного планирования производства."
-                                        option="Да, Нет"
-                                        value={this.value[3] ? this.value[3].value : ''}
-                                        // value={this.value[3].value}
-                                        onChangeValue={this.doChangeValue}
-                                        onChangeVisionBlock={this.doEmpty}
-                                    />
-                                </Row>
-                                <Row> &nbsp; </Row>
-                                <Row>
-                                    <InputForm
-                                        id={4}
-                                        width={9}
-                                        show={true}
-                                        // verify="number"
-                                        label=""
-                                        placeholder="Наличие програмного продукта"
-                                        description="Система сквозного планирования производства."
-                                        value={this.value[4] ? this.value[4].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                </Row>
-                                <Row> &nbsp; </Row>
-                            </Form.Group>
-                        </Container>
+                                        <SelectForm
+                                            id={3}
+                                            width={2}
+                                            show={true}
+                                            label=""
+                                            placeholder="Ваш ответ"
+                                            description="Система сквозного планирования производства."
+                                            option="Да, Нет"
+                                            value={this.value[3] ? this.value[3].value : ''}
+                                            // value={this.value[3].value}
+                                            onChangeValue={this.doChangeValue}
+                                            onChangeVisionBlock={this.doEmpty}
+                                        />
+                                    </Row>
+                                    <Row> &nbsp; </Row>
+                                    <Row>
+                                        <InputForm
+                                            id={4}
+                                            width={9}
+                                            show={true}
+                                            // verify="number"
+                                            label=""
+                                            placeholder="Наличие програмного продукта"
+                                            description="Система сквозного планирования производства."
+                                            value={this.value[4] ? this.value[4].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                        />
+                                    </Row>
+                                    <Row> &nbsp; </Row>
+                                </Form.Group>
+                            </Container>
 
-                        <Container>
-                            <Form.Group>
-                                <Row>
-                                    <Col sm={10} style={{ paddingTop: '28px' }}>
-                                        Наличие системы MES
+                            <Container>
+                                <Form.Group>
+                                    <Row>
+                                        <Col sm={10} style={{ paddingTop: '28px' }}>
+                                            Наличие системы MES
                                      </Col>
 
-                                    <SelectForm
-                                        id={5}
-                                        width={2}
-                                        show={true}
-                                        label=""
-                                        placeholder="Ваш ответ"
-                                        description="Система сквозного планирования производства."
-                                        option="Да, Нет"
-                                        value={this.value[5] ? this.value[5].value : ''}
-                                        // value={this.value[3].value}
-                                        onChangeValue={this.doChangeValue}
-                                        onChangeVisionBlock={this.doEmpty}
-                                    />
-                                </Row>
-                                <Row> &nbsp; </Row>
-                            </Form.Group>
-                        </Container>
+                                        <SelectForm
+                                            id={5}
+                                            width={2}
+                                            show={true}
+                                            label=""
+                                            placeholder="Ваш ответ"
+                                            description="Система сквозного планирования производства."
+                                            option="Да, Нет"
+                                            value={this.value[5] ? this.value[5].value : ''}
+                                            // value={this.value[3].value}
+                                            onChangeValue={this.doChangeValue}
+                                            onChangeVisionBlock={this.doEmpty}
+                                        />
+                                    </Row>
+                                    <Row> &nbsp; </Row>
+                                </Form.Group>
+                            </Container>
 
-                        <Container>
-                            <Form.Group>
-                                <Row>
-                                    <Col sm={10} style={{ paddingTop: '28px' }}>
-                                        Количество персонала, задействованного в диспетчировании производства
+                            <Container>
+                                <Form.Group>
+                                    <Row>
+                                        <Col sm={10} style={{ paddingTop: '28px' }}>
+                                            Количество персонала, задействованного в диспетчировании производства
                                      </Col>
 
-                                    <InputForm
-                                        id={6}
-                                        width={2}
-                                        show={true}
-                                        verify="number"
-                                        label=""
-                                        placeholder="Кол-во человек"
-                                        description="Количество персонала, задействованного в диспетчировании производства"
-                                        value={this.value[6] ? this.value[6].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                </Row>
-                                <Row> &nbsp; </Row>
-                            </Form.Group>
-                        </Container>
+                                        <InputForm
+                                            id={6}
+                                            width={2}
+                                            show={true}
+                                            verify="number"
+                                            label=""
+                                            placeholder="Кол-во человек"
+                                            description="Количество персонала, задействованного в диспетчировании производства"
+                                            value={this.value[6] ? this.value[6].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                        />
+                                    </Row>
+                                    <Row> &nbsp; </Row>
+                                </Form.Group>
+                            </Container>
 
-                        <Container>
-                            <Form.Group>
-                                <Row>
-                                    <Col sm={10} style={{ paddingTop: '28px' }}>
-                                        Наличие подъездных ЖД путей
+                            <Container>
+                                <Form.Group>
+                                    <Row>
+                                        <Col sm={10} style={{ paddingTop: '28px' }}>
+                                            Наличие подъездных ЖД путей
                                      </Col>
 
-                                    <SelectForm
-                                        id={7}
-                                        width={2}
-                                        show={true}
-                                        label=""
-                                        placeholder="Ваш ответ"
-                                        description="Система сквозного планирования производства."
-                                        option="Да, Нет"
-                                        value={this.value[7] ? this.value[7].value : ''}
-                                        // value={this.value[3].value}
-                                        onChangeValue={this.doChangeValue}
-                                        onChangeVisionBlock={this.doEmpty}
-                                    />
-                                </Row>
-                                <Row> &nbsp; </Row>
-                            </Form.Group>
-                        </Container>
+                                        <SelectForm
+                                            id={7}
+                                            width={2}
+                                            show={true}
+                                            label=""
+                                            placeholder="Ваш ответ"
+                                            description="Система сквозного планирования производства."
+                                            option="Да, Нет"
+                                            value={this.value[7] ? this.value[7].value : ''}
+                                            // value={this.value[3].value}
+                                            onChangeValue={this.doChangeValue}
+                                            onChangeVisionBlock={this.doEmpty}
+                                        />
+                                    </Row>
+                                    <Row> &nbsp; </Row>
+                                </Form.Group>
+                            </Container>
 
-                        <Container>
-                            <Form.Group>
-                                <Row>
-                                    <Col sm={10} style={{ paddingTop: '28px' }}>
-                                        Возможность отгрузки водным транспортом.
+                            <Container>
+                                <Form.Group>
+                                    <Row>
+                                        <Col sm={10} style={{ paddingTop: '28px' }}>
+                                            Возможность отгрузки водным транспортом.
                                      </Col>
 
-                                    <SelectForm
-                                        id={8}
-                                        width={2}
-                                        show={true}
-                                        label=""
-                                        placeholder="Ваш ответ"
-                                        description="Система сквозного планирования производства."
-                                        option="Да, Нет"
-                                        value={this.value[8] ? this.value[8].value : ''}
-                                        // value={this.value[3].value}
-                                        onChangeValue={this.doChangeValue}
-                                        onChangeVisionBlock={this.doEmpty}
-                                    />
-                                </Row>
-                                <Row> &nbsp; </Row>
-                            </Form.Group>
-                        </Container>
+                                        <SelectForm
+                                            id={8}
+                                            width={2}
+                                            show={true}
+                                            label=""
+                                            placeholder="Ваш ответ"
+                                            description="Система сквозного планирования производства."
+                                            option="Да, Нет"
+                                            value={this.value[8] ? this.value[8].value : ''}
+                                            // value={this.value[3].value}
+                                            onChangeValue={this.doChangeValue}
+                                            onChangeVisionBlock={this.doEmpty}
+                                        />
+                                    </Row>
+                                    <Row> &nbsp; </Row>
+                                </Form.Group>
+                            </Container>
 
-                        <Container>
-                            <Row> &nbsp; </Row>
-                            <Form.Group>
-                                <Row>
-                                    <Container>
-                                        <Button
-                                            variant="outline-dark"
-                                            onClick={this.handleClickSave}
-                                        >
-                                            Сохранить информацию
+                            <Container>
+                                <Row> &nbsp; </Row>
+                                <Form.Group>
+                                    <Row>
+                                        <Container>
+                                            <Button
+                                                variant="outline-dark"
+                                                onClick={this.handleClickSave}
+                                            >
+                                                Сохранить информацию
                                              </Button>
-                                    </Container>
-                                </Row>
-                            </Form.Group>
-                            <Row> &nbsp; </Row>
+                                        </Container>
+                                    </Row>
+                                </Form.Group>
+                                <Row> &nbsp; </Row>
 
+                            </Container>
                         </Container>
                     </Form>
                 </div>

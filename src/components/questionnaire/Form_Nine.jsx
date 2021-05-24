@@ -211,7 +211,7 @@ export default class Form_Nine extends React.Component {
                         <Alert variant="dark" onClose={() => this.handleClickShadow()} dismissible>
                             <Alert.Heading > Форма технического аудита: "Изготовление полулинз и линзовых компенсаторов / Подъемно-транспортные механизмы" </Alert.Heading>
                         </Alert>
-                        <Container>
+                        <Container style={{ maxHeight: '60vh', overflowY: 'auto' }}>
                             <Form.Group>
                                 <Row>
                                     <Col sm={10} style={{ paddingTop: '28px' }}>
@@ -233,213 +233,214 @@ export default class Form_Nine extends React.Component {
                                     />
                                 </Row>
                             </Form.Group>
-                        </Container>
-                        <Container style={{ display: show ? 'block' : 'none' }}>
-                            <Form.Group style={{ borderBottom: '1px solid #ccc' }}>
-                                <Row>
-                                    <InputForm
-                                        id={2}
-                                        width={3}
-                                        show={show}
-                                        // verify="number"
-                                        label=""
-                                        placeholder="Материал изготовления"
-                                        description="Изготовление полулинз"
-                                        value={this.value[2] ? this.value[2].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                    <InputForm
-                                        id={3}
-                                        width={3}
-                                        show={show}
-                                        verify="number"
-                                        label=""
-                                        placeholder="Мин диаметр, мм"
-                                        description="Изготовление полулинз"
-                                        value={this.value[3] ? this.value[3].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                    <InputForm
-                                        id={4}
-                                        width={3}
-                                        show={show}
-                                        verify="number"
-                                        label=""
-                                        placeholder="Мах диаметр, мм"
-                                        description="Изготовление полулинз"
-                                        value={this.value[4] ? this.value[4].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                    <InputForm
-                                        id={5}
-                                        width={3}
-                                        show={show}
-                                        verify="number"
-                                        label=""
-                                        placeholder="Толщина, мм"
-                                        description="Изготовление полулинз"
-                                        value={this.value[5] ? this.value[5].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                </Row>
-                                <Row> &nbsp; </Row>
-                            </Form.Group>
-                        </Container>
+                            {/* </Container> */}
+                            <Container style={{ display: show ? 'block' : 'none' }}>
+                                <Form.Group style={{ borderBottom: '1px solid #ccc' }}>
+                                    <Row>
+                                        <InputForm
+                                            id={2}
+                                            width={3}
+                                            show={show}
+                                            // verify="number"
+                                            label=""
+                                            placeholder="Материал изготовления"
+                                            description="Изготовление полулинз"
+                                            value={this.value[2] ? this.value[2].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                        />
+                                        <InputForm
+                                            id={3}
+                                            width={3}
+                                            show={show}
+                                            verify="number"
+                                            label=""
+                                            placeholder="Мин диаметр, мм"
+                                            description="Изготовление полулинз"
+                                            value={this.value[3] ? this.value[3].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                        />
+                                        <InputForm
+                                            id={4}
+                                            width={3}
+                                            show={show}
+                                            verify="number"
+                                            label=""
+                                            placeholder="Мах диаметр, мм"
+                                            description="Изготовление полулинз"
+                                            value={this.value[4] ? this.value[4].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                        />
+                                        <InputForm
+                                            id={5}
+                                            width={3}
+                                            show={show}
+                                            verify="number"
+                                            label=""
+                                            placeholder="Толщина, мм"
+                                            description="Изготовление полулинз"
+                                            value={this.value[5] ? this.value[5].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                        />
+                                    </Row>
+                                    <Row> &nbsp; </Row>
+                                </Form.Group>
+                            </Container>
 
-                        <Container>
-                            <Form.Group>
-                                <Row>
-                                    <Col sm={10} style={{ paddingTop: '28px' }}>
-                                        Имеется ли на вашем предприятии возможность гибки теплообменных труб?
+                            <Container>
+                                <Form.Group>
+                                    <Row>
+                                        <Col sm={10} style={{ paddingTop: '28px' }}>
+                                            Имеется ли на вашем предприятии возможность гибки теплообменных труб?
                                      </Col>
-                                    <SelectForm
-                                        id={6}
-                                        width={2}
-                                        show={true}
-                                        label=""
-                                        placeholder="Ваш ответ"
-                                        description="Гибки теплообменных труб"
-                                        option="Да, Нет"
-                                        value={this.value[6] ? this.value[6].value : ''}
-                                        // value={this.value[3].value}
-                                        onChangeValue={this.doChangeValue}
-                                        onChangeVisionBlock={this.doEmpty}
-                                    />
-                                </Row>
-                            </Form.Group>
-                        </Container>
+                                        <SelectForm
+                                            id={6}
+                                            width={2}
+                                            show={true}
+                                            label=""
+                                            placeholder="Ваш ответ"
+                                            description="Гибки теплообменных труб"
+                                            option="Да, Нет"
+                                            value={this.value[6] ? this.value[6].value : ''}
+                                            // value={this.value[3].value}
+                                            onChangeValue={this.doChangeValue}
+                                            onChangeVisionBlock={this.doEmpty}
+                                        />
+                                    </Row>
+                                </Form.Group>
+                            </Container>
 
-                        <Container>
-                            <Form.Group>
-                                <Row>
-                                    <Col sm={10} style={{ paddingTop: '28px' }}>
-                                        Имеется ли грузоподъемное оборудование на вашем производстве?
+                            <Container>
+                                <Form.Group>
+                                    <Row>
+                                        <Col sm={10} style={{ paddingTop: '28px' }}>
+                                            Имеется ли грузоподъемное оборудование на вашем производстве?
                                      </Col>
-                                    <SelectForm
-                                        id={7}
-                                        width={2}
-                                        show={true}
-                                        label=""
-                                        placeholder="Ваш ответ"
-                                        description="Грузоподъемное оборудование"
-                                        option="Да, Нет"
-                                        value={this.value[7] ? this.value[7].value : ''}
-                                        // value={this.value[3].value}
-                                        onChangeValue={this.doChangeValue}
-                                        onChangeVisionBlock={this.doChangeVisionBlock1}
-                                    />
-                                </Row>
-                            </Form.Group>
-                        </Container>
+                                        <SelectForm
+                                            id={7}
+                                            width={2}
+                                            show={true}
+                                            label=""
+                                            placeholder="Ваш ответ"
+                                            description="Грузоподъемное оборудование"
+                                            option="Да, Нет"
+                                            value={this.value[7] ? this.value[7].value : ''}
+                                            // value={this.value[3].value}
+                                            onChangeValue={this.doChangeValue}
+                                            onChangeVisionBlock={this.doChangeVisionBlock1}
+                                        />
+                                    </Row>
+                                </Form.Group>
+                            </Container>
 
-                        <Container style={{ display: show1 ? 'block' : 'none' }}>
-                            <Form.Group style={{ borderBottom: '1px solid #ccc' }} >
+                            <Container style={{ display: show1 ? 'block' : 'none' }}>
+                                <Form.Group style={{ borderBottom: '1px solid #ccc' }} >
 
-                                {this.state.base}
+                                    {this.state.base}
 
-                                <Button
-                                    variant="outline-secondary"
-                                    onClick={this.handleClickAdd}
-                                    style={{ marginLeft: '20px' }}
-                                >
-                                    Добавить позицию
+                                    <Button
+                                        variant="outline-secondary"
+                                        onClick={this.handleClickAdd}
+                                        style={{ marginLeft: '20px' }}
+                                    >
+                                        Добавить позицию
                                             </Button>
+                                    <Row> &nbsp; </Row>
+                                </Form.Group>
+                            </Container>
+
+                            <Container>
+                                <Form.Group>
+                                    <Row>
+                                        <Col sm={10} style={{ paddingTop: '20px' }}>
+                                            Укажите количество конструкторов в штате Вашего предприятия с опытом проектирования кожухотрубных теплообменных аппаратов и аппаратов, работающих под давлением.
+                                     </Col>
+                                        <InputForm
+                                            id={32}
+                                            width={2}
+                                            show={true}
+                                            verify="number"
+                                            label=""
+                                            placeholder="Количество, чел"
+                                            description="Конструктора с опытом проектирования"
+                                            value={this.value[32] ? this.value[32].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                        />
+                                    </Row>
+                                </Form.Group>
+                            </Container>
+
+                            <Container>
+                                <Form.Group>
+                                    <Row>
+                                        <Col sm={10} style={{ paddingTop: '20px' }}>
+                                            Укажите количество технологов в штате Вашего предприятия с опытом разработки технологии изготовления кожухотрубных теплообменных аппаратов и аппаратов, работающих под давлениемом проектирования кожухотрубных теплообменных аппаратов и аппаратов, работающих под давлением.
+                                     </Col>
+                                        <InputForm
+                                            id={33}
+                                            width={2}
+                                            show={true}
+                                            verify="number"
+                                            label=""
+                                            placeholder="Количество, чел"
+                                            description="Технологи с опытом разработки"
+                                            value={this.value[33] ? this.value[33].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                        />
+                                    </Row>
+                                </Form.Group>
+                            </Container>
+
+                            <Container>
+                                <Form.Group>
+                                    <Row>
+                                        <Col sm={10} style={{ paddingTop: '20px' }}>
+                                            Укажите наличие системы технологического контроля изготовления теплообменного оборудования, начиная от входного контроля материалов до момента отгрузки готового изделия и её описание (технологический паспорт и т.п.)
+                                     </Col>
+                                        <SelectForm
+                                            id={34}
+                                            width={2}
+                                            show={true}
+                                            label=""
+                                            placeholder="Ваш ответ"
+                                            description="Cистемы технологического контроля изготовления теплообменного оборудования"
+                                            option="Да, Нет"
+                                            value={this.value[34] ? this.value[34].value : ''}
+                                            // value={this.value[3].value}
+                                            onChangeValue={this.doChangeValue}
+                                            onChangeVisionBlock={this.doChangeVisionBlock2}
+                                        />
+                                        <TextareaForm
+                                            id={35}
+                                            width={12}
+                                            rows={3}
+                                            show={show2}
+                                            label=""
+                                            placeholder="Наличие системы контроля, описание"
+                                            description="Cистемы технологического контроля изготовления теплообменного оборудования"
+                                            value={this.value[35] ? this.value[35].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                        />
+                                    </Row>
+                                </Form.Group>
+                            </Container>
+
+                            <Container>
                                 <Row> &nbsp; </Row>
-                            </Form.Group>
-                        </Container>
-
-                        <Container>
-                            <Form.Group>
-                                <Row>
-                                    <Col sm={10} style={{ paddingTop: '20px' }}>
-                                        Укажите количество конструкторов в штате Вашего предприятия с опытом проектирования кожухотрубных теплообменных аппаратов и аппаратов, работающих под давлением.
-                                     </Col>
-                                    <InputForm
-                                        id={32}
-                                        width={2}
-                                        show={true}
-                                        verify="number"
-                                        label=""
-                                        placeholder="Количество, чел"
-                                        description="Конструктора с опытом проектирования"
-                                        value={this.value[32] ? this.value[32].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                </Row>
-                            </Form.Group>
-                        </Container>
-
-                        <Container>
-                            <Form.Group>
-                                <Row>
-                                    <Col sm={10} style={{ paddingTop: '20px' }}>
-                                        Укажите количество технологов в штате Вашего предприятия с опытом разработки технологии изготовления кожухотрубных теплообменных аппаратов и аппаратов, работающих под давлениемом проектирования кожухотрубных теплообменных аппаратов и аппаратов, работающих под давлением.
-                                     </Col>
-                                    <InputForm
-                                        id={33}
-                                        width={2}
-                                        show={true}
-                                        verify="number"
-                                        label=""
-                                        placeholder="Количество, чел"
-                                        description="Технологи с опытом разработки"
-                                        value={this.value[33] ? this.value[33].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                </Row>
-                            </Form.Group>
-                        </Container>
-
-                        <Container>
-                            <Form.Group>
-                                <Row>
-                                    <Col sm={10} style={{ paddingTop: '20px' }}>
-                                        Укажите наличие системы технологического контроля изготовления теплообменного оборудования, начиная от входного контроля материалов до момента отгрузки готового изделия и её описание (технологический паспорт и т.п.)
-                                     </Col>
-                                    <SelectForm
-                                        id={34}
-                                        width={2}
-                                        show={true}
-                                        label=""
-                                        placeholder="Ваш ответ"
-                                        description="Cистемы технологического контроля изготовления теплообменного оборудования"
-                                        option="Да, Нет"
-                                        value={this.value[34] ? this.value[34].value : ''}
-                                        // value={this.value[3].value}
-                                        onChangeValue={this.doChangeValue}
-                                        onChangeVisionBlock={this.doChangeVisionBlock2}
-                                    />
-                                    <TextareaForm
-                                        id={35}
-                                        width={12}
-                                        rows={3}
-                                        show={show2}
-                                        label=""
-                                        placeholder="Наличие системы контроля, описание"
-                                        description="Cистемы технологического контроля изготовления теплообменного оборудования"
-                                        value={this.value[35] ? this.value[35].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                </Row>
-                            </Form.Group>
-                        </Container>
-
-                        <Container>
-                            <Row> &nbsp; </Row>
-                            <Form.Group>
-                                <Row>
-                                    <Container>
-                                        <Button
-                                            variant="outline-dark"
-                                            onClick={this.handleClickSave}
-                                        >
-                                            Сохранить информацию
+                                <Form.Group>
+                                    <Row>
+                                        <Container>
+                                            <Button
+                                                variant="outline-dark"
+                                                onClick={this.handleClickSave}
+                                            >
+                                                Сохранить информацию
                                              </Button>
-                                    </Container>
-                                </Row>
-                            </Form.Group>
-                            <Row> &nbsp; </Row>
+                                        </Container>
+                                    </Row>
+                                </Form.Group>
+                                <Row> &nbsp; </Row>
 
+                            </Container>
                         </Container>
                     </Form>
                 </div>

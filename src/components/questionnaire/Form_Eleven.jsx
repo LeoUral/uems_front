@@ -170,7 +170,7 @@ export default class Form_Eleven extends React.Component {
                         <Alert variant="dark" onClose={() => this.handleClickShadow()} dismissible>
                             <Alert.Heading > Форма технического аудита: "Развальцовка" </Alert.Heading>
                         </Alert>
-                        <Container>
+                        <Container style={{ maxHeight: '60vh', overflowY: 'auto' }}>
                             <Form.Group>
                                 <Row>
                                     <Col sm={9} style={{ paddingTop: '28px' }}>
@@ -190,44 +190,45 @@ export default class Form_Eleven extends React.Component {
                                     />
                                 </Row>
                             </Form.Group>
-                        </Container>
-                        <Container >
-                            <Form.Group>
-                                <Row>
-                                    <Col sm={12} style={{ paddingTop: '28px' }}>
-                                        Количество аттестованных развальцовщиков с указанием разрядов:
+                            {/* </Container> */}
+                            <Container >
+                                <Form.Group>
+                                    <Row>
+                                        <Col sm={12} style={{ paddingTop: '28px' }}>
+                                            Количество аттестованных развальцовщиков с указанием разрядов:
                                      </Col>
-                                </Row>
+                                    </Row>
 
-                                {this.state.base}
+                                    {this.state.base}
 
-                            </Form.Group>
-                            <Button
-                                variant="outline-secondary"
-                                onClick={this.handleClickAdd}
-                                style={{ marginLeft: '20px' }}
-                            >
-                                Добавить позицию
+                                </Form.Group>
+                                <Button
+                                    variant="outline-secondary"
+                                    onClick={this.handleClickAdd}
+                                    style={{ marginLeft: '20px' }}
+                                >
+                                    Добавить позицию
                                             </Button>
-                            <Row> &nbsp; </Row>
-                        </Container>
+                                <Row> &nbsp; </Row>
+                            </Container>
 
-                        <Container>
-                            <Row> &nbsp; </Row>
-                            <Form.Group>
-                                <Row>
-                                    <Container>
-                                        <Button
-                                            variant="outline-dark"
-                                            onClick={this.handleClickSave}
-                                        >
-                                            Сохранить информацию
+                            <Container>
+                                <Row> &nbsp; </Row>
+                                <Form.Group>
+                                    <Row>
+                                        <Container>
+                                            <Button
+                                                variant="outline-dark"
+                                                onClick={this.handleClickSave}
+                                            >
+                                                Сохранить информацию
                                              </Button>
-                                    </Container>
-                                </Row>
-                            </Form.Group>
-                            <Row> &nbsp; </Row>
+                                        </Container>
+                                    </Row>
+                                </Form.Group>
+                                <Row> &nbsp; </Row>
 
+                            </Container>
                         </Container>
                     </Form>
                 </div>

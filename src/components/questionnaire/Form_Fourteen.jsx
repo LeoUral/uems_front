@@ -336,7 +336,7 @@ export default class Form_Fourteen extends React.Component {
                         <Alert variant="dark" onClose={() => this.handleClickShadow()} dismissible>
                             <Alert.Heading > Форма технического аудита: "Сертификаты, Декларации, Аттестации, Аккредитации" </Alert.Heading>
                         </Alert>
-                        <Container>
+                        <Container style={{ maxHeight: '60vh', overflowY: 'auto' }}>
                             <Form.Group>
                                 <Row>
                                     <Col sm={3} style={{ paddingTop: '28px' }}>
@@ -344,163 +344,164 @@ export default class Form_Fourteen extends React.Component {
                                      </Col>
                                 </Row>
                             </Form.Group>
-                        </Container>
+                            {/* </Container> */}
 
-                        <Container>
-                            <Form.Group>
-                                <Row>
-                                    <CheckForm
-                                        id={1}
-                                        width={4}
-                                        show={true}
-                                        placeholder="Сертификаты"
-                                        description="Разрешительная документация, сертификаты"
-                                        value={this.value[1] ? this.value[1].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                        onChangeVisionBlock={this.doChangeVisionBlock}
-                                    />
-                                </Row>
-                            </Form.Group>
-                        </Container>
+                            <Container>
+                                <Form.Group>
+                                    <Row>
+                                        <CheckForm
+                                            id={1}
+                                            width={4}
+                                            show={true}
+                                            placeholder="Сертификаты"
+                                            description="Разрешительная документация, сертификаты"
+                                            value={this.value[1] ? this.value[1].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                            onChangeVisionBlock={this.doChangeVisionBlock}
+                                        />
+                                    </Row>
+                                </Form.Group>
+                            </Container>
 
-                        <Container style={{ display: show ? 'block' : 'none' }}>
-                            <Row> &nbsp; </Row>
-                            <Form.Group >
-
-                                {this.state.base}
-
-
-                                <Button
-                                    variant="outline-secondary"
-                                    onClick={this.handleClickAdd}
-                                    style={{ marginLeft: '20px' }}
-                                >
-                                    Добавить позицию
-                                            </Button>
+                            <Container style={{ display: show ? 'block' : 'none' }}>
                                 <Row> &nbsp; </Row>
-                            </Form.Group>
-                        </Container>
+                                <Form.Group >
 
-                        <Container>
-                            <Form.Group>
-                                <Row>
-                                    <CheckForm
-                                        id={14}
-                                        width={4}
-                                        show={true}
-                                        placeholder="Декларации"
-                                        description="Разрешительная документация, декларации"
-                                        value={this.value[14] ? this.value[14].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                        onChangeVisionBlock={this.doChangeVisionBlock1}
-                                    />
-                                </Row>
-                            </Form.Group>
-                        </Container>
+                                    {this.state.base}
 
-                        <Container style={{ display: show1 ? 'block' : 'none' }}>
-                            <Row> &nbsp; </Row>
-                            <Form.Group>
 
-                                {this.state.base1}
-
-                                <Button
-                                    variant="outline-secondary"
-                                    onClick={this.handleClickAdd1}
-                                    style={{ marginLeft: '20px' }}
-                                >
-                                    Добавить позицию
+                                    <Button
+                                        variant="outline-secondary"
+                                        onClick={this.handleClickAdd}
+                                        style={{ marginLeft: '20px' }}
+                                    >
+                                        Добавить позицию
                                             </Button>
+                                    <Row> &nbsp; </Row>
+                                </Form.Group>
+                            </Container>
+
+                            <Container>
+                                <Form.Group>
+                                    <Row>
+                                        <CheckForm
+                                            id={14}
+                                            width={4}
+                                            show={true}
+                                            placeholder="Декларации"
+                                            description="Разрешительная документация, декларации"
+                                            value={this.value[14] ? this.value[14].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                            onChangeVisionBlock={this.doChangeVisionBlock1}
+                                        />
+                                    </Row>
+                                </Form.Group>
+                            </Container>
+
+                            <Container style={{ display: show1 ? 'block' : 'none' }}>
                                 <Row> &nbsp; </Row>
-                            </Form.Group>
-                        </Container>
+                                <Form.Group>
 
-                        <Container>
-                            <Form.Group>
-                                <Row>
-                                    <CheckForm
-                                        id={27}
-                                        width={4}
-                                        show={true}
-                                        placeholder="Аттестации"
-                                        description="Разрешительная документация, аттестации"
-                                        value={this.value[27] ? this.value[27].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                        onChangeVisionBlock={this.doChangeVisionBlock2}
-                                    />
-                                </Row>
-                            </Form.Group>
-                        </Container>
+                                    {this.state.base1}
 
-                        <Container style={{ display: show2 ? 'block' : 'none' }}>
-                            <Row> &nbsp; </Row>
-                            <Form.Group>
-
-                                {this.state.base2}
-
-                                <Button
-                                    variant="outline-secondary"
-                                    onClick={this.handleClickAdd2}
-                                    style={{ marginLeft: '20px' }}
-                                >
-                                    Добавить позицию
+                                    <Button
+                                        variant="outline-secondary"
+                                        onClick={this.handleClickAdd1}
+                                        style={{ marginLeft: '20px' }}
+                                    >
+                                        Добавить позицию
                                             </Button>
+                                    <Row> &nbsp; </Row>
+                                </Form.Group>
+                            </Container>
+
+                            <Container>
+                                <Form.Group>
+                                    <Row>
+                                        <CheckForm
+                                            id={27}
+                                            width={4}
+                                            show={true}
+                                            placeholder="Аттестации"
+                                            description="Разрешительная документация, аттестации"
+                                            value={this.value[27] ? this.value[27].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                            onChangeVisionBlock={this.doChangeVisionBlock2}
+                                        />
+                                    </Row>
+                                </Form.Group>
+                            </Container>
+
+                            <Container style={{ display: show2 ? 'block' : 'none' }}>
                                 <Row> &nbsp; </Row>
-                            </Form.Group>
-                        </Container>
+                                <Form.Group>
 
-                        <Container>
-                            <Form.Group>
-                                <Row>
-                                    <CheckForm
-                                        id={40}
-                                        width={4}
-                                        show={true}
-                                        placeholder="Аккредитации"
-                                        description="Разрешительная документация, аккредитации"
-                                        value={this.value[40] ? this.value[40].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                        onChangeVisionBlock={this.doChangeVisionBlock3}
-                                    />
-                                </Row>
-                            </Form.Group>
-                        </Container>
+                                    {this.state.base2}
 
-                        <Container style={{ display: show3 ? 'block' : 'none' }}>
-                            <Row> &nbsp; </Row>
-                            <Form.Group >
-
-                                {this.state.base3}
-
-                                <Button
-                                    variant="outline-secondary"
-                                    onClick={this.handleClickAdd3}
-                                    style={{ marginLeft: '20px' }}
-                                >
-                                    Добавить позицию
+                                    <Button
+                                        variant="outline-secondary"
+                                        onClick={this.handleClickAdd2}
+                                        style={{ marginLeft: '20px' }}
+                                    >
+                                        Добавить позицию
                                             </Button>
+                                    <Row> &nbsp; </Row>
+                                </Form.Group>
+                            </Container>
+
+                            <Container>
+                                <Form.Group>
+                                    <Row>
+                                        <CheckForm
+                                            id={40}
+                                            width={4}
+                                            show={true}
+                                            placeholder="Аккредитации"
+                                            description="Разрешительная документация, аккредитации"
+                                            value={this.value[40] ? this.value[40].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                            onChangeVisionBlock={this.doChangeVisionBlock3}
+                                        />
+                                    </Row>
+                                </Form.Group>
+                            </Container>
+
+                            <Container style={{ display: show3 ? 'block' : 'none' }}>
                                 <Row> &nbsp; </Row>
-                            </Form.Group>
-                        </Container>
+                                <Form.Group >
+
+                                    {this.state.base3}
+
+                                    <Button
+                                        variant="outline-secondary"
+                                        onClick={this.handleClickAdd3}
+                                        style={{ marginLeft: '20px' }}
+                                    >
+                                        Добавить позицию
+                                            </Button>
+                                    <Row> &nbsp; </Row>
+                                </Form.Group>
+                            </Container>
 
 
 
-                        <Container>
-                            <Row> &nbsp; </Row>
-                            <Form.Group>
-                                <Row>
-                                    <Container>
-                                        <Button
-                                            variant="outline-dark"
-                                            onClick={this.handleClickSave}
-                                        >
-                                            Сохранить информацию
+                            <Container>
+                                <Row> &nbsp; </Row>
+                                <Form.Group>
+                                    <Row>
+                                        <Container>
+                                            <Button
+                                                variant="outline-dark"
+                                                onClick={this.handleClickSave}
+                                            >
+                                                Сохранить информацию
                                              </Button>
-                                    </Container>
-                                </Row>
-                            </Form.Group>
-                            <Row> &nbsp; </Row>
+                                        </Container>
+                                    </Row>
+                                </Form.Group>
+                                <Row> &nbsp; </Row>
 
+                            </Container>
                         </Container>
                     </Form>
                 </div>

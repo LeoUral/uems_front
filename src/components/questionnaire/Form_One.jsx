@@ -91,7 +91,7 @@ export default class Form_One extends React.Component {
                         <Alert variant="dark" onClose={() => this.handleClickShadow()} dismissible>
                             <Alert.Heading > Форма технического аудита: "Заготовительное производство" </Alert.Heading>
                         </Alert>
-                        <Container>
+                        <Container style={{ maxHeight: '60vh', overflowY: 'auto' }}>
                             <Form.Group>
                                 <Row> Заготовительное производство (укажите способы и виды резки, максимальную толщину резания металла, максимальную толщину и длину вальцуемых обечаек и т.д.). </Row>
 

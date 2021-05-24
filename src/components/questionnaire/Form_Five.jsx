@@ -191,7 +191,7 @@ export default class Form_Five extends React.Component {
                         <Alert variant="dark" onClose={() => this.handleClickShadow()} dismissible>
                             <Alert.Heading > Форма технического аудита - "Термическая обработка" </Alert.Heading>
                         </Alert>
-                        <Container>
+                        <Container style={{ maxHeight: '60vh', overflowY: 'auto' }}>
                             <Form.Group>
                                 <Row> Имеется ли на Вашем предприятии термическая обработка узлов и деталей выпускаемого оборудования?</Row>
                                 <Row>

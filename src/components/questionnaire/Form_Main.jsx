@@ -4,6 +4,7 @@ import { Alert, Container, Form, Row, Button } from 'react-bootstrap';
 import InputForm from './InputForm';
 import SelectForm from './SelectForm';
 import PhoneForm from './PhoneForm';
+import CheckForm from './CheckForm';
 import SelectForm_City from './SelectForm_City';
 import { CITY } from './ConstCity';
 
@@ -13,8 +14,9 @@ export default class Form_Main extends React.Component {
 
         this.state = {
             language: 'rus',
+            show: false,
             dataValue: [],
-            maxId: 18,
+            maxId: 21,
             dataOnServer: [],
             dataFromServer: [],
             lengthDataFromServer: 0
@@ -24,10 +26,20 @@ export default class Form_Main extends React.Component {
         this.handleClickSave = this.handleClickSave.bind(this);
         this.handleClickShadow = this.handleClickShadow.bind(this);
         this.doEmpty = this.doEmpty.bind(this);
+        this.doChangeVisionBlock = this.doChangeVisionBlock.bind(this);
     }
+
+    doChangeVisionBlock(e) {
+        console.log(e);
+        if (e) {
+            this.setState({ show: true })
+        } else {
+            this.setState({ show: false })
+        }
+    }
+
     //*Пустышка
     doEmpty() {
-
     }
 
     handleClickShadow() {
@@ -82,6 +94,7 @@ export default class Form_Main extends React.Component {
         setTimeout(() => {
             this.setState({ dataFromServer: this.props.data, lengthDataFromServer: this.props.lengthDataFromServer });
             console.log('DATA on dataFromServer');
+            if (this.props.data[21].value) this.setState({ show: true })
             // this.forceUpdate();
         }, 1000);
     }
@@ -91,6 +104,7 @@ export default class Form_Main extends React.Component {
 
         const view = this.props.view;
         this.value = this.props.data;
+        const show = this.state.show;
 
         const city = CITY;
 
@@ -104,7 +118,7 @@ export default class Form_Main extends React.Component {
                         <Alert variant="dark" onClose={() => this.handleClickShadow()} dismissible>
                             <Alert.Heading > Общаяя информация </Alert.Heading>
                         </Alert>
-                        <Container>
+                        <Container style={{ maxHeight: '60vh', overflowY: 'auto' }}>
                             <Form.Group>
                                 <Row>
                                     <InputForm
@@ -148,6 +162,20 @@ export default class Form_Main extends React.Component {
                                     />
                                 </Row>
                                 <Row>
+                                    <InputForm
+                                        id={21}
+                                        width={12}
+                                        show={true}
+                                        // verify="number"
+                                        label=""
+                                        placeholder="Сайт компании"
+                                        description="Предприятие"
+                                        value={this.value[21] ? this.value[21].value : ''}
+                                        // value={this.value[2].value}
+                                        onChangeValue={this.doChangeValue}
+                                    />
+                                </Row>
+                                <Row>
                                     <PhoneForm
                                         id={4}
                                         width={4}
@@ -161,7 +189,7 @@ export default class Form_Main extends React.Component {
                                     />
                                     <InputForm
                                         id={5}
-                                        width={8}
+                                        width={4}
                                         show={true}
                                         // verify="number"
                                         label=""
@@ -171,13 +199,26 @@ export default class Form_Main extends React.Component {
                                         // value={this.value[5].value}
                                         onChangeValue={this.doChangeValue}
                                     />
+                                    <SelectForm
+                                        id={20}
+                                        width={4}
+                                        show={true}
+                                        label=""
+                                        placeholder="Наименование пользователя"
+                                        description="Предприятие"
+                                        option="Добывающее и/или перерабатывающее предприятие, Машиностроительный завод, Проектная организация, Инжиниринговая компания, Поставщик материалов и комплектующих, Строительно-монтажная организация, Генеральный подрядчик, Лицензиар, Инвестор, Транспортная компания, Лаборатория НМК и РМК"
+                                        value={this.value[20] ? this.value[20].value : ''}
+                                        // value={this.value[3].value}
+                                        onChangeValue={this.doChangeValue}
+                                        onChangeVisionBlock={this.doEmpty}
+                                    />
                                 </Row>
                             </Form.Group>
                             <Form.Group>
                                 <Row>
                                     <InputForm
                                         id={6}
-                                        width={4}
+                                        width={3}
                                         show={true}
                                         verify="number"
                                         label=""
@@ -189,7 +230,7 @@ export default class Form_Main extends React.Component {
                                     />
                                     <InputForm
                                         id={7}
-                                        width={4}
+                                        width={3}
                                         show={true}
                                         verify="number"
                                         label=""
@@ -201,13 +242,25 @@ export default class Form_Main extends React.Component {
                                     />
                                     <InputForm
                                         id={8}
-                                        width={4}
+                                        width={3}
                                         show={true}
                                         verify="number"
                                         label=""
                                         placeholder="ОГРН"
                                         description="Предприятие"
                                         value={this.value[8] ? this.value[8].value : ''}
+                                        // value={this.value[8].value}
+                                        onChangeValue={this.doChangeValue}
+                                    />
+                                    <InputForm
+                                        id={19}
+                                        width={3}
+                                        show={true}
+                                        verify="number"
+                                        label=""
+                                        placeholder="основной код ОКВЭД"
+                                        description="Предприятие"
+                                        value={this.value[19] ? this.value[19].value : ''}
                                         // value={this.value[8].value}
                                         onChangeValue={this.doChangeValue}
                                     />
@@ -347,15 +400,28 @@ export default class Form_Main extends React.Component {
                                         onChangeValue={this.doChangeValue}
                                     />
                                 </Row>
+                                <Row> &nbsp; </Row>
+                                <Row>
+                                    <CheckForm
+                                        id={21}
+                                        width={12}
+                                        show={true}
+                                        placeholder="Согласие на обработку персональных данных (в т.ч. Пользовательское Соглашение, Договор Оферты"
+                                        description="Предприятие"
+                                        value={this.value[21] ? this.value[21].value : ''}
+                                        onChangeValue={this.doChangeValue}
+                                        onChangeVisionBlock={this.doChangeVisionBlock}
+                                    />
+                                </Row>
                             </Form.Group>
                             <Form.Group>
                                 <Row>
                                     <Container>
-                                        <Button variant="outline-dark" onClick={this.handleClickSave} >Сохранить информацию</Button>
+                                        {show ? <Button variant="outline-dark" onClick={this.handleClickSave} >Сохранить информацию</Button> : ''}
                                     </Container>
                                 </Row>
                             </Form.Group>
-                            <Row><div></div></Row>
+                            <Row> &nbsp;</Row>
 
                         </Container>
                     </Form>

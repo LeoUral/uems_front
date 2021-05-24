@@ -196,7 +196,8 @@ export default class Form_Six extends React.Component {
                         <Alert variant="dark" onClose={() => this.handleClickShadow()} dismissible>
                             <Alert.Heading > Форма технического аудита: "Работа с ЛКМ" </Alert.Heading>
                         </Alert>
-                        <Container>
+
+                        <Container style={{ maxHeight: '60vh', overflowY: 'auto' }}>
                             <Form.Group>
                                 <Row> &nbsp; </Row>
                                 <Row>
@@ -215,320 +216,321 @@ export default class Form_Six extends React.Component {
                                     />
                                 </Row>
                             </Form.Group>
-                        </Container>
-                        <Row > &nbsp; </Row>
-                        <Container style={{ display: show ? 'block' : 'none' }} >
-                            <Form.Group style={{ borderBottom: '1px solid #ccc' }}>
-                                <Row>
-                                    <CheckForm
-                                        id={2}
-                                        width={4}
-                                        show={true}
-                                        placeholder="Подготовка поверхносей"
-                                        description="Работа с ЛКМ, подготовка поверхносей"
-                                        value={this.value[2] ? this.value[2].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                        onChangeVisionBlock={this.doChangeVisionBlock1}
-                                    />
-                                </Row>
-                                <div style={{ display: show1 ? 'block' : 'none' }}>
-                                    <Row  >
-                                        <Col sm={3} style={{ paddingTop: '28px' }}>
-                                            Название технологии:
-                                        </Col>
-                                        <InputForm
-                                            id={3}
-                                            width={9}
-                                            show={true}
-                                            // verify="number"
-                                            label=""
-                                            placeholder="Название технологии"
-                                            description="Работа с ЛКМ, подготовка поверхносей"
-                                            value={this.value[3] ? this.value[3].value : ''}
-                                            onChangeValue={this.doChangeValue}
-                                        />
-                                    </Row>
-                                    <Row>
-                                        <Col sm={3} style={{ paddingTop: '28px' }}>
-                                            Оборудование:
-                                        </Col>
-                                        <InputForm
-                                            id={4}
-                                            width={9}
-                                            show={true}
-                                            // verify="number"
-                                            label=""
-                                            placeholder="Оборудование"
-                                            description="Работа с ЛКМ, подготовка поверхносей"
-                                            value={this.value[4] ? this.value[4].value : ''}
-                                            onChangeValue={this.doChangeValue}
-                                        />
-                                    </Row>
-                                    <Row>
-                                        <Col sm={3} style={{ paddingTop: '28px' }}>
-                                            Габариты:
-                                        </Col>
-                                        <InputForm
-                                            id={5}
-                                            width={3}
-                                            show={true}
-                                            verify="number"
-                                            label=""
-                                            placeholder="Мах длина, мм"
-                                            description="Работа с ЛКМ, подготовка поверхносей"
-                                            value={this.value[5] ? this.value[5].value : ''}
-                                            onChangeValue={this.doChangeValue}
-                                        />
-                                        <InputForm
-                                            id={6}
-                                            width={3}
-                                            show={true}
-                                            verify="number"
-                                            label=""
-                                            placeholder="Мах ширина, мм"
-                                            description="Работа с ЛКМ, подготовка поверхносей"
-                                            value={this.value[6] ? this.value[6].value : ''}
-                                            onChangeValue={this.doChangeValue}
-                                        />
-                                        <InputForm
-                                            id={7}
-                                            width={3}
-                                            show={true}
-                                            verify="number"
-                                            label=""
-                                            placeholder="Мах высота, мм"
-                                            description="Работа с ЛКМ, подготовка поверхносей"
-                                            value={this.value[7] ? this.value[7].value : ''}
-                                            onChangeValue={this.doChangeValue}
-                                        />
-                                    </Row>
-                                    <Row> &nbsp; </Row>
+                            {/* </Container> */}
+                            <Row > &nbsp; </Row>
+                            <Container style={{ display: show ? 'block' : 'none' }} >
+                                <Form.Group style={{ borderBottom: '1px solid #ccc' }}>
                                     <Row>
                                         <CheckForm
-                                            id={8}
+                                            id={2}
                                             width={4}
                                             show={true}
-                                            placeholder="Пескоструйная обработка"
+                                            placeholder="Подготовка поверхносей"
                                             description="Работа с ЛКМ, подготовка поверхносей"
-                                            value={this.value[8] ? this.value[8].value : ''}
+                                            value={this.value[2] ? this.value[2].value : ''}
                                             onChangeValue={this.doChangeValue}
-                                            onChangeVisionBlock={this.doEmpty}
-                                        />
-                                        <CheckForm
-                                            id={9}
-                                            width={4}
-                                            show={true}
-                                            placeholder="Дробеструйная обработка"
-                                            description="Работа с ЛКМ, подготовка поверхносей"
-                                            value={this.value[9] ? this.value[9].value : ''}
-                                            onChangeValue={this.doChangeValue}
-                                            onChangeVisionBlock={this.doEmpty}
+                                            onChangeVisionBlock={this.doChangeVisionBlock1}
                                         />
                                     </Row>
-                                </div>
-                            </Form.Group>
-                            <Row> &nbsp; </Row>
-                            <Form.Group style={{ borderBottom: '1px solid #ccc' }}>
-                                <Row>
-                                    <CheckForm
-                                        id={10}
-                                        width={4}
-                                        show={true}
-                                        placeholder="Нанесения ЛКМ"
-                                        description="Работа с ЛКМ, нанесение"
-                                        value={this.value[10] ? this.value[10].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                        onChangeVisionBlock={this.doChangeVisionBlock2}
-                                    />
-                                </Row>
-                                <div style={{ display: show2 ? 'block' : 'none' }}>
-                                    <Row>
-                                        <Col sm={3} style={{ paddingTop: '28px' }}>
-                                            Название технологии:
+                                    <div style={{ display: show1 ? 'block' : 'none' }}>
+                                        <Row  >
+                                            <Col sm={3} style={{ paddingTop: '28px' }}>
+                                                Название технологии:
                                         </Col>
-                                        <InputForm
-                                            id={11}
-                                            width={9}
-                                            show={true}
-                                            // verify="number"
-                                            label=""
-                                            placeholder="Название технологии"
-                                            description="Работа с ЛКМ, нанесение"
-                                            value={this.value[11] ? this.value[11].value : ''}
-                                            onChangeValue={this.doChangeValue}
-                                        />
-                                    </Row>
-                                    <Row>
-                                        <Col sm={3} style={{ paddingTop: '28px' }}>
-                                            Оборудование:
+                                            <InputForm
+                                                id={3}
+                                                width={9}
+                                                show={true}
+                                                // verify="number"
+                                                label=""
+                                                placeholder="Название технологии"
+                                                description="Работа с ЛКМ, подготовка поверхносей"
+                                                value={this.value[3] ? this.value[3].value : ''}
+                                                onChangeValue={this.doChangeValue}
+                                            />
+                                        </Row>
+                                        <Row>
+                                            <Col sm={3} style={{ paddingTop: '28px' }}>
+                                                Оборудование:
                                         </Col>
-                                        <InputForm
-                                            id={12}
-                                            width={9}
-                                            show={true}
-                                            // verify="number"
-                                            label=""
-                                            placeholder="Оборудование"
-                                            description="Работа с ЛКМ, нанесение"
-                                            value={this.value[12] ? this.value[12].value : ''}
-                                            onChangeValue={this.doChangeValue}
-                                        />
-                                    </Row>
-                                    <Row>
-                                        <Col sm={3} style={{ paddingTop: '28px' }}>
-                                            Габариты:
+                                            <InputForm
+                                                id={4}
+                                                width={9}
+                                                show={true}
+                                                // verify="number"
+                                                label=""
+                                                placeholder="Оборудование"
+                                                description="Работа с ЛКМ, подготовка поверхносей"
+                                                value={this.value[4] ? this.value[4].value : ''}
+                                                onChangeValue={this.doChangeValue}
+                                            />
+                                        </Row>
+                                        <Row>
+                                            <Col sm={3} style={{ paddingTop: '28px' }}>
+                                                Габариты:
                                         </Col>
-                                        <InputForm
-                                            id={13}
-                                            width={3}
-                                            show={true}
-                                            verify="number"
-                                            label=""
-                                            placeholder="Мах длина, мм"
-                                            description="Работа с ЛКМ, нанесение"
-                                            value={this.value[13] ? this.value[13].value : ''}
-                                            onChangeValue={this.doChangeValue}
-                                        />
-                                        <InputForm
-                                            id={14}
-                                            width={3}
-                                            show={true}
-                                            verify="number"
-                                            label=""
-                                            placeholder="Мах ширина, мм"
-                                            description="Работа с ЛКМ, нанесение"
-                                            value={this.value[14] ? this.value[14].value : ''}
-                                            onChangeValue={this.doChangeValue}
-                                        />
-                                        <InputForm
-                                            id={15}
-                                            width={3}
-                                            show={true}
-                                            verify="number"
-                                            label=""
-                                            placeholder="Мах высота, мм"
-                                            description="Работа с ЛКМ, нанесение"
-                                            value={this.value[15] ? this.value[15].value : ''}
-                                            onChangeValue={this.doChangeValue}
-                                        />
-                                    </Row>
-                                    <Row> &nbsp; </Row>
-                                    <Row>
-                                        <CheckForm
-                                            id={16}
-                                            width={4}
-                                            show={true}
-                                            placeholder="Установка безвоздушной покраски"
-                                            description="Работа с ЛКМ, нанесение"
-                                            value={this.value[16] ? this.value[16].value : ''}
-                                            onChangeValue={this.doChangeValue}
-                                            onChangeVisionBlock={this.doEmpty}
-                                        />
-                                    </Row>
-                                </div>
-                            </Form.Group>
-                            <Row> &nbsp; </Row>
-                            <Form.Group style={{ borderBottom: '1px solid #ccc' }}>
-                                <Row>
-                                    <CheckForm
-                                        id={17}
-                                        width={4}
-                                        show={true}
-                                        placeholder="Сушка изделий после нанесения ЛКМ"
-                                        description="Работа с ЛКМ, сушка изделий"
-                                        value={this.value[17] ? this.value[17].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                        onChangeVisionBlock={this.doChangeVisionBlock3}
-                                    />
-                                </Row>
-                                <div style={{ display: show3 ? 'block' : 'none' }}>
-                                    <Row>
-                                        <Col sm={3} style={{ paddingTop: '28px' }}>
-                                            Название технологии:
-                                        </Col>
-                                        <InputForm
-                                            id={18}
-                                            width={9}
-                                            show={true}
-                                            // verify="number"
-                                            label=""
-                                            placeholder="Название технологии"
-                                            description="Работа с ЛКМ, сушка изделий"
-                                            value={this.value[18] ? this.value[18].value : ''}
-                                            onChangeValue={this.doChangeValue}
-                                        />
-                                    </Row>
-                                    <Row>
-                                        <Col sm={3} style={{ paddingTop: '28px' }}>
-                                            Оборудование:
-                                        </Col>
-                                        <InputForm
-                                            id={19}
-                                            width={9}
-                                            show={true}
-                                            // verify="number"
-                                            label=""
-                                            placeholder="Оборудование"
-                                            description="Работа с ЛКМ, сушка изделий"
-                                            value={this.value[19] ? this.value[19].value : ''}
-                                            onChangeValue={this.doChangeValue}
-                                        />
-                                    </Row>
-                                    <Row>
-                                        <Col sm={3} style={{ paddingTop: '28px' }}>
-                                            Габариты:
-                                        </Col>
-                                        <InputForm
-                                            id={20}
-                                            width={3}
-                                            show={true}
-                                            verify="number"
-                                            label=""
-                                            placeholder="Мах длина, мм"
-                                            description="Работа с ЛКМ, сушка изделий"
-                                            value={this.value[20] ? this.value[20].value : ''}
-                                            onChangeValue={this.doChangeValue}
-                                        />
-                                        <InputForm
-                                            id={21}
-                                            width={3}
-                                            show={true}
-                                            verify="number"
-                                            label=""
-                                            placeholder="Мах ширина, мм"
-                                            description="Работа с ЛКМ, сушка изделий"
-                                            value={this.value[21] ? this.value[21].value : ''}
-                                            onChangeValue={this.doChangeValue}
-                                        />
-                                        <InputForm
-                                            id={22}
-                                            width={3}
-                                            show={true}
-                                            verify="number"
-                                            label=""
-                                            placeholder="Мах высота, мм"
-                                            description="Работа с ЛКМ, сушка изделий"
-                                            value={this.value[22] ? this.value[22].value : ''}
-                                            onChangeValue={this.doChangeValue}
-                                        />
-                                    </Row>
-                                </div>
+                                            <InputForm
+                                                id={5}
+                                                width={3}
+                                                show={true}
+                                                verify="number"
+                                                label=""
+                                                placeholder="Мах длина, мм"
+                                                description="Работа с ЛКМ, подготовка поверхносей"
+                                                value={this.value[5] ? this.value[5].value : ''}
+                                                onChangeValue={this.doChangeValue}
+                                            />
+                                            <InputForm
+                                                id={6}
+                                                width={3}
+                                                show={true}
+                                                verify="number"
+                                                label=""
+                                                placeholder="Мах ширина, мм"
+                                                description="Работа с ЛКМ, подготовка поверхносей"
+                                                value={this.value[6] ? this.value[6].value : ''}
+                                                onChangeValue={this.doChangeValue}
+                                            />
+                                            <InputForm
+                                                id={7}
+                                                width={3}
+                                                show={true}
+                                                verify="number"
+                                                label=""
+                                                placeholder="Мах высота, мм"
+                                                description="Работа с ЛКМ, подготовка поверхносей"
+                                                value={this.value[7] ? this.value[7].value : ''}
+                                                onChangeValue={this.doChangeValue}
+                                            />
+                                        </Row>
+                                        <Row> &nbsp; </Row>
+                                        <Row>
+                                            <CheckForm
+                                                id={8}
+                                                width={4}
+                                                show={true}
+                                                placeholder="Пескоструйная обработка"
+                                                description="Работа с ЛКМ, подготовка поверхносей"
+                                                value={this.value[8] ? this.value[8].value : ''}
+                                                onChangeValue={this.doChangeValue}
+                                                onChangeVisionBlock={this.doEmpty}
+                                            />
+                                            <CheckForm
+                                                id={9}
+                                                width={4}
+                                                show={true}
+                                                placeholder="Дробеструйная обработка"
+                                                description="Работа с ЛКМ, подготовка поверхносей"
+                                                value={this.value[9] ? this.value[9].value : ''}
+                                                onChangeValue={this.doChangeValue}
+                                                onChangeVisionBlock={this.doEmpty}
+                                            />
+                                        </Row>
+                                    </div>
+                                </Form.Group>
                                 <Row> &nbsp; </Row>
-                            </Form.Group>
-                            <Form.Group>
-                                <Row>
-                                    <Container>
-                                        <Button
-                                            variant="outline-dark"
-                                            onClick={this.handleClickSave}
-                                        >
-                                            Сохранить информацию
+                                <Form.Group style={{ borderBottom: '1px solid #ccc' }}>
+                                    <Row>
+                                        <CheckForm
+                                            id={10}
+                                            width={4}
+                                            show={true}
+                                            placeholder="Нанесения ЛКМ"
+                                            description="Работа с ЛКМ, нанесение"
+                                            value={this.value[10] ? this.value[10].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                            onChangeVisionBlock={this.doChangeVisionBlock2}
+                                        />
+                                    </Row>
+                                    <div style={{ display: show2 ? 'block' : 'none' }}>
+                                        <Row>
+                                            <Col sm={3} style={{ paddingTop: '28px' }}>
+                                                Название технологии:
+                                        </Col>
+                                            <InputForm
+                                                id={11}
+                                                width={9}
+                                                show={true}
+                                                // verify="number"
+                                                label=""
+                                                placeholder="Название технологии"
+                                                description="Работа с ЛКМ, нанесение"
+                                                value={this.value[11] ? this.value[11].value : ''}
+                                                onChangeValue={this.doChangeValue}
+                                            />
+                                        </Row>
+                                        <Row>
+                                            <Col sm={3} style={{ paddingTop: '28px' }}>
+                                                Оборудование:
+                                        </Col>
+                                            <InputForm
+                                                id={12}
+                                                width={9}
+                                                show={true}
+                                                // verify="number"
+                                                label=""
+                                                placeholder="Оборудование"
+                                                description="Работа с ЛКМ, нанесение"
+                                                value={this.value[12] ? this.value[12].value : ''}
+                                                onChangeValue={this.doChangeValue}
+                                            />
+                                        </Row>
+                                        <Row>
+                                            <Col sm={3} style={{ paddingTop: '28px' }}>
+                                                Габариты:
+                                        </Col>
+                                            <InputForm
+                                                id={13}
+                                                width={3}
+                                                show={true}
+                                                verify="number"
+                                                label=""
+                                                placeholder="Мах длина, мм"
+                                                description="Работа с ЛКМ, нанесение"
+                                                value={this.value[13] ? this.value[13].value : ''}
+                                                onChangeValue={this.doChangeValue}
+                                            />
+                                            <InputForm
+                                                id={14}
+                                                width={3}
+                                                show={true}
+                                                verify="number"
+                                                label=""
+                                                placeholder="Мах ширина, мм"
+                                                description="Работа с ЛКМ, нанесение"
+                                                value={this.value[14] ? this.value[14].value : ''}
+                                                onChangeValue={this.doChangeValue}
+                                            />
+                                            <InputForm
+                                                id={15}
+                                                width={3}
+                                                show={true}
+                                                verify="number"
+                                                label=""
+                                                placeholder="Мах высота, мм"
+                                                description="Работа с ЛКМ, нанесение"
+                                                value={this.value[15] ? this.value[15].value : ''}
+                                                onChangeValue={this.doChangeValue}
+                                            />
+                                        </Row>
+                                        <Row> &nbsp; </Row>
+                                        <Row>
+                                            <CheckForm
+                                                id={16}
+                                                width={4}
+                                                show={true}
+                                                placeholder="Установка безвоздушной покраски"
+                                                description="Работа с ЛКМ, нанесение"
+                                                value={this.value[16] ? this.value[16].value : ''}
+                                                onChangeValue={this.doChangeValue}
+                                                onChangeVisionBlock={this.doEmpty}
+                                            />
+                                        </Row>
+                                    </div>
+                                </Form.Group>
+                                <Row> &nbsp; </Row>
+                                <Form.Group style={{ borderBottom: '1px solid #ccc' }}>
+                                    <Row>
+                                        <CheckForm
+                                            id={17}
+                                            width={4}
+                                            show={true}
+                                            placeholder="Сушка изделий после нанесения ЛКМ"
+                                            description="Работа с ЛКМ, сушка изделий"
+                                            value={this.value[17] ? this.value[17].value : ''}
+                                            onChangeValue={this.doChangeValue}
+                                            onChangeVisionBlock={this.doChangeVisionBlock3}
+                                        />
+                                    </Row>
+                                    <div style={{ display: show3 ? 'block' : 'none' }}>
+                                        <Row>
+                                            <Col sm={3} style={{ paddingTop: '28px' }}>
+                                                Название технологии:
+                                        </Col>
+                                            <InputForm
+                                                id={18}
+                                                width={9}
+                                                show={true}
+                                                // verify="number"
+                                                label=""
+                                                placeholder="Название технологии"
+                                                description="Работа с ЛКМ, сушка изделий"
+                                                value={this.value[18] ? this.value[18].value : ''}
+                                                onChangeValue={this.doChangeValue}
+                                            />
+                                        </Row>
+                                        <Row>
+                                            <Col sm={3} style={{ paddingTop: '28px' }}>
+                                                Оборудование:
+                                        </Col>
+                                            <InputForm
+                                                id={19}
+                                                width={9}
+                                                show={true}
+                                                // verify="number"
+                                                label=""
+                                                placeholder="Оборудование"
+                                                description="Работа с ЛКМ, сушка изделий"
+                                                value={this.value[19] ? this.value[19].value : ''}
+                                                onChangeValue={this.doChangeValue}
+                                            />
+                                        </Row>
+                                        <Row>
+                                            <Col sm={3} style={{ paddingTop: '28px' }}>
+                                                Габариты:
+                                        </Col>
+                                            <InputForm
+                                                id={20}
+                                                width={3}
+                                                show={true}
+                                                verify="number"
+                                                label=""
+                                                placeholder="Мах длина, мм"
+                                                description="Работа с ЛКМ, сушка изделий"
+                                                value={this.value[20] ? this.value[20].value : ''}
+                                                onChangeValue={this.doChangeValue}
+                                            />
+                                            <InputForm
+                                                id={21}
+                                                width={3}
+                                                show={true}
+                                                verify="number"
+                                                label=""
+                                                placeholder="Мах ширина, мм"
+                                                description="Работа с ЛКМ, сушка изделий"
+                                                value={this.value[21] ? this.value[21].value : ''}
+                                                onChangeValue={this.doChangeValue}
+                                            />
+                                            <InputForm
+                                                id={22}
+                                                width={3}
+                                                show={true}
+                                                verify="number"
+                                                label=""
+                                                placeholder="Мах высота, мм"
+                                                description="Работа с ЛКМ, сушка изделий"
+                                                value={this.value[22] ? this.value[22].value : ''}
+                                                onChangeValue={this.doChangeValue}
+                                            />
+                                        </Row>
+                                    </div>
+                                    <Row> &nbsp; </Row>
+                                </Form.Group>
+                                <Form.Group>
+                                    <Row>
+                                        <Container>
+                                            <Button
+                                                variant="outline-dark"
+                                                onClick={this.handleClickSave}
+                                            >
+                                                Сохранить информацию
                                              </Button>
-                                    </Container>
-                                </Row>
-                            </Form.Group>
-                            <Row><div></div></Row>
+                                        </Container>
+                                    </Row>
+                                </Form.Group>
+                                <Row><div></div></Row>
 
+                            </Container>
                         </Container>
                     </Form>
                 </div>
