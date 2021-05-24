@@ -50,6 +50,7 @@ export default class CreateTrade extends React.Component {
         this.saveNewInfoBlock = this.saveNewInfoBlock.bind(this);
     }
 
+    //* создание торгов
     handleClickCreateTrade() {
         // console.log('click -> create Trade');//test       
 
@@ -62,7 +63,7 @@ export default class CreateTrade extends React.Component {
             this.props.onCreateTrade(this.state.trade);
             this.createTradeObject(JSON.stringify(this.state.trade), String(this.state.trade.keyNameTrade), localStorage.getItem('idUser'));
             this.addTradeInInfoBlock(); //размещение информации о торгах в infoBlock участников
-            this.handleClickShadow();
+
         }, 1000);
         // setTimeout(() => { console.log(this.state.trade); console.log((this.state.trade.keyNameTrade)); })//test
     }
@@ -82,6 +83,7 @@ export default class CreateTrade extends React.Component {
                 this.getInfoBlockParticipant('start', id, this.dataTrade);//! не все данные поступили в файл
             }
         })
+        setTimeout(() => { this.handleClickShadow() }, 1000) //закрывает окно
     }
 
     //* загрузка infoBlock участника торгов из списка приглашенных
@@ -101,12 +103,22 @@ export default class CreateTrade extends React.Component {
     //*добавления в infoBlock данных о торгах
     addTradeInformation(data, newData, id) {
 
-        this.dataD = data.otherNumberTrade;
+        if (this.dataD) {
+            this.dataD = data.otherNumberTrade;
 
-        this.dataD = [...this.dataD, newData]
-        data.otherNumberTrade = this.dataD;
-        //todo сохраняем обновленный infoBlock на сервере
-        this.saveNewInfoBlock(JSON.stringify(data), 'start', id)
+            this.dataD = [...this.dataD, newData]
+            data.otherNumberTrade = this.dataD;
+            //todo сохраняем обновленный infoBlock на сервере
+            this.saveNewInfoBlock(JSON.stringify(data), 'start', id)
+        } else {
+            this.dataD = [];
+
+            this.dataD = [...this.dataD, newData]
+            data.otherNumberTrade = this.dataD;
+            //todo сохраняем обновленный infoBlock на сервере
+            this.saveNewInfoBlock(JSON.stringify(data), 'start', id)
+        }
+
     }
 
     //*сохраняем обновленный infoBlock на сервере

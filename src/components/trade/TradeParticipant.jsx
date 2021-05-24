@@ -49,12 +49,15 @@ export default class TradeParticipant extends React.Component {
         this.dataD = [];
         this.dataId = [];
 
-        this.props.keyOtherNumberTrade.forEach(data => {
-            console.log(data.keyNameTrade);// test
-            console.log(data.organizerId);// test
-            this.dataD = [...this.dataD, data.keyNameTrade]
-            this.dataId = [...this.dataId, data.organizerId]
-        });
+        if (this.props.keyOtherNumberTrade) {
+            this.props.keyOtherNumberTrade.forEach(data => { //! error
+                console.log(data.keyNameTrade);// test
+                console.log(data.organizerId);// test
+                this.dataD = [...this.dataD, data.keyNameTrade]
+                this.dataId = [...this.dataId, data.organizerId]
+            });
+        }
+
         this.setState({ keyOtherNumberTrade: this.dataD, organizerId: this.dataId })
         setTimeout(() => { this.setState({ show: true }) }, 1000)
     }
