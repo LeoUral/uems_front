@@ -93,7 +93,7 @@ export default class CreateTrade extends React.Component {
         }).then(result => {
             console.log(result);
             //todo функция добавления в infoBlock данных о торгах
-            this.addTradeInformation(result, newData, id);
+            this.addTradeInformation(result, id, newData);
         }).catch(result => {
             console.log('ERROR infoBlock');
             console.log(result);
@@ -101,23 +101,22 @@ export default class CreateTrade extends React.Component {
     }
 
     //*добавления в infoBlock данных о торгах
-    addTradeInformation(data, newData, id) {
+    addTradeInformation(data, id, newData) {
 
-        if (this.dataD) {
+        if (data.otherNumberTrade) {
             this.dataD = data.otherNumberTrade;
-
             this.dataD = [...this.dataD, newData]
             data.otherNumberTrade = this.dataD;
             //todo сохраняем обновленный infoBlock на сервере
             this.saveNewInfoBlock(JSON.stringify(data), 'start', id)
         } else {
             this.dataD = [];
-
             this.dataD = [...this.dataD, newData]
             data.otherNumberTrade = this.dataD;
             //todo сохраняем обновленный infoBlock на сервере
             this.saveNewInfoBlock(JSON.stringify(data), 'start', id)
         }
+
 
     }
 
@@ -146,9 +145,8 @@ export default class CreateTrade extends React.Component {
             console.log(result);
         })
     }
-
+    //*проверка на заполнение всех форм для торгов
     verificationShow() {
-
         let trade = this.state.trade;
         if (trade.tech.length > 2 && trade.commercial.length > 3 && trade.date.length > 3 && trade.participant.length > 1 && trade.features.length > 2 && trade.nameTrade.length > 0) this.setState({ showCreateTrade: true })
     }
