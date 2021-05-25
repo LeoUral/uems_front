@@ -16,7 +16,7 @@ export default class Form_Main extends React.Component {
             language: 'rus',
             show: false,
             dataValue: [],
-            maxId: 27,
+            maxId: 28,
             dataOnServer: [],
             dataFromServer: [],
             lengthDataFromServer: 0
@@ -403,38 +403,26 @@ export default class Form_Main extends React.Component {
                                 <Row> &nbsp; </Row>
                                 <Row>
                                     <InputForm
-                                        id={21}
+                                        id={22}
                                         width={12}
                                         show={true}
                                         // verify="number"
                                         label="Банковские реквизиты"
                                         placeholder="Наименование и адрес Банка"
                                         description="Предприятие"
-                                        value={this.value[21] ? this.value[21].value : ''}
+                                        value={this.value[22] ? this.value[22].value : ''}
                                         // value={this.value[18].value}
                                         onChangeValue={this.doChangeValue}
                                     />
                                 </Row>
                                 <Row>
                                     <InputForm
-                                        id={22}
-                                        width={4}
-                                        show={true}
-                                        verify="number"
-                                        label=""
-                                        placeholder="Номер расчетного счета"
-                                        description="Банковские реквизиты"
-                                        value={this.value[22] ? this.value[22].value : ''}
-                                        // value={this.value[18].value}
-                                        onChangeValue={this.doChangeValue}
-                                    />
-                                    <InputForm
                                         id={23}
                                         width={4}
                                         show={true}
                                         verify="number"
                                         label=""
-                                        placeholder="БИК"
+                                        placeholder="Номер расчетного счета"
                                         description="Банковские реквизиты"
                                         value={this.value[23] ? this.value[23].value : ''}
                                         // value={this.value[18].value}
@@ -446,9 +434,21 @@ export default class Form_Main extends React.Component {
                                         show={true}
                                         verify="number"
                                         label=""
-                                        placeholder="Корреспондентский счет"
+                                        placeholder="БИК"
                                         description="Банковские реквизиты"
                                         value={this.value[24] ? this.value[24].value : ''}
+                                        // value={this.value[18].value}
+                                        onChangeValue={this.doChangeValue}
+                                    />
+                                    <InputForm
+                                        id={25}
+                                        width={4}
+                                        show={true}
+                                        verify="number"
+                                        label=""
+                                        placeholder="Корреспондентский счет"
+                                        description="Банковские реквизиты"
+                                        value={this.value[25] ? this.value[25].value : ''}
                                         // value={this.value[18].value}
                                         onChangeValue={this.doChangeValue}
                                     />
@@ -456,22 +456,10 @@ export default class Form_Main extends React.Component {
                                 <Row> &nbsp; </Row>
                                 <Row>
                                     <CheckForm
-                                        id={25}
-                                        width={12}
-                                        show={true}
-                                        placeholder="Субъект МПС"
-                                        description="Предприятие"
-                                        value={this.value[25] ? this.value[25].value : ''}
-                                        onChangeValue={this.doChangeValue}
-                                        onChangeVisionBlock={this.doEmpty}
-                                    />
-                                </Row>
-                                <Row>
-                                    <CheckForm
                                         id={26}
                                         width={12}
                                         show={true}
-                                        placeholder="Резидент РФ"
+                                        placeholder="Субъект МПС"
                                         description="Предприятие"
                                         value={this.value[26] ? this.value[26].value : ''}
                                         onChangeValue={this.doChangeValue}
@@ -483,9 +471,21 @@ export default class Form_Main extends React.Component {
                                         id={27}
                                         width={12}
                                         show={true}
-                                        placeholder="Согласие на обработку персональных данных (в т.ч. Пользовательское Соглашение, Договор Оферты"
+                                        placeholder="Резидент РФ"
                                         description="Предприятие"
                                         value={this.value[27] ? this.value[27].value : ''}
+                                        onChangeValue={this.doChangeValue}
+                                        onChangeVisionBlock={this.doEmpty}
+                                    />
+                                </Row>
+                                <Row>
+                                    <CheckForm
+                                        id={28}
+                                        width={12}
+                                        show={true}
+                                        placeholder="Согласие на обработку персональных данных (в т.ч. Пользовательское Соглашение, Договор Оферты"
+                                        description="Предприятие"
+                                        value={this.value[28] ? this.value[28].value : ''}
                                         onChangeValue={this.doChangeValue}
                                         onChangeVisionBlock={this.doChangeVisionBlock}
                                     />
